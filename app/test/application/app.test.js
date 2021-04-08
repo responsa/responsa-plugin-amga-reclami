@@ -14,8 +14,6 @@ describe('App', () => {
   })
 
   it('config has correct values', async () => {
-    await helper.setupTestEnvironment()
-
     const config = require('../../src/application/config')
 
     expect(config.zoho).not.toBeNull()
