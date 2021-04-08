@@ -12,4 +12,18 @@ describe('App', () => {
     )
     expect(response.statusCode).toEqual(200)
   })
+
+  it('config has correct values', async () => {
+    await helper.setupTestEnvironment()
+
+    const config = require('../../src/application/config')
+
+    expect(config.zoho).not.toBeNull()
+    expect(config.zoho.clientId).toBeDefined()
+    expect(config.zoho.clientId.length).toBeGreaterThan(0)
+    expect(config.zoho.clientSecret).toBeDefined()
+    expect(config.zoho.clientSecret.length).toBeGreaterThan(0)
+    expect(config.zoho.refreshToken).toBeDefined()
+    expect(config.zoho.refreshToken.length).toBeGreaterThan(0)
+  })
 })
