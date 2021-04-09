@@ -12,7 +12,8 @@ module.exports = {
     refreshToken: process.env.ZOHO_REFRESH_TOKEN,
     refreshAuthBaseUrl: 'https://accounts.zoho.eu/',
     refreshAuthUrl: '/oauth/v2/token',
-    dataUrl: 'https://creator.zoho.eu/api/v2/{0}/{1}',
+    dataBaseUrl: 'https://creator.zoho.eu/',
+    dataUrl: '/api/v2',
     account: 'acegasapsamga',
     project: 'test1-gestione-reclami'
   }
