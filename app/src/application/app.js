@@ -8,6 +8,7 @@ const auth = require('./auth')
 const notFound = require('./notFound')
 const errorHandler = require('./errorHandler')
 const example = require('../models/example')
+const smsService = require('../models/smsService')
 
 const addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({
@@ -24,6 +25,7 @@ const addSchemas = (fastifyInstance) => {
   })
 
   example.addSchemas(fastifyInstance)
+  smsService.addSchemas(fastifyInstance)
 }
 
 const createServer = (opts, customElastic) => {

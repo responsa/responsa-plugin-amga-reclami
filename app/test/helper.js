@@ -30,10 +30,12 @@ async function doGet (fastifyInstance, path, headers) {
   return serverResponse
 }
 
-async function doPost (fastifyInstance, path) {
+async function doPost (fastifyInstance, path, body, headers) {
   const serverResponse = await fastifyInstance.inject({
     url: path,
-    method: 'POST'
+    method: 'POST',
+    body: body,
+    headers
   })
   return serverResponse
 }
@@ -50,10 +52,17 @@ const getSwagger = async () => {
 
 const checkRouteForCode = (swagger, route, code, expectedResponse) => {
   const actual = swagger.paths[route]
-  expect(actual.get).toBeDefined()
-  expect(actual.get.responses).toBeDefined()
-  expect(actual.get.responses[code]).toBeDefined()
-  expect(actual.get.responses[code]).toEqual(expectedResponse)
+  if (typeof actual.get !== 'undefined') {
+    expect(actual.get).toBeDefined()
+    expect(actual.get.responses).toBeDefined()
+    expect(actual.get.responses[code]).toBeDefined()
+    expect(actual.get.responses[code]).toEqual(expectedResponse)
+  } else if (typeof actual.post !== 'undefined') {
+    expect(actual.post).toBeDefined()
+    expect(actual.post.responses).toBeDefined()
+    expect(actual.post.responses[code]).toBeDefined()
+    expect(actual.post.responses[code]).toEqual(expectedResponse)
+  }
 }
 
 const checkResponses = async (url, expectedResponses) => {

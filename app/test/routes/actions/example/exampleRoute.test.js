@@ -4,7 +4,7 @@ const responses = require('./responses')
 
 describe('Example - Swagger OpenApi tests', () => {
   it('Example - loads correctly', async () => {
-    helper.checkResponses('/actions/example', responses)
+    await helper.checkResponses('/actions/example', responses)
   })
 })
 

@@ -23,11 +23,11 @@ module.exports.sendSms = async (phone) => {
 
   // axios.defaults.maxBodyLength = 1000000
   // axios.defaults.maxContentLength = 1000000
-  let result = false
+  let result = null
 
   await axios.post(url, body, { headers: headers })
     .then((response) => {
-      result = response.status === 200 ? code : undefined
+      result = response.status === 200 ? { verificationCode: code } : null
     })
     .catch((error) => {
       throw error
