@@ -15,6 +15,12 @@ module.exports.SmsService200 = {
   $ref: 'SmsService#'
 }
 
+module.exports.SmsService400 = {
+  type: 'object',
+  description: 'Bad request',
+  $ref: 'Error#'
+}
+
 module.exports.SmsService500 = {
   type: 'object',
   description: 'Internal error',
@@ -24,5 +30,6 @@ module.exports.SmsService500 = {
 module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'SmsService', ...this.SmsService })
   fastifyInstance.addSchema({ $id: 'SmsService200', ...this.SmsService200 })
+  fastifyInstance.addSchema({ $id: 'SmsService400', ...this.SmsService400 })
   fastifyInstance.addSchema({ $id: 'SmsService500', ...this.SmsService500 })
 }

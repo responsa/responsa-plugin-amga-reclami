@@ -3,18 +3,21 @@ const smsService = require('../../../application/smsService')
 
 const routeSchema = {
   tags: ['SmsService'],
-  summary: 'Invio SMS',
-  description: 'Esegue l\'invio di SMS con testo predefinito e ritorna il codice di verifica',
+  summary: 'Send SMS',
+  description: 'Send SMS message with default text and return the verification code',
   body: {
     type: 'object',
     properties: {
-      phone: { type: 'string', description: 'Il numero di telefono preceduto dal prefisso internazionale su cui inviare SMS' }
+      phone: { type: 'string', description: 'The telephone number preceded by the international prefix on which to send SMS' }
     },
     required: ['phone']
   },
   response: {
     200: {
       $ref: 'SmsService200#'
+    },
+    400: {
+      $ref: 'SmsService400#'
     },
     500: {
       $ref: 'SmsService500#'
