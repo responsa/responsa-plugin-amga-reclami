@@ -6,4 +6,8 @@ describe('SMS Service API', () => {
     expect(actual).not.toBe(null)
     expect(actual.verificationCode).not.toBe(null)
   })
+  it('Send message with error', async () => {
+    const actual = await sut.sendSms()
+    expect(actual).toBe(null)
+  })
 })
