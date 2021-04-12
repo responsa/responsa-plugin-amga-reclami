@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "npm run lint && npm run jest",
-    "lint": "standard ./src/ --fix && standard ./test/ --fix",
+    "lint": "standard ./src/ && standard ./test/ ",
     "jest": "jest --detectOpenHandles --watchAll",
     "jest:ci": "jest --forceExit --ci --testResultsProcessor=jest-multiple-result-processors --coverage=true",
     "start": "node src/index.js | pino-applicationinsights --key 77033849-96c5-4331-9f8c-3c6400bcd843",
@@ -20,6 +20,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
     "fastify": "^3.0.0",
     "fastify-autoload": "^3.0.2",
     "fastify-cors": "^5.0.0",
@@ -60,5 +62,8 @@
       "node_modules/**"
     ],
     "parser": "babel-eslint"
+  },
+  "jest":{
+    "testSequencer": "./test/testSequencer.js"
   }
 }

@@ -1,5 +1,4 @@
 # Specify filepatterns you want git to ignore.
 .vscode
-package-lock.json
 node_modules
 coverage
