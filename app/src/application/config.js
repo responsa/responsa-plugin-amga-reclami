@@ -1,4 +1,5 @@
 module.exports = {
+  appName: 'Responsa Plugin for Amga Reclami',
   port: process.env.PORT || 8080,
   secretValue: 'SECRET',
   elasticUri: 'https://localhost:9200',
@@ -16,5 +17,9 @@ module.exports = {
     dataUrl: '/api/v2',
     account: 'acegasapsamga',
     project: 'test1-gestione-reclami'
-  }
+  },
+  servers: [
+    { url: 'server1 url', description: 'server1 description' },
+    { url: 'server2 url', description: 'server2 description' }
+  ]
 }
