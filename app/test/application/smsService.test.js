@@ -7,11 +7,13 @@ describe('SMS Service API', () => {
     expect(actual.verificationCode).not.toBe(null)
   })
   it('Send message with error - No phone number', async () => {
-    const actual = await sut.sendSms()
-    expect(actual.message).toBe(sut.sendSmsErrorMessage)
+    await expect(sut.sendSms())
+      .rejects
+      .toThrow(sut.sendSmsErrorMessage)
   })
   it('Send message with error - bad phone number', async () => {
-    const actual = await sut.sendSms('4564asdasda6546')
-    expect(actual.message).toBe(sut.sendSmsErrorMessage)
+    await expect(sut.sendSms('4564asdasda6546'))
+      .rejects
+      .toThrow(sut.sendSmsErrorMessage)
   })
 })

@@ -29,10 +29,17 @@ module.exports.sendSms = async (phone) => {
 
   await axios.post(url, body, { headers: headers })
     .then((response) => {
-      result = response.status === 200 && response.data.body === 'Message sent' ? { verificationCode: code } : null
+      if (response.status === 200 && response.data.body === 'Message sent') {
+        result = { verificationCode: code }
+      }
     })
     .catch((error) => {
       throw error
     })
-  return result ?? new Error(this.sendSmsErrorMessage)
+
+  if (result) {
+    return result
+  } else {
+    throw Error(this.sendSmsErrorMessage)
+  }
 }
