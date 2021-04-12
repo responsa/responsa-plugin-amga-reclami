@@ -1,9 +1,11 @@
 const config = require('./config')
 const axios = require('axios')
+const otp = require('./otpGenerator')
+const msgBuilder = require('./smsMessageBuilder')
 
 module.exports.sendSms = async (phone) => {
-  const code = generateVerificationCode()
-  const msg = buildSmsMessage(code)
+  const code = otp.generateOtp()
+  const msg = msgBuilder.buildSmsMessage(code)
   const apiKey = config.awsSmsService.apiKey
   const fromField = config.awsSmsService.fromField
   const url = config.awsSmsService.gatewayUrl
@@ -33,15 +35,4 @@ module.exports.sendSms = async (phone) => {
       throw error
     })
   return result
-}
-
-const buildSmsMessage = (code) => {
-  return `${code} è il tuo codice verifica del chatbot richiesta informazioni AcegasApsAmga.`
-}
-
-const generateVerificationCode = () => {
-  const min = 100000
-  const max = 999999
-  const code = Math.floor(Math.random() * (max - min + 1)) + min
-  return code
 }
