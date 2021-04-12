@@ -1,3 +1,4 @@
+require('dotenv').config()
 const config = require('./application/config')
 const application = require('./application/app')
 

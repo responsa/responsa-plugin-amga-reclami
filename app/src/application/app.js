@@ -53,12 +53,19 @@ exports.reboot = (options, elastic) => {
 exports.startUp = (options) => this.default(server, options)
 
 exports.default = function (fastifyInstance, opts) {
+  const customTranslationsKeys = opts ? opts.translationsKeys : null
+  const pluginCoreOptions = {
+    prefix: '/core',
+    translationsKeys: customTranslationsKeys || null,
+    servers: opts && opts.servers ? opts.servers : config.servers,
+    appName: opts && opts.appName ? opts.appName : config.appName,
+    esIndex: opts && opts.esIndex ? opts.esIndex : config.elasticIndex
+  }
+
   const f = fastifyInstance
 
   f.register(cors)
-  f.register(pluginCore, {
-    prefix: '/core'
-  })
+  f.register(pluginCore, pluginCoreOptions)
   f.decorate('auth', auth)
   f.setNotFoundHandler(notFound)
   f.setErrorHandler(errorHandler)
