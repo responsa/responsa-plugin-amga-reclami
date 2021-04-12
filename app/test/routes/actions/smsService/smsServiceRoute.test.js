@@ -4,7 +4,7 @@ const responses = require('./responses')
 
 describe('SmsService - Swagger OpenApi tests', () => {
   it('Example - loads correctly', async () => {
-    await helper.checkResponses('/actions/smsService', responses)
+    helper.checkResponses('/actions/smsService', responses)
   })
 })
 
