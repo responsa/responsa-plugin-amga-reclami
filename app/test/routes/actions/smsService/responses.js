@@ -3,16 +3,16 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Il codice di verifica 200',
+        description: 'Verification code generated successfully',
         properties: {
           verificationCode: {
             type: 'number',
-            description: 'Il codice di verifica',
+            description: 'Verification code',
             nullable: true
           }
         }
       }
     }
   },
-  description: 'Il codice di verifica 200'
+  description: 'Verification code generated successfully'
 }

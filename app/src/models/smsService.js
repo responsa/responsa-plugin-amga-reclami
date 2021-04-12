@@ -3,7 +3,7 @@ module.exports.SmsService = {
   properties: {
     verificationCode: {
       type: 'number',
-      description: 'Il codice di verifica',
+      description: 'Verification code',
       nullable: true
     }
   }
@@ -11,13 +11,13 @@ module.exports.SmsService = {
 
 module.exports.SmsService200 = {
   type: 'object',
-  description: 'Il codice di verifica 200',
+  description: 'Verification code generated successfully',
   $ref: 'SmsService#'
 }
 
 module.exports.SmsService500 = {
   type: 'object',
-  description: 'Errore interno',
+  description: 'Internal error',
   $ref: 'Error#'
 }
 
