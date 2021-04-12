@@ -48,6 +48,7 @@ const sendCreatorRequest = async (method, target, data) => {
   let response = null
   try {
     response = await axios.request(creatorReqOptions(method, target, data))
+    return response
   } catch (err) {
     if (err.response && err.response.status === 401) {
       await refreshAccessToken()
@@ -60,12 +61,13 @@ const sendCreatorRequest = async (method, target, data) => {
     }
     throw new Error(err)
   }
-  return response
 }
 
 const getData = (target) => sendCreatorRequest('GET', target, {})
+const postData = (target, data) => sendCreatorRequest('POST', target, data)
 
 module.exports.refreshAccessToken = refreshAccessToken
 module.exports.creatorReqOptions = creatorReqOptions
 module.exports.sendCreatorRequest = sendCreatorRequest
 module.exports.getData = getData
+module.exports.postData = postData
