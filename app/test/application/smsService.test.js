@@ -8,10 +8,10 @@ describe('SMS Service API', () => {
   })
   it('Send message with error - No phone number', async () => {
     const actual = await sut.sendSms()
-    expect(actual).toBe(null)
+    expect(actual.message).toBe(sut.sendSmsErrorMessage)
   })
   it('Send message with error - bad phone number', async () => {
     const actual = await sut.sendSms('4564asdasda6546')
-    expect(actual).toBe(null)
+    expect(actual.message).toBe(sut.sendSmsErrorMessage)
   })
 })

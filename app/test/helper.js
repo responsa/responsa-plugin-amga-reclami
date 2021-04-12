@@ -52,17 +52,11 @@ const getSwagger = async () => {
 
 const checkRouteForCode = (swagger, route, code, expectedResponse) => {
   const actual = swagger.paths[route]
-  if (typeof actual.get !== 'undefined') {
-    expect(actual.get).toBeDefined()
-    expect(actual.get.responses).toBeDefined()
-    expect(actual.get.responses[code]).toBeDefined()
-    expect(actual.get.responses[code]).toEqual(expectedResponse)
-  } else if (typeof actual.post !== 'undefined') {
-    expect(actual.post).toBeDefined()
-    expect(actual.post.responses).toBeDefined()
-    expect(actual.post.responses[code]).toBeDefined()
-    expect(actual.post.responses[code]).toEqual(expectedResponse)
-  }
+  const api = actual.get || actual.post
+  expect(api).toBeDefined()
+  expect(api.responses).toBeDefined()
+  expect(api.responses[code]).toBeDefined()
+  expect(api.responses[code]).toEqual(expectedResponse)
 }
 
 const checkResponses = async (url, expectedResponses) => {

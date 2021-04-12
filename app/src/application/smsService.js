@@ -3,6 +3,8 @@ const axios = require('axios')
 const otp = require('./otpGenerator')
 const msgBuilder = require('./smsMessageBuilder')
 
+module.exports.sendSmsErrorMessage = 'Unable to send message'
+
 module.exports.sendSms = async (phone) => {
   const code = otp.generateOtp()
   const msg = msgBuilder.buildSmsMessage(code)
@@ -23,8 +25,6 @@ module.exports.sendSms = async (phone) => {
   const http = require(lib)
   axios.defaults.adapter = http
 
-  // axios.defaults.maxBodyLength = 1000000
-  // axios.defaults.maxContentLength = 1000000
   let result = null
 
   await axios.post(url, body, { headers: headers })
@@ -34,5 +34,5 @@ module.exports.sendSms = async (phone) => {
     .catch((error) => {
       throw error
     })
-  return result
+  return result ?? new Error(this.sendSmsErrorMessage)
 }
