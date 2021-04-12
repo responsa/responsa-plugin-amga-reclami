@@ -26,6 +26,16 @@ npm config set store-dir /test-reports/.pnpm-store
 npm set progress=false
 npm i --prefer-offline
 
+echo "" && echo "***********************************************************" && /_/build/scripts/print-step.sh "WRITE .ENV FILE"
+rm -rf .env
+echo "ZOHO_CLIENT_ID=${ZOHO_CLIENT_ID}" > .env
+echo "ZOHO_CLIENT_SECRET=${ZOHO_CLIENT_SECRET}" >> .env
+echo "ZOHO_REFRESH_TOKEN=${ZOHO_REFRESH_TOKEN}" >> .env
+echo "GATEWAY_URL=${GATEWAY_URL}" >> .env
+echo "API_KEY=${API_KEY}" >> .env
+echo "FROM_FIELD=${FROM_FIELD}" >> .env
+cat .env
+
 echo "" && echo "***********************************************************" && /_/build/scripts/print-step.sh "LINTING"
 npm run lint
 

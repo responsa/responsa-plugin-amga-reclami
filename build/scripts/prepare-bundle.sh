@@ -12,6 +12,7 @@ echo "" && echo "***********************************************************" &&
 rm -rf /_/app/node_modules
 
 cp -r /_/app/src/* /out/src
+cp /_/app/.env /out/.env
 cp /_/app/package-lock.json /out/package-lock.json
 cp /_/app/package.json /out/package.json
 
