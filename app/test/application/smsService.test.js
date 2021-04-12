@@ -1,4 +1,14 @@
+require('../helper')
 const sut = require('../../src/application/smsService')
+const config = require('../../src/application/config')
+
+describe('SMS Service COnfiguration', () => {
+  it('Get all configurations properly', async () => {
+    expect(config.awsSmsService.gatewayUrl.length).toBeGreaterThan(0)
+    expect(config.awsSmsService.apiKey.length).toBeGreaterThan(0)
+    expect(config.awsSmsService.fromField.length).toBeGreaterThan(0)
+  })
+})
 
 describe('SMS Service API', () => {
   it('Send message properly', async () => {
