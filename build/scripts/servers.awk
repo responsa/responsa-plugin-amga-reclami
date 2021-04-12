@@ -8,7 +8,7 @@
         print $0
     }
     else if (flag == 1) {
-        if ($0 == "  ],") {
+        if ($0 == "  ]," || $0 == "  ]") {
             flag = 0
         }
         else {
