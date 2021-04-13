@@ -7,7 +7,6 @@ const config = require('./config')
 const auth = require('./auth')
 const notFound = require('./notFound')
 const errorHandler = require('./errorHandler')
-const example = require('../models/example')
 const otp = require('../models/otp')
 
 const addSchemas = (fastifyInstance) => {
@@ -24,7 +23,6 @@ const addSchemas = (fastifyInstance) => {
     ...pluginCore.errorSchema
   })
 
-  example.addSchemas(fastifyInstance)
   otp.addSchemas(fastifyInstance)
 }
 
