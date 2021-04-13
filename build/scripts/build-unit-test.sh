@@ -25,6 +25,7 @@ cd /_/app/
 npm config set store-dir /test-reports/.pnpm-store
 npm set progress=false
 npm i --prefer-offline
+npm update responsa-plugin-core-js
 
 echo "" && echo "***********************************************************" && /_/build/scripts/print-step.sh "WRITE .ENV FILE"
 rm -rf .env
