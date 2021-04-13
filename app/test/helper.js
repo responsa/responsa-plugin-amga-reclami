@@ -1,4 +1,5 @@
 require('dotenv').config()
+const config = require('../src/application/config')
 const app = require('../src/application/app')
 
 const setupTestEnvironment = () => {
@@ -82,7 +83,8 @@ const test400 = (response, msg) => {
 
 const requiredHeaders = {
   'X-ConversationId': 4,
-  'X-ResponsaTS': Date.now()
+  'X-ResponsaTS': Date.now(),
+  'x-secret': config.secretValue
 }
 
 module.exports = {
