@@ -16,7 +16,7 @@ ZIP_FILE="$VERSION_TYPE-$VERSION_DATE-$DEPLOY_TS-$VERSION_HASH"
 
 echo "Creating zip with name: $ZIP_FILE"
 cd /install
-zip -r $ZIP_FILE.zip *
+zip -r $ZIP_FILE.zip .
 
 echo "" && echo "***********************************************************" && /_/build/scripts/print-step.sh "UPLOAD ZIP TO S3"
 aws s3 cp $ZIP_FILE.zip s3://$AWS_DEPLOY_BUCKET/$AWS_DEPLOY_KEY/
