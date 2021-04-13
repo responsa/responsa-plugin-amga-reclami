@@ -16,6 +16,7 @@ describe('OTP', () => {
       { phone: '+390000000000' },
       helper.requiredHeaders
     )
+
     expect(response.statusCode).toEqual(200)
   })
 
@@ -28,6 +29,59 @@ describe('OTP', () => {
       null,
       helper.requiredHeaders
     )
-    expect(response.statusCode).toEqual(400)
+
+    helper.test400(response, 'body should be object')
+  })
+
+  it('OTP - answers 400 with empty body', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doPost(
+      sut,
+      'actions/otp',
+      {},
+      helper.requiredHeaders
+    )
+
+    helper.test400(response, 'body should have required property \'phone\'')
+  })
+
+  it('OTP - answers 400 with boolean phone', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doPost(
+      sut,
+      'actions/otp',
+      { phone: true },
+      helper.requiredHeaders
+    )
+
+    helper.test400(response, 'body.phone should be string')
+  })
+
+  it('OTP - answers 400 with numeric phone', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doPost(
+      sut,
+      'actions/otp',
+      { phone: 1 },
+      helper.requiredHeaders
+    )
+
+    helper.test400(response, 'body.phone should be string')
+  })
+
+  it('OTP - answers 400 with null phone', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doPost(
+      sut,
+      'actions/otp',
+      { phone: null },
+      helper.requiredHeaders
+    )
+
+    helper.test400(response, 'body.phone should be string')
   })
 })
