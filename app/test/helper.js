@@ -35,7 +35,7 @@ async function doPost (fastifyInstance, path, body, headers) {
   const serverResponse = await fastifyInstance.inject({
     url: path,
     method: 'POST',
-    body: body,
+    body,
     headers
   })
   return serverResponse
