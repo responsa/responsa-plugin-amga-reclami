@@ -32,9 +32,9 @@ rm -rf .env
 echo "ZOHO_CLIENT_ID=${ZOHO_CLIENT_ID}" > .env
 echo "ZOHO_CLIENT_SECRET=${ZOHO_CLIENT_SECRET}" >> .env
 echo "ZOHO_REFRESH_TOKEN=${ZOHO_REFRESH_TOKEN}" >> .env
-echo "GATEWAY_URL=${GATEWAY_URL}" >> .env
-echo "API_KEY=${API_KEY}" >> .env
-echo "FROM_FIELD=${FROM_FIELD}" >> .env
+echo "OTP_GATEWAY_URL=${OTP_GATEWAY_URL}" >> .env
+echo "OTP_API_KEY=${OTP_API_KEY}" >> .env
+echo "OTP_FROM_FIELD=${OTP_FROM_FIELD}" >> .env
 cat .env
 
 echo "" && echo "***********************************************************" && /_/build/scripts/print-step.sh "LINTING"

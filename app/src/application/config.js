@@ -7,9 +7,9 @@ module.exports = {
   elasticPassword: 'newboss',
   elasticIndex: 'responsa-plugin-amga-reclami',
   awsSmsService: {
-    gatewayUrl: process.env.GATEWAY_URL,
-    apiKey: process.env.API_KEY,
-    fromField: process.env.FROM_FIELD
+    gatewayUrl: process.env.OTP_GATEWAY_URL,
+    apiKey: process.env.OTP_API_KEY,
+    fromField: process.env.OTP_FROM_FIELD
   },
   zoho: {
     clientId: process.env.ZOHO_CLIENT_ID,
