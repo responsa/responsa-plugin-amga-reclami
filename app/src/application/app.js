@@ -39,7 +39,14 @@ const createServer = (opts, customElastic) => {
     logger: pluginCore.loggerFactory({ ...defaultElastic, ...customElastic }),
     ignoreTrailingSlash: true
   }
-  const options = { ...defaultOptions, ...opts }
+  const ajvOptions = {
+    ajv: {
+      customOptions: {
+        coerceTypes: false
+      }
+    }
+  }
+  const options = { ...defaultOptions, ...opts, ...ajvOptions }
   return fastify(options)
 }
 
