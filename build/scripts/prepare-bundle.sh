@@ -18,4 +18,5 @@ cp /_/app/package.json /out/package.json
 
 mkdir /install
 cp -r /out/* /install
+cp /out/.env /install/.env
 
