@@ -72,6 +72,14 @@ const checkTranslations = async (expected) => {
   expect(actual.info['x-translations']).toBe(expected)
 }
 
+const test400 = (response, msg) => {
+  expect(response.statusCode).toEqual(400)
+  expect(response.body).toBeDefined()
+  const body = JSON.parse(response.body)
+  expect(body.message).toBeDefined()
+  expect(body.message).toEqual(msg)
+}
+
 const requiredHeaders = {
   'X-ConversationId': 4,
   'X-ResponsaTS': Date.now()
@@ -83,5 +91,6 @@ module.exports = {
   setupTestEnvironment,
   checkResponses,
   requiredHeaders,
-  checkTranslations
+  checkTranslations,
+  test400
 }
