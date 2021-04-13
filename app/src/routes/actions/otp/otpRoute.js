@@ -3,14 +3,18 @@ const smsService = require('../../../application/smsService')
 
 const routeSchema = {
   tags: ['OTP Service'],
-  summary: 'Send SMS',
-  description: 'Send SMS message with default text and return the verification code',
+  summary: 'Send OTP code via SMS',
+  description: 'Sends OTP code via SMS with default text and returns the OTP itself',
   body: {
     type: 'object',
+    required: ['phone'],
     properties: {
-      phone: { type: 'string', description: 'The telephone number preceded by the international prefix on which to send SMS' }
-    },
-    required: ['phone']
+      phone: {
+        type: 'string',
+        nullable: false,
+        description: 'The telephone number preceeded by the international prefix on which to send SMS'
+      }
+    }
   },
   response: {
     200: {
