@@ -31,10 +31,12 @@ async function doGet (fastifyInstance, path, headers) {
   return serverResponse
 }
 
-async function doPost (fastifyInstance, path) {
+async function doPost (fastifyInstance, path, body, headers) {
   const serverResponse = await fastifyInstance.inject({
     url: path,
-    method: 'POST'
+    method: 'POST',
+    body,
+    headers
   })
   return serverResponse
 }
@@ -51,10 +53,11 @@ const getSwagger = async () => {
 
 const checkRouteForCode = (swagger, route, code, expectedResponse) => {
   const actual = swagger.paths[route]
-  expect(actual.get).toBeDefined()
-  expect(actual.get.responses).toBeDefined()
-  expect(actual.get.responses[code]).toBeDefined()
-  expect(actual.get.responses[code]).toEqual(expectedResponse)
+  const api = actual.get || actual.post
+  expect(api).toBeDefined()
+  expect(api.responses).toBeDefined()
+  expect(api.responses[code]).toBeDefined()
+  expect(api.responses[code]).toEqual(expectedResponse)
 }
 
 const checkResponses = async (url, expectedResponses) => {
@@ -69,6 +72,14 @@ const checkTranslations = async (expected) => {
   expect(actual.info['x-translations']).toBe(expected)
 }
 
+const test400 = (response, msg) => {
+  expect(response.statusCode).toEqual(400)
+  expect(response.body).toBeDefined()
+  const body = JSON.parse(response.body)
+  expect(body.message).toBeDefined()
+  expect(body.message).toEqual(msg)
+}
+
 const requiredHeaders = {
   'X-ConversationId': 4,
   'X-ResponsaTS': Date.now()
@@ -80,5 +91,6 @@ module.exports = {
   setupTestEnvironment,
   checkResponses,
   requiredHeaders,
-  checkTranslations
+  checkTranslations,
+  test400
 }

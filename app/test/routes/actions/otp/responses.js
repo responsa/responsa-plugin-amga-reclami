@@ -3,26 +3,26 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Example 200',
+        description: 'Verification code generated successfully',
         properties: {
-          anyExampleProperty: {
-            type: 'string',
-            description: 'Any example property',
+          verificationCode: {
+            type: 'number',
+            description: 'Verification code',
             nullable: true
           }
         }
       }
     }
   },
-  description: 'Example 200'
+  description: 'Verification code generated successfully'
 }
 
-module.exports.code404 = {
+module.exports.code400 = {
   content: {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Example 404',
+        description: 'Bad request',
         properties: {
           statusCode: {
             type: 'integer',
@@ -46,5 +46,5 @@ module.exports.code404 = {
       }
     }
   },
-  description: 'Example 404'
+  description: 'Bad request'
 }
