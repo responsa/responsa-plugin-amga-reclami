@@ -1,7 +1,3 @@
-/**
- * @jest-environment node
- */
-
 // eslint-disable-next-line
 const helper = require('../helper')
 const config = require('../../src/application/config')
