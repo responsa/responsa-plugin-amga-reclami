@@ -64,6 +64,7 @@
     "parser": "babel-eslint"
   },
   "jest": {
-    "testSequencer": "./test/testSequencer.js"
+    "testSequencer": "./test/testSequencer.js",
+    "testEnvironment": "node"
   }
 }
