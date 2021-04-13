@@ -1,8 +1,8 @@
-require('../../../models/smsService')
+require('../../../models/otp')
 const smsService = require('../../../application/smsService')
 
 const routeSchema = {
-  tags: ['SmsService'],
+  tags: ['OTP Service'],
   summary: 'Send SMS',
   description: 'Send SMS message with default text and return the verification code',
   body: {
@@ -14,13 +14,13 @@ const routeSchema = {
   },
   response: {
     200: {
-      $ref: 'SmsService200#'
+      $ref: 'otp200#'
     },
     400: {
-      $ref: 'SmsService400#'
+      $ref: 'otp400#'
     },
     500: {
-      $ref: 'SmsService500#'
+      $ref: 'otp500#'
     }
   }
 }
