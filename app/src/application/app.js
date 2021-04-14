@@ -8,6 +8,7 @@ const auth = require('./auth')
 const notFound = require('./notFound')
 const errorHandler = require('./errorHandler')
 const otp = require('../models/otp')
+const pod = require('../models/pod')
 
 const addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({
@@ -24,6 +25,7 @@ const addSchemas = (fastifyInstance) => {
   })
 
   otp.addSchemas(fastifyInstance)
+  pod.addSchemas(fastifyInstance)
 }
 
 const createServer = (opts, customElastic) => {
