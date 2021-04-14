@@ -1,5 +1,4 @@
-require('../../../models/privacyAcceptance')
-const zohoService = require('../../../application/zoho')
+const zohoService = require('../../../../application/zoho')
 
 const routeSchema = {
   tags: ['Privacy Acceptance'],
@@ -7,15 +6,15 @@ const routeSchema = {
   description: 'Execute a post to send acceptance of the user\'s privacy',
   body: {
     type: 'object',
-    required: ['privacyAcceptanceData'],
-    privacyAcceptanceData: {
+    required: ['email', 'accepted'],
+    properties: {
       email: {
         type: 'string',
         nullable: false,
         description: 'User mail address'
       },
       accepted: {
-        type: 'bool',
+        type: 'boolean',
         nullable: false,
         description: 'Flag to indicate whether the user has accepted or not'
       }
@@ -23,24 +22,34 @@ const routeSchema = {
   },
   response: {
     200: {
-      $ref: 'otp200#'
+      $ref: 'privacyAcceptance200#'
     },
     400: {
-      $ref: 'otp400#'
+      $ref: 'privacyAcceptance400#'
     },
     401: {
-      $ref: 'otp401#'
+      $ref: 'privacyAcceptance401#'
     },
     500: {
-      $ref: 'otp500#'
+      $ref: 'privacyAcceptance500#'
     }
   }
 }
 
 module.exports = async function (fastify) {
   fastify.post('/', { schema: routeSchema }, async (req, reply) => {
-    // reply.code(200).send({
-    // verificationCode: sms.verificationCode
-    // })
+    const postData = {
+      data: {
+        Cliente_email: req.body.email,
+        Consenso: req.body.accepted ? 'SI' : 'NO',
+        added_Time: Date.now(),
+        modified_Time: Date.now()
+      }
+    }
+    const result = await zohoService.postData('/form/Privacy', postData)
+
+    reply.code(result.data.code === 3000 ? 200 : 400).send({
+      // mailAddress: req.body.email
+    })
   })
 }

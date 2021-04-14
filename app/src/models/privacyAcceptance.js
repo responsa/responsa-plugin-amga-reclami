@@ -1,7 +1,13 @@
+module.exports.privacyAcceptance = {
+  type: 'object',
+  properties: {
+  }
+}
+
 module.exports.privacyAcceptance200 = {
   type: 'object',
   description: 'Privacy acceptance generated successfully',
-  $ref: 'otp#'
+  $ref: 'privacyAcceptance#'
 }
 
 module.exports.privacyAcceptance400 = {
@@ -23,6 +29,7 @@ module.exports.privacyAcceptance500 = {
 }
 
 module.exports.addSchemas = (fastifyInstance) => {
+  fastifyInstance.addSchema({ $id: 'privacyAcceptance', ...this.privacyAcceptance })
   fastifyInstance.addSchema({ $id: 'privacyAcceptance200', ...this.privacyAcceptance200 })
   fastifyInstance.addSchema({ $id: 'privacyAcceptance400', ...this.privacyAcceptance400 })
   fastifyInstance.addSchema({ $id: 'privacyAcceptance401', ...this.privacyAcceptance401 })
