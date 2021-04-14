@@ -1,16 +1,16 @@
 require('jest-extended')
-const helper = require('../../../../helper')
+const helper = require('../../../helper')
 const responses = require('./responses')
 
 describe('Privacy Acceptance', () => {
   it('Privacy Acceptance - answers correctly', async () => {
-    helper.checkResponses('/actions/crm/privacy', responses)
+    helper.checkResponses('/actions/privacy', responses)
   })
   it('Privacy Acceptance - Send user\'s acceptance', async () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/crm/privacy',
+      'actions/privacy',
       { email: 'mail@mail.com', accepted: true },
       helper.requiredHeaders
     )
@@ -20,7 +20,7 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/crm/privacy',
+      'actions/privacy',
       { email: 'mail.it', accepted: true },
       helper.requiredHeaders
     )
@@ -30,7 +30,7 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/crm/privacy',
+      'actions/privacy',
       { email: 'mail@mail.com', invalidParams: true },
       helper.requiredHeaders
     )
