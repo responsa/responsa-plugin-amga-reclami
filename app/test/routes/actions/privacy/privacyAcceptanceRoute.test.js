@@ -11,7 +11,7 @@ describe('Privacy Acceptance', () => {
     const response = await helper.doPost(
       sut,
       'actions/privacy',
-      { email: 'mail@mail.com', accepted: true },
+      { email: 'mail@provider.com', accepted: true },
       helper.requiredHeaders
     )
     expect(response.statusCode).toEqual(200)
