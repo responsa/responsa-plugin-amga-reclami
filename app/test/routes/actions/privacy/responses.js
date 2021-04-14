@@ -44,38 +44,6 @@ module.exports.code400 = {
   description: 'Bad request'
 }
 
-module.exports.code401 = {
-  content: {
-    'application/json': {
-      schema: {
-        type: 'object',
-        description: 'Unauthorized',
-        properties: {
-          statusCode: {
-            type: 'integer',
-            format: 'int32',
-            nullable: false
-          },
-          error: {
-            type: 'string',
-            nullable: false
-          },
-          message: {
-            type: 'string',
-            nullable: false
-          },
-          stackTrace: {
-            type: 'string',
-            nullable: true
-          }
-        },
-        additionalProperties: true
-      }
-    }
-  },
-  description: 'Unauthorized'
-}
-
 module.exports.code500 = {
   content: {
     'application/json': {

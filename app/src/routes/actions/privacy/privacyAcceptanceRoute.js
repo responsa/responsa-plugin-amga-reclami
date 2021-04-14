@@ -27,9 +27,6 @@ const routeSchema = {
     400: {
       $ref: 'privacyAcceptance400#'
     },
-    401: {
-      $ref: 'privacyAcceptance401#'
-    },
     500: {
       $ref: 'privacyAcceptance500#'
     }
@@ -38,18 +35,17 @@ const routeSchema = {
 
 module.exports = async function (fastify) {
   fastify.post('/', { schema: routeSchema }, async (req, reply) => {
-    const postData = {
-      data: {
-        Cliente_email: req.body.email,
-        Consenso: req.body.accepted ? 'SI' : 'NO',
-        added_Time: Date.now(),
-        modified_Time: Date.now()
-      }
-    }
-    const result = await zohoService.postData('/form/Privacy', postData)
-
+    const result = await zohoService.postData(
+      '/form/Privacy',
+      {
+        data: {
+          Cliente_email: req.body.email,
+          Consenso: req.body.accepted ? 'SI' : 'NO',
+          added_Time: Date.now(),
+          modified_Time: Date.now()
+        }
+      })
     reply.code(result.data.code === 3000 ? 200 : 400).send({
-      // mailAddress: req.body.email
     })
   })
 }

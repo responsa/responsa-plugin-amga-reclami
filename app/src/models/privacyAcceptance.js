@@ -16,12 +16,6 @@ module.exports.privacyAcceptance400 = {
   $ref: 'Error#'
 }
 
-module.exports.privacyAcceptance401 = {
-  type: 'object',
-  description: 'Unauthorized',
-  $ref: 'Error#'
-}
-
 module.exports.privacyAcceptance500 = {
   type: 'object',
   description: 'Internal error',
@@ -32,6 +26,5 @@ module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'privacyAcceptance', ...this.privacyAcceptance })
   fastifyInstance.addSchema({ $id: 'privacyAcceptance200', ...this.privacyAcceptance200 })
   fastifyInstance.addSchema({ $id: 'privacyAcceptance400', ...this.privacyAcceptance400 })
-  fastifyInstance.addSchema({ $id: 'privacyAcceptance401', ...this.privacyAcceptance401 })
   fastifyInstance.addSchema({ $id: 'privacyAcceptance500', ...this.privacyAcceptance500 })
 }
