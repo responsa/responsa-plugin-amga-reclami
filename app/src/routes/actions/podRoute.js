@@ -1,13 +1,13 @@
-require('../../../models/podpdr')
-const zoho = require('../../../application/zoho')
+require('../../models/podpdr')
+const zoho = require('../../application/zoho')
 const createError = require('fastify-error')
 
 const ContractNotFoundError = createError('CONTRACT_NOT_FOUND', '%s', 404)
 
-const pdrRouteSchema = {
-  tags: ['CRM PDR Service'],
-  summary: 'Search for contracts by PDR code',
-  description: 'Searches for the contract related to the incoming PDR code and returns info on the associated address',
+const podRouteSchema = {
+  tags: ['CRM POD Service'],
+  summary: 'Search for contracts by POD code',
+  description: 'Searches for the contract related to the incoming POD code and returns info on the associated address',
   querystring: {
     type: 'object',
     required: ['code'],
@@ -15,8 +15,8 @@ const pdrRouteSchema = {
       code: {
         type: 'string',
         nullable: false,
-        pattern: '^\\d{14}$',
-        description: 'The PDR code to search for contract info'
+        pattern: '^IT\\d{3}E\\d{8}$',
+        description: 'The POD code to search for contract info'
       }
     }
   },
@@ -37,7 +37,7 @@ const pdrRouteSchema = {
 }
 
 module.exports = async function (fastify) {
-  fastify.get('/pdr', { schema: pdrRouteSchema }, async (req, reply) => {
+  fastify.get('/pod', { schema: podRouteSchema }, async (req, reply) => {
     try {
       const zohoResponse = await zoho.getData(`report/PODPDR_Report?criteria=(PODPDR=="${req.query.code}")`)
       if (zohoResponse.status === 200) {
@@ -49,13 +49,13 @@ module.exports = async function (fastify) {
             city: data.Nome_ISTAT_della_provincia
           })
         } else {
-          throw new ContractNotFoundError(`No contract found with PDR ${req.query.code}`)
+          throw new ContractNotFoundError(`No contract found with POD ${req.query.code}`)
         }
       } else if (zohoResponse.status === 404) {
-        throw new ContractNotFoundError(`No contract found with PDR ${req.query.code}`)
+        throw new ContractNotFoundError(`No contract found with POD ${req.query.code}`)
       }
     } catch (e) {
-      throw new ContractNotFoundError(`No contract found with PDR ${req.query.code}`)
+      throw new ContractNotFoundError(`No contract found with POD ${req.query.code}`)
     }
   })
 }

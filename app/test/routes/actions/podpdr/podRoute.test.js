@@ -1,10 +1,10 @@
-const helper = require('../../../../helper')
+const helper = require('../../../helper')
 const responses = require('./responses')
 require('jest-extended')
 
 describe('POD', () => {
   it('POD - answers correctly', async () => {
-    await helper.checkResponses('/actions/crm/pod', responses)
+    await helper.checkResponses('/actions/pod', responses)
   })
 
   it('POD - answers 200 with correct querystring', async () => {
@@ -12,7 +12,7 @@ describe('POD', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=IT003E03008583',
+      'actions/pod?code=IT003E03008583',
       helper.requiredHeaders
     )
 
@@ -28,7 +28,7 @@ describe('POD', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod',
+      'actions/pod',
       helper.requiredHeaders
     )
 
@@ -40,7 +40,7 @@ describe('POD', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=',
+      'actions/pod?code=',
       helper.requiredHeaders
     )
 
@@ -52,7 +52,7 @@ describe('POD', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=IT1234123412341234',
+      'actions/pod?code=IT1234123412341234',
       helper.requiredHeaders
     )
 
@@ -64,7 +64,7 @@ describe('POD', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=111234123412341234',
+      'actions/pod?code=111234123412341234',
       helper.requiredHeaders
     )
 
@@ -76,7 +76,7 @@ describe('POD', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=true',
+      'actions/pod?code=true',
       helper.requiredHeaders
     )
 
@@ -88,7 +88,7 @@ describe('POD', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=IT003E03000000',
+      'actions/pod?code=IT003E03000000',
       helper.requiredHeaders
     )
 

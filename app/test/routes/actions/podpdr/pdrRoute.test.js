@@ -1,10 +1,10 @@
-const helper = require('../../../../helper')
+const helper = require('../../../helper')
 const responses = require('./responses')
 require('jest-extended')
 
 describe('PDR', () => {
   it('PDR - answers correctly', async () => {
-    await helper.checkResponses('/actions/crm/pdr', responses)
+    await helper.checkResponses('/actions/pdr', responses)
   })
 
   it('PDR - answers 200 with correct querystring', async () => {
@@ -12,7 +12,7 @@ describe('PDR', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pdr?code=11825000002472',
+      'actions/pdr?code=11825000002472',
       helper.requiredHeaders
     )
 
@@ -28,7 +28,7 @@ describe('PDR', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pdr',
+      'actions/pdr',
       helper.requiredHeaders
     )
 
@@ -40,7 +40,7 @@ describe('PDR', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pdr?code=',
+      'actions/pdr?code=',
       helper.requiredHeaders
     )
 
@@ -52,7 +52,7 @@ describe('PDR', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pdr?code=IT1234123412341234',
+      'actions/pdr?code=IT1234123412341234',
       helper.requiredHeaders
     )
 
@@ -64,7 +64,7 @@ describe('PDR', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pdr?code=true',
+      'actions/pdr?code=true',
       helper.requiredHeaders
     )
 
@@ -76,7 +76,7 @@ describe('PDR', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pdr?code=11825000000000',
+      'actions/pdr?code=11825000000000',
       helper.requiredHeaders
     )
 
