@@ -64,7 +64,7 @@ module.exports.code404 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Not found',
+        description: 'Contract not found',
         properties: {
           statusCode: {
             type: 'integer',
@@ -88,5 +88,5 @@ module.exports.code404 = {
       }
     }
   },
-  description: 'Not found'
+  description: 'Contract not found'
 }
