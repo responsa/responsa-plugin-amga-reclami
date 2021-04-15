@@ -36,4 +36,13 @@ describe('Privacy Acceptance', () => {
     )
     expect(response.statusCode).toEqual(400)
   })
+  it('Privacy Acceptance - Bad request without parameters', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const response = await helper.doPost(
+      sut,
+      'actions/privacy',
+      helper.requiredHeaders
+    )
+    expect(response.statusCode).toEqual(400)
+  })
 })
