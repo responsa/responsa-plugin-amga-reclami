@@ -12,6 +12,7 @@ const routeSchema = {
       phone: {
         type: 'string',
         nullable: false,
+        pattern: '^\\+393\\d{2}\\d{6,7}$',
         description: 'The telephone number preceeded by the international prefix on which to send SMS'
       }
     }

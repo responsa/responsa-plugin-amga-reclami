@@ -2,93 +2,81 @@ const helper = require('../../../../helper')
 const responses = require('./responses')
 require('jest-extended')
 
-describe('POD', () => {
-  it('POD - answers correctly', async () => {
-    await helper.checkResponses('/actions/crm/pod', responses)
+describe('PDR', () => {
+  it('PDR - answers correctly', async () => {
+    await helper.checkResponses('/actions/crm/pdr', responses)
   })
 
-  it('POD - answers 200 with correct querystring', async () => {
+  it('PDR - answers 200 with correct querystring', async () => {
     const sut = await helper.setupTestEnvironment()
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=IT003E03008583',
+      'actions/crm/pdr?code=11825000002472',
       helper.requiredHeaders
     )
 
     expect(response.statusCode).toEqual(200)
     const addrInfo = JSON.parse(response.body)
-    expect(addrInfo.streetName).toEqual('VIA DEL REFOSCO')
-    expect(addrInfo.streetNumber).toEqual('17')
-    expect(addrInfo.city).toEqual('TRIESTE')
+    expect(addrInfo.streetName).toEqual('PIAZZA INSURREZIONE')
+    expect(addrInfo.streetNumber).toEqual('10')
+    expect(addrInfo.city).toEqual('PADOVA')
   })
 
-  it('POD - answers 400 without code query param', async () => {
+  it('PDR - answers 400 without code query param', async () => {
     const sut = await helper.setupTestEnvironment()
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod',
+      'actions/crm/pdr',
       helper.requiredHeaders
     )
 
     expect(response.statusCode).toEqual(400)
   })
 
-  it('POD - answers 400 with code query param set to null', async () => {
+  it('PDR - answers 400 with code query param set to null', async () => {
     const sut = await helper.setupTestEnvironment()
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=',
+      'actions/crm/pdr?code=',
       helper.requiredHeaders
     )
 
     expect(response.statusCode).toEqual(400)
   })
 
-  it('POD - answers 400 with code query param > 14 char long', async () => {
+  it('PDR - answers 400 with invalid code query param', async () => {
     const sut = await helper.setupTestEnvironment()
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=IT1234123412341234',
+      'actions/crm/pdr?code=IT1234123412341234',
       helper.requiredHeaders
     )
 
     expect(response.statusCode).toEqual(400)
   })
 
-  it('POD - answers 400 with number code query param', async () => {
+  it('PDR - answers 400 with bool code query param', async () => {
     const sut = await helper.setupTestEnvironment()
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=111234123412341234',
+      'actions/crm/pdr?code=true',
       helper.requiredHeaders
     )
 
     expect(response.statusCode).toEqual(400)
   })
 
-  it('POD - answers 400 with bool code query param', async () => {
+  it('PDR - answers 404 with not existing PDR code', async () => {
     const sut = await helper.setupTestEnvironment()
 
     const response = await helper.doGet(
       sut,
-      'actions/crm/pod?code=true',
-      helper.requiredHeaders
-    )
-
-    expect(response.statusCode).toEqual(400)
-  })
-
-  it('POD - answers 404 with not existing POD code', async () => {
-    const sut = await helper.setupTestEnvironment()
-
-    const response = await helper.doGet(
-      sut,
-      'actions/crm/pod?code=IT003E03000000',
+      'actions/crm/pdr?code=11825000000000',
       helper.requiredHeaders
     )
 

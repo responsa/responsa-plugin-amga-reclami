@@ -1,4 +1,4 @@
-module.exports.pod = {
+module.exports.podpdr = {
   type: 'object',
   properties: {
     streetName: {
@@ -19,34 +19,34 @@ module.exports.pod = {
   }
 }
 
-module.exports.pod200 = {
+module.exports.podpdr200 = {
   type: 'object',
   description: 'Contract address info retrieved successfully',
-  $ref: 'pod#'
+  $ref: 'podpdr#'
 }
 
-module.exports.pod400 = {
+module.exports.podpdr400 = {
   type: 'object',
   description: 'Bad request',
   $ref: 'Error#'
 }
 
-module.exports.pod404 = {
+module.exports.podpdr404 = {
   type: 'object',
-  description: 'Not found',
+  description: 'Contract not found',
   $ref: 'Error#'
 }
 
-module.exports.pod500 = {
+module.exports.podpdr500 = {
   type: 'object',
   description: 'Internal error',
   $ref: 'Error#'
 }
 
 module.exports.addSchemas = (fastifyInstance) => {
-  fastifyInstance.addSchema({ $id: 'pod', ...this.pod })
-  fastifyInstance.addSchema({ $id: 'pod200', ...this.pod200 })
-  fastifyInstance.addSchema({ $id: 'pod400', ...this.pod400 })
-  fastifyInstance.addSchema({ $id: 'pod404', ...this.pod404 })
-  fastifyInstance.addSchema({ $id: 'pod500', ...this.pod500 })
+  fastifyInstance.addSchema({ $id: 'podpdr', ...this.podpdr })
+  fastifyInstance.addSchema({ $id: 'podpdr200', ...this.podpdr200 })
+  fastifyInstance.addSchema({ $id: 'podpdr400', ...this.podpdr400 })
+  fastifyInstance.addSchema({ $id: 'podpdr404', ...this.podpdr404 })
+  fastifyInstance.addSchema({ $id: 'podpdr500', ...this.podpdr500 })
 }
