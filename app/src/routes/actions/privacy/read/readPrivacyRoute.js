@@ -26,13 +26,20 @@ const routeSchema = {
 
 module.exports = async function (fastify) {
   fastify.get('/', { schema: routeSchema }, async (req, reply) => {
-    const result = await zohoService.getData(`/report/Privacy_Report?criteria=(Cliente_email=="${req.query.email}")`)
-    let found = false
-    if (result.data.code === 3000) {
+    let result = null
+    try {
+      result = await zohoService.getData(`/report/Privacy_Report?criteria=(Cliente_email=="${req.query.email}")`)
+      let found = false
       found = result.data.data.sort((a, b) => b.Modified_Time - a.Modified_Time)[0].Consenso === 'SI'
       reply.code(200).send({
         result: found
       })
+    } catch (error) {
+      if (result.data.code === 3100) {
+        return false
+      } else {
+        throw error
+      }
     }
   })
 }

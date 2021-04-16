@@ -22,7 +22,7 @@ describe('Privacy Acceptance', () => {
       'actions/privacy/read?email=_dsfsdfsdfdsf_@rwererw.com',
       helper.requiredHeaders
     )
-    expect(response.statusCode).toEqual(400)
+    expect(response.statusCode).toEqual(200)
   })
   it('Privacy Acceptance - Bad request with invalid query string', async () => {
     const sut = await helper.setupTestEnvironment()
