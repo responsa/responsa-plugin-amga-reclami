@@ -50,3 +50,16 @@ module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'podpdr404', ...this.podpdr404 })
   fastifyInstance.addSchema({ $id: 'podpdr500', ...this.podpdr500 })
 }
+
+module.exports.parseZohoResponse = (res) => {
+  if (res.data && res.data.data && res.data.data.length > 0) {
+    const data = res.data.data[0]
+    return {
+      streetName: data.Nome_della_strada,
+      streetNumber: data.Numero_civico,
+      city: data.Nome_ISTAT_della_provincia
+    }
+  } else {
+    return null
+  }
+}
