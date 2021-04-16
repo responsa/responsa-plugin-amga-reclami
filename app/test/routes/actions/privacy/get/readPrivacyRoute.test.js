@@ -15,15 +15,6 @@ describe('Privacy Acceptance', () => {
     )
     expect(response.statusCode).toEqual(200)
   })
-  it('Privacy Acceptance - No record found with inexistent mail address', async () => {
-    const sut = await helper.setupTestEnvironment()
-    const response = await helper.doGet(
-      sut,
-      'actions/privacy/get?email=abc@mail.it',
-      helper.requiredHeaders
-    )
-    expect(response.statusCode).toEqual(404)
-  })
   it('Privacy Acceptance - Bad request with invalid query string', async () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doGet(

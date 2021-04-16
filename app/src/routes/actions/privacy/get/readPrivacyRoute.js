@@ -8,7 +8,7 @@ const routeSchema = {
     type: 'object',
     required: ['email'],
     properties: {
-      email: { type: 'string', description: 'The user\'s email address' }
+      email: { type: 'string', description: 'The user\'s email address', pattern: '^\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$' }
     }
   },
   response: {
