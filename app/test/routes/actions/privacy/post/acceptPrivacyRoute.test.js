@@ -1,6 +1,6 @@
 require('jest-extended')
 const helper = require('../../../../helper')
-const responses = require('./responses')
+const responses = require('./acceptPrivacyResponses')
 
 describe('Privacy Acceptance', () => {
   it('Privacy Acceptance - answers correctly', async () => {

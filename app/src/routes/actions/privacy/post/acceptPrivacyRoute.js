@@ -22,13 +22,13 @@ const routeSchema = {
   },
   response: {
     200: {
-      $ref: 'privacyAcceptance200#'
+      $ref: 'acceptPrivacy200#'
     },
     400: {
-      $ref: 'privacyAcceptance400#'
+      $ref: 'acceptPrivacy400#'
     },
     500: {
-      $ref: 'privacyAcceptance500#'
+      $ref: 'acceptPrivacy500#'
     }
   }
 }

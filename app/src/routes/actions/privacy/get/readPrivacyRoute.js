@@ -13,13 +13,13 @@ const routeSchema = {
   },
   response: {
     200: {
-      $ref: 'getPrivacyAcceptance200#'
+      $ref: 'readPrivacy200#'
     },
     400: {
-      $ref: 'getPrivacyAcceptance400#'
+      $ref: 'readPrivacy400#'
     },
     500: {
-      $ref: 'getPrivacyAcceptance500#'
+      $ref: 'readPrivacy500#'
     }
   }
 }

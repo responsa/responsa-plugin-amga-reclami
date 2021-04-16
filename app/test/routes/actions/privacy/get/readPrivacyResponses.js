@@ -8,7 +8,7 @@ module.exports.code200 = {
           result: {
             type: 'boolean',
             description: 'Flag indicating the existence of privacy acceptance',
-            nullable: true
+            nullable: false
           }
         }
       }
