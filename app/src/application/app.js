@@ -9,6 +9,7 @@ const notFound = require('./notFound')
 const errorHandler = require('./errorHandler')
 const otp = require('../models/otp')
 const podpdr = require('../models/podpdr')
+const ticket = require('../models/ticket')
 const privacyAcceptance = require('../models/privacyAcceptance')
 
 const addSchemas = (fastifyInstance) => {
@@ -27,6 +28,7 @@ const addSchemas = (fastifyInstance) => {
 
   otp.addSchemas(fastifyInstance)
   podpdr.addSchemas(fastifyInstance)
+  ticket.addSchemas(fastifyInstance)
   privacyAcceptance.addSchemas(fastifyInstance)
 }
 

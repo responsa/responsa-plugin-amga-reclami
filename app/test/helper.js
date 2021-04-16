@@ -1,6 +1,7 @@
 require('dotenv').config()
 const config = require('../src/application/config')
 const app = require('../src/application/app')
+const fs = require('fs')
 
 const setupTestEnvironment = () => {
   const options = {
@@ -8,6 +9,9 @@ const setupTestEnvironment = () => {
     pluginTimeout: 2 * 60 * 1000
   }
 
+  if (fs.existsSync('test/access_token.txt')) {
+    config.zoho.accessToken = fs.readFileSync('test/access_token.txt', 'utf8')
+  }
   // setup fastify server
   const server = app.reboot(options)
 
@@ -74,11 +78,24 @@ const checkTranslations = async (expected) => {
 }
 
 const test400 = (response, msg) => {
-  expect(response.statusCode).toEqual(400)
-  expect(response.body).toBeDefined()
-  const body = JSON.parse(response.body)
-  expect(body.message).toBeDefined()
-  expect(body.message).toEqual(msg)
+  testResponse(response, 400, msg)
+}
+
+const testResponse = (response, code, msg) => {
+  expect(response.statusCode).toEqual(code)
+  if (msg) {
+    expect(response.body).toBeDefined()
+    const body = JSON.parse(response.body)
+    expect(body.message).toBeDefined()
+    expect(body.message).toEqual(msg)
+  }
+}
+
+const checkQueryString = async (path, code, msg) => {
+  const app = await setupTestEnvironment()
+  const response = await doGet(app, path, requiredHeaders)
+  testResponse(response, code, msg)
+  return app
 }
 
 const requiredHeaders = {
@@ -94,5 +111,6 @@ module.exports = {
   checkResponses,
   requiredHeaders,
   checkTranslations,
-  test400
+  test400,
+  checkQueryString
 }
