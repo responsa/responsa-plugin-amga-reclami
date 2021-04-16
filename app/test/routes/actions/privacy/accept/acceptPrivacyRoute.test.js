@@ -4,13 +4,13 @@ const responses = require('./acceptPrivacyResponses')
 
 describe('Privacy Acceptance', () => {
   it('Privacy Acceptance - answers correctly', async () => {
-    helper.checkResponses('/actions/privacy/post', responses)
+    helper.checkResponses('/actions/privacy/', responses)
   })
   it('Privacy Acceptance - Send user\'s acceptance', async () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/privacy/post',
+      'actions/privacy',
       { email: 'mail@provider.com', accepted: true },
       helper.requiredHeaders
     )
@@ -20,7 +20,7 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/privacy/post',
+      'actions/privacy',
       { email: 'mail.it', accepted: true },
       helper.requiredHeaders
     )
@@ -30,7 +30,7 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/privacy/post',
+      'actions/privacy',
       { email: 'mail@mail.com', invalidParams: true },
       helper.requiredHeaders
     )
@@ -40,7 +40,7 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/privacy/post',
+      'actions/privacy',
       helper.requiredHeaders
     )
     expect(response.statusCode).toEqual(400)
