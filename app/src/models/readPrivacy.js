@@ -11,7 +11,7 @@ module.exports.readPrivacy = {
 
 module.exports.readPrivacy200 = {
   type: 'object',
-  description: 'Privacy acceptance read succesfully',
+  description: 'Privacy acceptance read successfully',
   $ref: 'readPrivacy#'
 }
 

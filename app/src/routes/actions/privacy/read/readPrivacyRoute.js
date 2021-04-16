@@ -33,10 +33,6 @@ module.exports = async function (fastify) {
       reply.code(200).send({
         result: found
       })
-    } else if (result.data.code === 3100) {
-      return found
-    } else {
-      reply.code(400)
     }
   })
 }

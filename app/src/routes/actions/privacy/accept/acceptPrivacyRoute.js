@@ -35,7 +35,7 @@ const routeSchema = {
 
 module.exports = async function (fastify) {
   fastify.post('/', { schema: routeSchema }, async (req, reply) => {
-    const result = await zohoService.postData(
+    await zohoService.postData(
       '/form/Privacy',
       {
         data: {
@@ -45,7 +45,6 @@ module.exports = async function (fastify) {
           modified_Time: Date.now()
         }
       })
-    reply.code(result.data.code === 3000 ? 200 : 400).send({
-    })
+    reply.code(200)
   })
 }
