@@ -4,13 +4,13 @@ const responses = require('./readPrivacyResponses')
 
 describe('Privacy Acceptance', () => {
   it('Privacy Acceptance - answers correctly', async () => {
-    helper.checkResponses('/actions/privacy', responses)
+    helper.checkResponses('/actions/privacy/read', responses)
   })
   it('Privacy Acceptance - Get user\'s acceptance', async () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doGet(
       sut,
-      'actions/privacy?email=sergio.79@libero.it',
+      'actions/privacy/read?email=sergio.79@libero.it',
       helper.requiredHeaders
     )
     expect(response.statusCode).toEqual(200)
@@ -19,7 +19,7 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doGet(
       sut,
-      'actions/privacy?invalid=sergio.79@libero.it',
+      'actions/privacy/read?invalid=sergio.79@libero.it',
       helper.requiredHeaders
     )
     expect(response.statusCode).toEqual(400)
@@ -28,7 +28,7 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doGet(
       sut,
-      'actions/privacy',
+      'actions/privacy/read',
       helper.requiredHeaders
     )
     expect(response.statusCode).toEqual(400)

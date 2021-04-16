@@ -1,4 +1,4 @@
-const zohoService = require('../../../application/zoho')
+const zohoService = require('../../../../application/zoho')
 
 const routeSchema = {
   tags: ['Read Privacy Acceptance'],
