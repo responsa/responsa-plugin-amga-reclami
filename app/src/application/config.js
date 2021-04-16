@@ -19,7 +19,9 @@ module.exports = {
     refreshAuthBaseUrl: 'https://accounts.zoho.eu/',
     refreshAuthUrl: '/oauth/v2/token',
     dataBaseUrl: 'https://creator.zoho.eu/',
-    dataUrl: '/api/v2',
+    dataUrl: 'api/v2',
+    ticketGetTarget: 'report/Report_Generale',
+    ticketPostTarget: 'form/Nuova_Richiesta_Cliente',
     account: 'acegasapsamga',
     project: 'test1-gestione-reclami'
   },

@@ -2,6 +2,7 @@
 const helper = require('../helper')
 const config = require('../../src/application/config')
 const sut = require('../../src/application/zoho')
+const fs = require('fs')
 
 describe('Zoho Authentication', () => {
   it('refreshes authorization token correctly', async () => {
@@ -9,6 +10,9 @@ describe('Zoho Authentication', () => {
     await sut.refreshAccessToken()
     expect(config.zoho.accessToken).toBeDefined()
     expect(config.zoho.accessToken.length).toBeGreaterThan(0)
+    fs.writeFile('test/access_token.txt', config.zoho.accessToken, function (err) {
+      if (err) return console.log(err)
+    })
   })
 
   it('throws with incorrect refresh token', async () => {
