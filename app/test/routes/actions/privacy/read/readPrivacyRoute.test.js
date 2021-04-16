@@ -19,7 +19,7 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doGet(
       sut,
-      'actions/privacy/read?email=a@a.com',
+      'actions/privacy/read?email=_dsfsdfsdfdsf_@rwererw.com',
       helper.requiredHeaders
     )
     expect(response.statusCode).toEqual(400)
