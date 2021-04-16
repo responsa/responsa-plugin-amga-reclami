@@ -8,6 +8,7 @@ const auth = require('./auth')
 const notFound = require('./notFound')
 const errorHandler = require('./errorHandler')
 const otp = require('../models/otp')
+const ticket = require('../models/ticket')
 
 const addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({
@@ -24,6 +25,7 @@ const addSchemas = (fastifyInstance) => {
   })
 
   otp.addSchemas(fastifyInstance)
+  ticket.addSchemas(fastifyInstance)
 }
 
 const createServer = (opts, customElastic) => {
@@ -37,14 +39,7 @@ const createServer = (opts, customElastic) => {
     logger: pluginCore.loggerFactory({ ...defaultElastic, ...customElastic }),
     ignoreTrailingSlash: true
   }
-  const ajvOptions = {
-    ajv: {
-      customOptions: {
-        coerceTypes: false
-      }
-    }
-  }
-  const options = { ...defaultOptions, ...opts, ...ajvOptions }
+  const options = { ...defaultOptions, ...opts }
   return fastify(options)
 }
 
