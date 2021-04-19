@@ -18,7 +18,7 @@ module.exports.refreshAuthOptions = () => {
   }
 }
 
-module.exports.createZohoAuthenticationError = (response, code) =>
+const createZohoAuthenticationError = (response, code) =>
   zoho.createZohoError('ZOHO_AUTHENTICATION_ERROR',
     `Zoho Authentication Error -> ${response.data.message ?? response.data.description}`,
     code)
@@ -33,7 +33,7 @@ module.exports.refreshAccessToken = async () => {
   if (response.data && response.data.error) {
     if (response.data.error === 'access_denied') {
       const ZohoAuthenticationError =
-      this.createZohoAuthenticationError(
+      createZohoAuthenticationError(
         {
           data:
           {

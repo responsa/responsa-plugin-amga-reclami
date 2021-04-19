@@ -1,14 +1,7 @@
 const zohoAuth = require('./zohoAuth')
 const config = require('../config')
-const createError = require('fastify-error')
 const axios = require('axios').default
-
-const createZohoCreatorError = (response, code) => {
-  const error = createError('ZOHO_CREATOR_ERROR',
-    `Zoho Creator Error -> ${response.data.message ?? response.data.description}`,
-    code)
-  return error
-}
+const zohoError = require('./zohoError')
 
 const creatorReqOptions = (method, target, data) => {
   return {
@@ -24,8 +17,6 @@ const creatorReqOptions = (method, target, data) => {
   }
 }
 
-module.exports.createZohoError = (type, message, code) => createError(type, message, code)
-
 const sendCreatorRequest = async (method, target, data) => {
   let response = null
   let ZohoCreatorError = null
@@ -37,17 +28,17 @@ const sendCreatorRequest = async (method, target, data) => {
       try {
         response = await axios.request(creatorReqOptions(method, target, data))
       } catch (errInner) {
-        ZohoCreatorError = createZohoCreatorError(errInner.response, errInner.response.status)
+        ZohoCreatorError = zohoError.createZohoError(errInner.response, errInner.response.status)
       }
     } else {
-      ZohoCreatorError = createZohoCreatorError(err.response, err.response.status)
+      ZohoCreatorError = zohoError.createZohoError(err.response, err.response.status)
     }
   }
   if (response && !response.data.data) {
     if (response.data.code === 3100) {
-      ZohoCreatorError = createZohoCreatorError(response, 404)
+      ZohoCreatorError = zohoError.createZohoError(response, 404)
     } else {
-      ZohoCreatorError = createZohoCreatorError(response, 400)
+      ZohoCreatorError = zohoError.createZohoError(response, 400)
     }
   }
   if (ZohoCreatorError) throw new ZohoCreatorError()
@@ -81,9 +72,6 @@ const getRecordByQuery = async (baseTarget, conditions) => {
   return record
 }
 
-// module.exports.refreshAccessToken = refreshAccessToken
-// module.exports.creatorReqOptions = creatorReqOptions
-// module.exports.sendCreatorRequest = sendCreatorRequest
 module.exports.creatorReqOptions = creatorReqOptions
 module.exports.getData = getData
 module.exports.postData = postData
@@ -91,7 +79,6 @@ module.exports.queryPath = queryPath
 module.exports.queryZoho = queryZoho
 module.exports.getRecord = getRecord
 module.exports.getRecordByQuery = getRecordByQuery
-module.exports.createZohoCreatorError = createZohoCreatorError
 
 // TICKET
 module.exports.tickets = {

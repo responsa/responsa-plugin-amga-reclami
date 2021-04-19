@@ -1,5 +1,5 @@
 const helper = require('../../../helper')
-const zoho = require('../../../../src/application/zoho')
+const zoho = require('../../../../src/application/zoho/zoho')
 const responses = require('./responses')
 require('jest-extended')
 

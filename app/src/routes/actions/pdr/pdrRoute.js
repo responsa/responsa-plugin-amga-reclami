@@ -1,5 +1,5 @@
 require('../../../models/podpdr')
-const zoho = require('../../../application/zoho')
+const zoho = require('../../../application/zoho/zoho')
 const podpdr = require('../../../models/podpdr')
 const createError = require('fastify-error')
 

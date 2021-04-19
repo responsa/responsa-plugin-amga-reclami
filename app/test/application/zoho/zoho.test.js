@@ -2,6 +2,7 @@
 const helper = require('../../helper')
 const config = require('../../../src/application/config')
 const sut = require('../../../src/application/zoho/zoho')
+const sutError = require('../../../src/application/zoho/zohoError')
 require('jest-extended')
 
 const validTarget = config.zoho.ticketGetTarget
@@ -9,7 +10,7 @@ const invalidTarget = 'wrong_target'
 
 const checkZohoCreatorError = async (message, code, throwingFunc) => {
   expect.assertions(2)
-  const expectedError = sut.createZohoCreatorError({ data: { message } }, code)()
+  const expectedError = sutError.createZohoError({ data: { message } }, code)()
   try {
     await throwingFunc()
   } catch (err) {

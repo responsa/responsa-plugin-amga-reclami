@@ -1,4 +1,4 @@
-const zoho = require('../../../application/zoho')
+const zoho = require('../../../application/zoho/zoho')
 const ticket = require('../../../models/ticket')
 
 const getRouteSchema = {

@@ -1,5 +1,4 @@
-const { zoho } = require('../../../application/config')
-const zohoService = require('../../../application/zoho')
+const zohoService = require('../../../application/zoho/zoho')
 
 const postRouteSchema = {
   tags: ['Privacy Acceptance'],
