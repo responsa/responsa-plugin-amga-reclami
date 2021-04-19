@@ -1,21 +1,13 @@
+const zohoAuth = require('./zohoAuth')
+const config = require('../config')
 const createError = require('fastify-error')
-const config = require('./config')
 const axios = require('axios').default
 
-const refreshAuthOptions = () => {
-  return {
-    url: config.zoho.refreshAuthUrl,
-    baseURL: config.zoho.refreshAuthBaseUrl,
-    method: 'POST',
-    params: {
-      refresh_token: config.zoho.refreshToken,
-      client_id: config.zoho.clientId,
-      client_secret: config.zoho.clientSecret,
-      grant_type: 'refresh_token'
-    },
-    responseType: 'json',
-    responseEncoding: 'utf8'
-  }
+const createZohoCreatorError = (response, code) => {
+  const error = createError('ZOHO_CREATOR_ERROR',
+    `Zoho Creator Error -> ${response.data.message ?? response.data.description}`,
+    code)
+  return error
 }
 
 const creatorReqOptions = (method, target, data) => {
@@ -32,44 +24,7 @@ const creatorReqOptions = (method, target, data) => {
   }
 }
 
-const refreshAccessToken = async () => {
-  let response = null
-  try {
-    response = await axios.request(refreshAuthOptions())
-  } catch (err) {
-    throw new Error(err)
-  }
-  if (response.data && response.data.error) {
-    if (response.data.error === 'access_denied') {
-      const ZohoAuthenticationError =
-        createZohoAuthenticationError(
-          {
-            data:
-            {
-              message: 'Zoho token refresh temporary unavailable'
-            }
-          },
-          503)
-      throw new ZohoAuthenticationError()
-    }
-    throw new Error(response.data.error)
-  }
-  config.zoho.accessToken = response.data.access_token
-}
-
-const createZohoCreatorError = (response, code) => {
-  const error = createError('ZOHO_CREATOR_ERROR',
-    `Zoho Creator Error -> ${response.data.message ?? response.data.description}`,
-    code)
-  return error
-}
-
-const createZohoAuthenticationError = (response, code) =>
-  createZohoError('ZOHO_AUTHENTICATION_ERROR',
-    `Zoho Authentication Error -> ${response.data.message ?? response.data.description}`,
-    code)
-
-const createZohoError = (type, message, code) => createError(type, message, code)
+module.exports.createZohoError = (type, message, code) => createError(type, message, code)
 
 const sendCreatorRequest = async (method, target, data) => {
   let response = null
@@ -78,7 +33,7 @@ const sendCreatorRequest = async (method, target, data) => {
     response = await axios.request(creatorReqOptions(method, target, data))
   } catch (err) {
     if (err.response && err.response.status === 401) {
-      await refreshAccessToken()
+      await zohoAuth.refreshAccessToken()
       try {
         response = await axios.request(creatorReqOptions(method, target, data))
       } catch (errInner) {
@@ -126,9 +81,10 @@ const getRecordByQuery = async (baseTarget, conditions) => {
   return record
 }
 
-module.exports.refreshAccessToken = refreshAccessToken
+// module.exports.refreshAccessToken = refreshAccessToken
+// module.exports.creatorReqOptions = creatorReqOptions
+// module.exports.sendCreatorRequest = sendCreatorRequest
 module.exports.creatorReqOptions = creatorReqOptions
-module.exports.sendCreatorRequest = sendCreatorRequest
 module.exports.getData = getData
 module.exports.postData = postData
 module.exports.queryPath = queryPath
@@ -145,7 +101,7 @@ module.exports.tickets = {
     const conditions = [
       {
         key: 'ID_Richiesta',
-        value: +idRichiesta
+        value: idRichiesta
       }
     ]
     return await getRecordByQuery(config.zoho.ticketGetTarget, conditions)

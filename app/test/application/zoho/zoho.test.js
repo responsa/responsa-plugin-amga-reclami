@@ -1,7 +1,7 @@
 // eslint-disable-next-line
-const helper = require('../helper')
-const config = require('../../src/application/config')
-const sut = require('../../src/application/zoho')
+const helper = require('../../helper')
+const config = require('../../../src/application/config')
+const sut = require('../../../src/application/zoho/zoho')
 require('jest-extended')
 
 const validTarget = config.zoho.ticketGetTarget
