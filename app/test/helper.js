@@ -54,7 +54,6 @@ const getSwagger = async () => {
 
 const checkRouteForCode = (swagger, route, code, expectedResponse, verb) => {
   const actual = swagger.paths[route]
-  // const api = actual.get || actual.post
   const api = actual[verb] || actual.get
   expect(api).toBeDefined()
   expect(api.responses).toBeDefined()
