@@ -13,7 +13,7 @@ describe('OTP', () => {
     const response = await helper.doPost(
       sut,
       'actions/otp',
-      { phone: '+390000000000' },
+      { phone: '+393930975687' },
       helper.requiredHeaders
     )
 
@@ -56,7 +56,7 @@ describe('OTP', () => {
       helper.requiredHeaders
     )
 
-    helper.test400(response, 'body.phone should be string')
+    helper.test400(response, 'body.phone should match pattern "^^\\+\\d{7,15}$"')
   })
 
   it('OTP - answers 400 with numeric phone', async () => {
@@ -69,7 +69,7 @@ describe('OTP', () => {
       helper.requiredHeaders
     )
 
-    helper.test400(response, 'body.phone should be string')
+    helper.test400(response, 'body.phone should match pattern "^^\\+\\d{7,15}$"')
   })
 
   it('OTP - answers 400 with null phone', async () => {
@@ -82,6 +82,6 @@ describe('OTP', () => {
       helper.requiredHeaders
     )
 
-    helper.test400(response, 'body.phone should be string')
+    helper.test400(response, 'body.phone should match pattern "^^\\+\\d{7,15}$"')
   })
 })
