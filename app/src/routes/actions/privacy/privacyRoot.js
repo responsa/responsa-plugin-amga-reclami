@@ -1,3 +1,4 @@
+const acceptPrivacy = require('../../../models/acceptPrivacy')
 const zohoService = require('../../../application/zoho/zoho')
 
 const postRouteSchema = {
@@ -60,21 +61,12 @@ const getRouteSchema = {
 
 module.exports = async function (fastify) {
   fastify.post('/', { schema: postRouteSchema }, async (req, reply) => {
-    await zohoService.postData(
-      '/form/Privacy',
-      {
-        data: {
-          Cliente_email: req.body.email,
-          Consenso: req.body.accepted ? 'SI' : 'NO',
-          added_Time: Date.now(),
-          modified_Time: Date.now()
-        }
-      })
+    await zohoService.privacy.accept(acceptPrivacy.buildRequest(req.body.email, req.body.accepted))
     reply.code(200).send()
   })
 
   fastify.get('/', { schema: getRouteSchema }, async (req, reply) => {
-    const result = await zohoService.getData(`/report/Privacy_Report?criteria=(Cliente_email=="${req.query.email}")`)
+    const result = await zohoService.privacy.get(req.query.email)
     const found = result.sort((a, b) => b.Modified_Time - a.Modified_Time)[0].Consenso === 'SI'
     reply.code(200).send({
       result: found

@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 const helper = require('../../helper')
 const config = require('../../../src/application/config')
-const sut = require('../../../src/application/zoho/zohoAuth')
+const sut = require('../../../src/application/zoho/zoho-auth')
 const fs = require('fs')
 
 describe('Zoho Authentication', () => {

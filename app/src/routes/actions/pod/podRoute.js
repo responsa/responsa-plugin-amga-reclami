@@ -39,7 +39,7 @@ const podRouteSchema = {
 
 module.exports = async function (fastify) {
   fastify.get('/', { schema: podRouteSchema }, async (req, reply) => {
-    const zohoRes = await zoho.getData(`report/PODPDR_Report?criteria=(PODPDR=="${req.query.code}")`)
+    const zohoRes = await zoho.podpdr.getByCode(req.query.code)
     const res = podpdr.parseZohoResponse(zohoRes)
     if (res) {
       reply.code(200).send(res)

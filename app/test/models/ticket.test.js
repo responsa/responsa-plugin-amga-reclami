@@ -1,6 +1,6 @@
-const sut = require('../../src/models/ticket')
+const sut = require('../../src/models/complaint')
 
-const openTicket = {
+const openComplaint = {
   Risposta_Oggetto: '',
   Assegnatario_STC: 'Assegnatario',
   Assegnato_A: 'STC',
@@ -11,7 +11,7 @@ const openTicket = {
   Email_Inserimento: 'riccardo.demarco@euris.it'
 }
 
-const openStcTicket = {
+const openStcComplaint = {
   Risposta_Oggetto: '',
   Assegnatario_STC: 'Assegnatario STC',
   Assegnato_A: 'STC',
@@ -23,7 +23,7 @@ const openStcTicket = {
   Email_Inserimento: 'riccardo.demarco@euris.it'
 }
 
-const closedTicket = {
+const closedComplaint = {
   Risposta_Oggetto: '',
   Assegnatario_STC: 'Assegnatario STC',
   Assegnato_A: '',
@@ -35,7 +35,7 @@ const closedTicket = {
   Email_Inserimento: 'riccardo.demarco@euris.it'
 }
 
-const closedStcTicket = {
+const closedStcComplaint = {
   Risposta_Oggetto: '',
   Assegnatario_STC: 'Assegnatario STC',
   Assegnato_A: 'STC',
@@ -47,96 +47,96 @@ const closedStcTicket = {
   Email_Inserimento: 'riccardo.demarco@euris.it'
 }
 
-const checkTicketInfos = (outputTicket, expectedTicket) => {
-  expect(outputTicket.status).toEqual(expectedTicket.status)
-  expect(outputTicket.email).toEqual(expectedTicket.email)
-  expect(outputTicket.subject).toEqual(expectedTicket.subject)
-  expect(outputTicket.content).toEqual(expectedTicket.content)
-  expect(outputTicket.department).toEqual(expectedTicket.department)
-  expect(outputTicket.assignee).toEqual(expectedTicket.assignee)
+const checkComplaintInfos = (outputComplaint, expectedComplaint) => {
+  expect(outputComplaint.status).toEqual(expectedComplaint.status)
+  expect(outputComplaint.email).toEqual(expectedComplaint.email)
+  expect(outputComplaint.subject).toEqual(expectedComplaint.subject)
+  expect(outputComplaint.content).toEqual(expectedComplaint.content)
+  expect(outputComplaint.department).toEqual(expectedComplaint.department)
+  expect(outputComplaint.assignee).toEqual(expectedComplaint.assignee)
 }
 
-describe('Ticket - Info building', () => {
-  it('builds open ticket infos in basic format', () => {
+describe('Complaint - Info building', () => {
+  it('builds open complaint infos in basic format', () => {
     const expected = {
-      status: openTicket.Stato_Richiesta_Cliente
+      status: openComplaint.Stato_Richiesta_Cliente
     }
-    const actual = sut.infos(openTicket, false)
-    checkTicketInfos(actual, expected)
+    const actual = sut.infos(openComplaint, false)
+    checkComplaintInfos(actual, expected)
   })
 
-  it('builds open ticket infos in extended format', () => {
+  it('builds open complaint infos in extended format', () => {
     const expected = {
-      status: openTicket.Stato,
-      department: openTicket.Assegnato_A,
-      assignee: openTicket.Assegnatario_ALTRO
+      status: openComplaint.Stato,
+      department: openComplaint.Assegnato_A,
+      assignee: openComplaint.Assegnatario_ALTRO
     }
-    const actual = sut.infos(openTicket, true)
-    checkTicketInfos(actual, expected)
+    const actual = sut.infos(openComplaint, true)
+    checkComplaintInfos(actual, expected)
   })
-  it('builds open stc ticket infos in basic format', () => {
+  it('builds open stc complaint infos in basic format', () => {
     const expected = {
-      status: openStcTicket.Stato_Richiesta_Cliente
+      status: openStcComplaint.Stato_Richiesta_Cliente
     }
-    const actual = sut.infos(openStcTicket, false)
-    checkTicketInfos(actual, expected)
-  })
-
-  it('builds open stc ticket infos in extended format', () => {
-    const expected = {
-      status: openStcTicket.Stato,
-      department: openStcTicket.Assegnato_A,
-      assignee: openStcTicket.Assegnatario_STC
-    }
-    const actual = sut.infos(openStcTicket, true)
-    checkTicketInfos(actual, expected)
+    const actual = sut.infos(openStcComplaint, false)
+    checkComplaintInfos(actual, expected)
   })
 
-  it('builds closed ticket infos in basic format', () => {
+  it('builds open stc complaint infos in extended format', () => {
     const expected = {
-      status: closedTicket.Stato_Richiesta_Cliente,
-      email: closedTicket.Email_Inserimento,
-      subject: closedTicket.Risposta_Oggetto,
-      content: closedTicket.Risposta_Testo
+      status: openStcComplaint.Stato,
+      department: openStcComplaint.Assegnato_A,
+      assignee: openStcComplaint.Assegnatario_STC
     }
-    const actual = sut.infos(closedTicket, false)
-    checkTicketInfos(actual, expected)
+    const actual = sut.infos(openStcComplaint, true)
+    checkComplaintInfos(actual, expected)
   })
 
-  it('builds closed ticket infos in extended format', () => {
+  it('builds closed complaint infos in basic format', () => {
     const expected = {
-      status: closedTicket.Stato,
-      department: closedTicket.Assegnato_A,
-      assignee: closedTicket.Assegnatario_ALTRO,
-      email: closedTicket.Email_Inserimento,
-      subject: closedTicket.Risposta_Oggetto,
-      content: closedTicket.Risposta_Testo
+      status: closedComplaint.Stato_Richiesta_Cliente,
+      email: closedComplaint.Email_Inserimento,
+      subject: closedComplaint.Risposta_Oggetto,
+      content: closedComplaint.Risposta_Testo
     }
-    const actual = sut.infos(closedTicket, true)
-    checkTicketInfos(actual, expected)
+    const actual = sut.infos(closedComplaint, false)
+    checkComplaintInfos(actual, expected)
   })
 
-  it('builds closed stc ticket infos in basic format', () => {
+  it('builds closed complaint infos in extended format', () => {
     const expected = {
-      status: closedStcTicket.Stato_Richiesta_Cliente,
-      email: closedStcTicket.Email_Inserimento,
-      subject: closedStcTicket.Risposta_Oggetto,
-      content: closedStcTicket.Risposta_Testo
+      status: closedComplaint.Stato,
+      department: closedComplaint.Assegnato_A,
+      assignee: closedComplaint.Assegnatario_ALTRO,
+      email: closedComplaint.Email_Inserimento,
+      subject: closedComplaint.Risposta_Oggetto,
+      content: closedComplaint.Risposta_Testo
     }
-    const actual = sut.infos(closedStcTicket, false)
-    checkTicketInfos(actual, expected)
+    const actual = sut.infos(closedComplaint, true)
+    checkComplaintInfos(actual, expected)
   })
 
-  it('builds closed stc ticket infos in extended format', () => {
+  it('builds closed stc complaint infos in basic format', () => {
     const expected = {
-      status: closedStcTicket.Stato,
-      department: closedStcTicket.Assegnato_A,
-      assignee: closedStcTicket.Assegnatario_STC,
-      email: closedStcTicket.Email_Inserimento,
-      subject: closedStcTicket.Risposta_Oggetto,
-      content: closedStcTicket.Risposta_Testo
+      status: closedStcComplaint.Stato_Richiesta_Cliente,
+      email: closedStcComplaint.Email_Inserimento,
+      subject: closedStcComplaint.Risposta_Oggetto,
+      content: closedStcComplaint.Risposta_Testo
     }
-    const actual = sut.infos(closedStcTicket, true)
-    checkTicketInfos(actual, expected)
+    const actual = sut.infos(closedStcComplaint, false)
+    checkComplaintInfos(actual, expected)
+  })
+
+  it('builds closed stc complaint infos in extended format', () => {
+    const expected = {
+      status: closedStcComplaint.Stato,
+      department: closedStcComplaint.Assegnato_A,
+      assignee: closedStcComplaint.Assegnatario_STC,
+      email: closedStcComplaint.Email_Inserimento,
+      subject: closedStcComplaint.Risposta_Oggetto,
+      content: closedStcComplaint.Risposta_Testo
+    }
+    const actual = sut.infos(closedStcComplaint, true)
+    checkComplaintInfos(actual, expected)
   })
 })

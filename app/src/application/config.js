@@ -20,10 +20,13 @@ module.exports = {
     refreshAuthUrl: '/oauth/v2/token',
     dataBaseUrl: 'https://creator.zoho.eu/',
     dataUrl: 'api/v2',
-    ticketGetTarget: 'report/Report_Generale',
-    ticketPostTarget: 'form/Nuova_Richiesta_Cliente',
     account: 'acegasapsamga',
-    project: 'test1-gestione-reclami'
+    project: 'test1-gestione-reclami',
+    complaintGetTarget: 'report/Report_Generale',
+    complaintPostTarget: 'form/Nuova_Richiesta_Cliente',
+    podpdrGetTarget: 'report/PODPDR_Report',
+    privacyGetTarget: '/report/Privacy_Report',
+    privacyPostTarget: '/form/Privacy'
   },
   servers: [
     { url: 'server1 url', description: 'server1 description' },

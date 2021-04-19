@@ -1,5 +1,5 @@
 const config = require('../config')
-const zoho = require('./zoho')
+const createZohoError = require('./zoho-error')
 const axios = require('axios').default
 
 module.exports.refreshAuthOptions = () => {
@@ -18,11 +18,6 @@ module.exports.refreshAuthOptions = () => {
   }
 }
 
-const createZohoAuthenticationError = (response, code) =>
-  zoho.createZohoError('ZOHO_AUTHENTICATION_ERROR',
-    `Zoho Authentication Error -> ${response.data.message ?? response.data.description}`,
-    code)
-
 module.exports.refreshAccessToken = async () => {
   let response = null
   try {
@@ -32,16 +27,8 @@ module.exports.refreshAccessToken = async () => {
   }
   if (response.data && response.data.error) {
     if (response.data.error === 'access_denied') {
-      const ZohoAuthenticationError =
-      createZohoAuthenticationError(
-        {
-          data:
-          {
-            message: 'Zoho token refresh temporary unavailable'
-          }
-        },
-        503)
-      throw new ZohoAuthenticationError()
+      const AuthError = createZohoError({ data: { message: 'Zoho token refresh temporary unavailable' } }, 503, 'ZOHO_AUTHENTICATION_ERROR')
+      throw new AuthError()
     }
     throw new Error(response.data.error)
   }
