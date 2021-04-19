@@ -40,7 +40,7 @@ const getRouteSchema = {
 
 module.exports = async function (fastify) {
   fastify.get('/', { schema: getRouteSchema }, async (req, reply) => {
-    const foundTicket = await zoho.tickets.byIdRichiesta(+req.query.id)
+    const foundTicket = await zoho.tickets.byIdRichiesta(req.query.id)
     const response = ticket.infos(foundTicket, req.query.extended)
     reply.code(200).send({ ...response })
   })
