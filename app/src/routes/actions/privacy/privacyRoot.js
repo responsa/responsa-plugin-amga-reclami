@@ -12,7 +12,8 @@ const postRouteSchema = {
       email: {
         type: 'string',
         nullable: false,
-        description: 'User mail address'
+        description: 'User mail address',
+        pattern: '^\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$'
       },
       accepted: {
         type: 'boolean',
