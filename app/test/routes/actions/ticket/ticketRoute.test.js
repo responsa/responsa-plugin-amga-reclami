@@ -40,14 +40,9 @@ describe('Get Ticket E2E tests', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/ticket',
-      {
-        id: +firstTicket.ID_Richiesta,
-        extended: true
-      },
+      `actions/ticket?id=${firstTicket.ID_Richiesta}&extended=true`,
       helper.requiredHeaders
     )
-
     expect(response.statusCode).toEqual(200)
   })
 
