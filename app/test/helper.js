@@ -56,19 +56,19 @@ const getSwagger = async () => {
   return actual
 }
 
-const checkRouteForCode = (swagger, route, code, expectedResponse) => {
+const checkRouteForCode = (swagger, route, code, expectedResponse, verb) => {
   const actual = swagger.paths[route]
-  const api = actual.get || actual.post
+  const api = actual[verb] || actual.get
   expect(api).toBeDefined()
   expect(api.responses).toBeDefined()
   expect(api.responses[code]).toBeDefined()
   expect(api.responses[code]).toEqual(expectedResponse)
 }
 
-const checkResponses = async (url, expectedResponses) => {
+const checkResponses = async (url, expectedResponses, verb) => {
   const actual = await getSwagger()
   Object.keys(expectedResponses).forEach((key) => {
-    checkRouteForCode(actual, url, key.replace('code', ''), expectedResponses[key])
+    checkRouteForCode(actual, url, key.replace('code', ''), expectedResponses[key], verb)
   })
 }
 

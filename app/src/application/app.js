@@ -8,9 +8,10 @@ const auth = require('./auth')
 const notFound = require('./notFound')
 const errorHandler = require('./errorHandler')
 const otp = require('../models/otp')
+const acceptPrivacy = require('../models/acceptPrivacy')
+const readPrivacy = require('../models/readPrivacy')
 const podpdr = require('../models/podpdr')
 const ticket = require('../models/ticket')
-const privacyAcceptance = require('../models/privacyAcceptance')
 
 const addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({
@@ -27,9 +28,10 @@ const addSchemas = (fastifyInstance) => {
   })
 
   otp.addSchemas(fastifyInstance)
+  acceptPrivacy.addSchemas(fastifyInstance)
+  readPrivacy.addSchemas(fastifyInstance)
   podpdr.addSchemas(fastifyInstance)
   ticket.addSchemas(fastifyInstance)
-  privacyAcceptance.addSchemas(fastifyInstance)
 }
 
 const createServer = (opts, customElastic) => {
