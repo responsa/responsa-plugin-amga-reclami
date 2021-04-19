@@ -1,3 +1,4 @@
+const { zoho } = require('../../../application/config')
 const zohoService = require('../../../application/zoho')
 
 const postRouteSchema = {
@@ -59,7 +60,7 @@ const getRouteSchema = {
 
 module.exports = async function (fastify) {
   fastify.post('/', { schema: postRouteSchema }, async (req, reply) => {
-    const result = await zohoService.postData(
+    await zohoService.postData(
       '/form/Privacy',
       {
         data: {
@@ -69,24 +70,14 @@ module.exports = async function (fastify) {
           modified_Time: Date.now()
         }
       })
-    reply.code(result.data.code !== 3000 ? 400 : 200).send()
+    reply.code(200).send()
   })
+
   fastify.get('/', { schema: getRouteSchema }, async (req, reply) => {
-    try {
-      const result = await zohoService.getData(`/report/Privacy_Report?criteria=(Cliente_email=="${req.query.email}")`)
-      let found = false
-      found = result.data.data.sort((a, b) => b.Modified_Time - a.Modified_Time)[0].Consenso === 'SI'
-      reply.code(200).send({
-        result: found
-      })
-    } catch (err) {
-      if (err.message === 'Error: Request failed with status code 404') {
-        reply.code(200).send({
-          result: false
-        })
-      } else {
-        throw err
-      }
-    }
+    const result = await zohoService.getData(`/report/Privacy_Report?criteria=(Cliente_email=="${req.query.email}")`)
+    const found = result.sort((a, b) => b.Modified_Time - a.Modified_Time)[0].Consenso === 'SI'
+    reply.code(200).send({
+      result: found
+    })
   })
 }

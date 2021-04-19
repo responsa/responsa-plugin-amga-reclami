@@ -51,15 +51,17 @@ module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'podpdr500', ...this.podpdr500 })
 }
 
-module.exports.parseZohoResponse = (res) => {
-  if (res.data && res.data.data && res.data.data.length > 0) {
-    const data = res.data.data[0]
-    return {
-      streetName: data.Nome_della_strada,
-      streetNumber: data.Numero_civico,
-      city: data.Nome_ISTAT_della_provincia
+module.exports.parseZohoResponse = (data) => {
+  if (data && data.length > 0) {
+    const contract = data[0]
+    if (contract.Nome_ISTAT_della_provincia || contract.Numero_civico || contract.Nome_della_strada) {
+      return {
+        streetName: contract.Nome_della_strada,
+        streetNumber: contract.Numero_civico,
+        city: contract.Nome_ISTAT_della_provincia
+      }
     }
-  } else {
-    return null
   }
+
+  return null
 }

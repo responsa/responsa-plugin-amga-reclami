@@ -4,7 +4,7 @@ const responses = require('./responses')
 
 describe('OTP', () => {
   it('OTP - answers correctly', async () => {
-    helper.checkResponses('/actions/otp', responses)
+    helper.checkResponses('/actions/otp', responses, 'post')
   })
 
   it('OTP - answers 200 with correct body', async () => {

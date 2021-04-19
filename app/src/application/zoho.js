@@ -89,7 +89,11 @@ const sendCreatorRequest = async (method, target, data) => {
     }
   }
   if (response && !response.data.data) {
-    ZohoCreatorError = createZohoCreatorError(response, 400)
+    if (response.data.code === 3100) {
+      ZohoCreatorError = createZohoCreatorError(response, 404)
+    } else {
+      ZohoCreatorError = createZohoCreatorError(response, 400)
+    }
   }
   if (ZohoCreatorError) throw new ZohoCreatorError()
   return response.data.data

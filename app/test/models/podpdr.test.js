@@ -3,15 +3,11 @@ const sut = require('../../src/models/podpdr').parseZohoResponse
 
 describe('PODPDR', () => {
   it('PODPDR - correctly converts zoho response', () => {
-    const zohoRes = {
-      data: {
-        data: [{
-          Nome_della_strada: 'street name',
-          Numero_civico: 'street number',
-          Nome_ISTAT_della_provincia: 'province name'
-        }]
-      }
-    }
+    const zohoRes = [{
+      Nome_della_strada: 'street name',
+      Numero_civico: 'street number',
+      Nome_ISTAT_della_provincia: 'province name'
+    }]
     const actual = sut(zohoRes)
     expect(actual).not.toBeNull()
     expect(actual.streetName).toEqual('street name')
@@ -20,31 +16,25 @@ describe('PODPDR', () => {
   })
 
   it('PODPDR - returns null if zoho response has empty data array', () => {
-    const zohoRes = {
-      data: {
-        data: []
-      }
-    }
+    const zohoRes = [{ }]
     const actual = sut(zohoRes)
     expect(actual).toBeNull()
   })
 
   it('PODPDR - returns null if zoho response has missing content data', () => {
-    const zohoRes = {
-      data: {
-        anotherProp: []
-      }
-    }
+    const zohoRes = [{
+      anotherProp: []
+    }]
     const actual = sut(zohoRes)
     expect(actual).toBeNull()
   })
 
   it('PODPDR - returns null if zoho response has missing root data', () => {
-    const zohoRes = {
+    const zohoRes = [{
       anotherProp: {
         data: []
       }
-    }
+    }]
     const actual = sut(zohoRes)
     expect(actual).toBeNull()
   })
