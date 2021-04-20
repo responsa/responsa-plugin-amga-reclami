@@ -18,7 +18,7 @@ describe('Zoho Authentication', () => {
   it('throws with incorrect refresh token', async () => {
     const backup = config.zoho.refreshToken
     config.zoho.refreshToken = 'wrong_token'
-    await expect(sut.refreshAccessToken()).rejects.toThrow('invalid_code')
+    await expect(sut.refreshAccessToken()).rejects.toThrow('Zoho Creator Error -> Zoho replied with error message invalid_code')
     config.zoho.refreshToken = backup
   })
 })

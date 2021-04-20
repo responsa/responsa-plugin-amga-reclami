@@ -59,6 +59,38 @@ module.exports.code400 = {
   description: 'Bad request'
 }
 
+module.exports.code401 = {
+  content: {
+    'application/json': {
+      schema: {
+        type: 'object',
+        description: 'Unauthorized',
+        properties: {
+          statusCode: {
+            type: 'integer',
+            format: 'int32',
+            nullable: false
+          },
+          error: {
+            type: 'string',
+            nullable: false
+          },
+          message: {
+            type: 'string',
+            nullable: false
+          },
+          stackTrace: {
+            type: 'string',
+            nullable: true
+          }
+        },
+        additionalProperties: true
+      }
+    }
+  },
+  description: 'Unauthorized'
+}
+
 module.exports.code404 = {
   content: {
     'application/json': {
@@ -89,4 +121,68 @@ module.exports.code404 = {
     }
   },
   description: 'Contract not found'
+}
+
+module.exports.code500 = {
+  content: {
+    'application/json': {
+      schema: {
+        type: 'object',
+        description: 'Internal error',
+        properties: {
+          statusCode: {
+            type: 'integer',
+            format: 'int32',
+            nullable: false
+          },
+          error: {
+            type: 'string',
+            nullable: false
+          },
+          message: {
+            type: 'string',
+            nullable: false
+          },
+          stackTrace: {
+            type: 'string',
+            nullable: true
+          }
+        },
+        additionalProperties: true
+      }
+    }
+  },
+  description: 'Internal error'
+}
+
+module.exports.code503 = {
+  content: {
+    'application/json': {
+      schema: {
+        type: 'object',
+        description: 'Zoho APIs temporary unavailable',
+        properties: {
+          statusCode: {
+            type: 'integer',
+            format: 'int32',
+            nullable: false
+          },
+          error: {
+            type: 'string',
+            nullable: false
+          },
+          message: {
+            type: 'string',
+            nullable: false
+          },
+          stackTrace: {
+            type: 'string',
+            nullable: true
+          }
+        },
+        additionalProperties: true
+      }
+    }
+  },
+  description: 'Zoho APIs temporary unavailable'
 }

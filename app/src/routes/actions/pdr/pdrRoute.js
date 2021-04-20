@@ -25,11 +25,17 @@ const pdrRouteSchema = {
     400: {
       $ref: 'podpdr400#'
     },
+    401: {
+      $ref: 'podpdr401#'
+    },
     404: {
       $ref: 'podpdr404#'
     },
     500: {
       $ref: 'podpdr500#'
+    },
+    503: {
+      $ref: 'podpdr503#'
     }
   }
 }

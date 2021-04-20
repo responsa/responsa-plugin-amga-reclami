@@ -24,6 +24,9 @@ const routeSchema = {
     400: {
       $ref: 'otp400#'
     },
+    401: {
+      $ref: 'otp401#'
+    },
     500: {
       $ref: 'otp500#'
     }

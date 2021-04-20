@@ -10,7 +10,7 @@ const invalidTarget = 'wrong_target'
 
 const checkZohoCreatorError = async (message, code, throwingFunc) => {
   expect.assertions(2)
-  const expectedError = sutError({ data: { message } }, code)()
+  const expectedError = sutError({ data: { message } }, code)
   try {
     await throwingFunc()
   } catch (err) {

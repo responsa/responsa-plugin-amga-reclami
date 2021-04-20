@@ -13,13 +13,17 @@ module.exports.acceptPrivacy200 = {
 }
 
 module.exports.acceptPrivacy400 = genericErrors.generic400
+module.exports.acceptPrivacy401 = genericErrors.generic401
 module.exports.acceptPrivacy500 = genericErrors.generic500
+module.exports.acceptPrivacy503 = genericErrors.generic503
 
 module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'acceptPrivacy', ...this.acceptPrivacy })
   fastifyInstance.addSchema({ $id: 'acceptPrivacy200', ...this.acceptPrivacy200 })
   fastifyInstance.addSchema({ $id: 'acceptPrivacy400', ...this.acceptPrivacy400 })
+  fastifyInstance.addSchema({ $id: 'acceptPrivacy401', ...this.acceptPrivacy401 })
   fastifyInstance.addSchema({ $id: 'acceptPrivacy500', ...this.acceptPrivacy500 })
+  fastifyInstance.addSchema({ $id: 'acceptPrivacy503', ...this.acceptPrivacy503 })
 }
 
 module.exports.buildRequest = (email, accepted) => {

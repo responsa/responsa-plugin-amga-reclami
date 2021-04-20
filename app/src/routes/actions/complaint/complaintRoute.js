@@ -29,11 +29,17 @@ const getRouteSchema = {
     400: {
       $ref: 'complaint400#'
     },
+    401: {
+      $ref: 'complaint401#'
+    },
     404: {
       $ref: 'complaint404#'
     },
     500: {
       $ref: 'complaint500#'
+    },
+    503: {
+      $ref: 'complaint503#'
     }
   }
 }
