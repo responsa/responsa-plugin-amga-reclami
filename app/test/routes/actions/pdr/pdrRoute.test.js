@@ -1,5 +1,5 @@
 const helper = require('../../../helper')
-const responses = require('./responses')
+const responses = require('../pod/responses')
 require('jest-extended')
 
 describe('PDR', () => {

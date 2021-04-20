@@ -3,18 +3,28 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Privacy acceptance read successfully',
+        description: 'Contract address info retrieved successfully',
         properties: {
-          result: {
-            type: 'boolean',
-            description: 'Flag indicating the existence of privacy acceptance',
-            nullable: false
+          streetName: {
+            type: 'string',
+            description: 'Street name',
+            nullable: true
+          },
+          streetNumber: {
+            type: 'string',
+            description: 'Street number',
+            nullable: true
+          },
+          city: {
+            type: 'string',
+            description: 'City',
+            nullable: true
           }
         }
       }
     }
   },
-  description: 'Privacy acceptance read successfully'
+  description: 'Contract address info retrieved successfully'
 }
 
 module.exports.code400 = {
@@ -79,6 +89,38 @@ module.exports.code401 = {
     }
   },
   description: 'Unauthorized'
+}
+
+module.exports.code404 = {
+  content: {
+    'application/json': {
+      schema: {
+        type: 'object',
+        description: 'Contract not found',
+        properties: {
+          statusCode: {
+            type: 'integer',
+            format: 'int32',
+            nullable: false
+          },
+          error: {
+            type: 'string',
+            nullable: false
+          },
+          message: {
+            type: 'string',
+            nullable: false
+          },
+          stackTrace: {
+            type: 'string',
+            nullable: true
+          }
+        },
+        additionalProperties: true
+      }
+    }
+  },
+  description: 'Contract not found'
 }
 
 module.exports.code500 = {

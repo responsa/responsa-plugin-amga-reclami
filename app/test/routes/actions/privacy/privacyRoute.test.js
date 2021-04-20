@@ -3,10 +3,7 @@ const helper = require('../../../helper')
 const acceptResponses = require('./acceptResponses')
 const readResponses = require('./readResponses')
 
-//
-// POST
-//
-describe('Privacy Acceptance', () => {
+describe('Privacy Acceptance - POST', () => {
   it('Privacy Acceptance - answers correctly', async () => {
     helper.checkResponses('/actions/privacy', acceptResponses, 'post')
     helper.checkResponses('/actions/privacy', readResponses)
@@ -50,9 +47,9 @@ describe('Privacy Acceptance', () => {
     )
     expect(response.statusCode).toEqual(400)
   })
-  //
-  // GET
-  //
+})
+
+describe('Privacy Acceptance - GET', () => {
   it('Privacy Acceptance - Get user\'s acceptance', async () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doGet(
@@ -67,11 +64,10 @@ describe('Privacy Acceptance', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doGet(
       sut,
-      'actions/privacy?email=_dsfsdfsdfdsf_@rwererw.com',
+      'actions/privacy?email=notexisting@mail.com',
       helper.requiredHeaders
     )
-    expect(response.statusCode).toEqual(200)
-    expect(response.body).toEqual('{"result":false}')
+    expect(response.statusCode).toEqual(404)
   })
   it('Privacy Acceptance - Bad request with invalid query string', async () => {
     const sut = await helper.setupTestEnvironment()
@@ -103,10 +99,10 @@ describe('Privacy Acceptance', () => {
   it('Privacy Acceptance - Validation well format mail address', async () => {
     const sut = await helper.setupTestEnvironment()
     const url = 'actions/privacy?email='
-    const goodMail = ['ok@mail.it', 'a.b.c@mail.com', 'a.b.c@mail.other.com']
-    for (let i = 0; i < goodMail.length; i++) {
-      const response = await helper.doGet(sut, `${url}${goodMail[i]}`, helper.requiredHeaders)
-      expect(response.statusCode).toEqual(200)
-    }
+    const goodMails = ['ok@mail.it', 'a.b.c@mail.com', 'a.b.c@mail.other.com']
+    goodMails.forEach(async mail => {
+      const response = await helper.doGet(sut, `${url}${mail}`, helper.requiredHeaders)
+      expect(response.statusCode).not.toEqual(400)
+    })
   })
 })

@@ -1,7 +1,7 @@
 // eslint-disable-next-line
-const helper = require('../helper')
-const config = require('../../src/application/config')
-const sut = require('../../src/application/zoho')
+const helper = require('../../helper')
+const config = require('../../../src/application/config')
+const sut = require('../../../src/application/zoho/zoho-auth')
 const fs = require('fs')
 
 describe('Zoho Authentication', () => {
@@ -18,7 +18,7 @@ describe('Zoho Authentication', () => {
   it('throws with incorrect refresh token', async () => {
     const backup = config.zoho.refreshToken
     config.zoho.refreshToken = 'wrong_token'
-    await expect(sut.refreshAccessToken()).rejects.toThrow('invalid_code')
+    await expect(sut.refreshAccessToken()).rejects.toThrow('Zoho Creator Error -> Zoho replied with error message invalid_code')
     config.zoho.refreshToken = backup
   })
 })
