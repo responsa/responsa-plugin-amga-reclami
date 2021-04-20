@@ -6,7 +6,7 @@ const targetPathBuilder = require('./zoho-target-path-builder')
 
 const sendCreatorRequest = async (method, target, data) => {
   let response = null
-  let ZohoCreatorError = null
+  let error = null
   try {
     response = await axios.request(requestBuilder(method, target, data))
   } catch (err) {
@@ -15,20 +15,20 @@ const sendCreatorRequest = async (method, target, data) => {
       try {
         response = await axios.request(requestBuilder(method, target, data))
       } catch (errInner) {
-        ZohoCreatorError = createZohoError(errInner.response, errInner.response.status)
+        error = createZohoError(errInner.response, errInner.response.status)
       }
     } else {
-      ZohoCreatorError = createZohoError(err.response, err.response.status)
+      error = createZohoError(err.response, err.response.status)
     }
   }
   if (response && !response.data.data) {
     if (response.data.code === 3100) {
-      ZohoCreatorError = createZohoError(response, 404)
+      error = createZohoError(response, 404)
     } else {
-      ZohoCreatorError = createZohoError(response, 400)
+      error = createZohoError(response, 400)
     }
   }
-  if (ZohoCreatorError) throw new ZohoCreatorError()
+  if (error) throw error
   return response.data.data
 }
 

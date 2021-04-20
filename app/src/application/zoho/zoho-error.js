@@ -14,8 +14,7 @@ const printError = (response) => {
   return 'Generic error'
 }
 
-module.exports = (response, code, tag) => createError(
-  tag ?? 'ZOHO_CREATOR_ERROR',
-  `Zoho Creator Error -> ${printError(response)}`,
-  code
-)
+module.exports = (response, code, tag) => {
+  const ZohoError = createError(tag ?? 'ZOHO_CREATOR_ERROR', `Zoho Creator Error -> ${printError(response)}`, code)
+  return new ZohoError()
+}

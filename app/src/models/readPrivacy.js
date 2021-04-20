@@ -18,7 +18,7 @@ module.exports.readPrivacy200 = {
 }
 
 module.exports.readPrivacy400 = genericErrors.generic400
-module.exports.readPrivacy404 = genericErrors.generic404('Read privacy not found')
+module.exports.readPrivacy404 = genericErrors.generic404('Privacy acceptance not found')
 module.exports.readPrivacy500 = genericErrors.generic500
 
 module.exports.addSchemas = (fastifyInstance) => {

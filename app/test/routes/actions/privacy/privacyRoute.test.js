@@ -99,10 +99,10 @@ describe('Privacy Acceptance - GET', () => {
   it('Privacy Acceptance - Validation well format mail address', async () => {
     const sut = await helper.setupTestEnvironment()
     const url = 'actions/privacy?email='
-    const goodMail = ['ok@mail.it', 'a.b.c@mail.com', 'a.b.c@mail.other.com']
-    for (let i = 0; i < goodMail.length; i++) {
-      const response = await helper.doGet(sut, `${url}${goodMail[i]}`, helper.requiredHeaders)
+    const goodMails = ['ok@mail.it', 'a.b.c@mail.com', 'a.b.c@mail.other.com']
+    goodMails.forEach(async mail => {
+      const response = await helper.doGet(sut, `${url}${mail}`, helper.requiredHeaders)
       expect(response.statusCode).not.toEqual(400)
-    }
+    })
   })
 })
