@@ -29,8 +29,14 @@ const postRouteSchema = {
     400: {
       $ref: 'acceptPrivacy400#'
     },
+    401: {
+      $ref: 'acceptPrivacy401#'
+    },
     500: {
       $ref: 'acceptPrivacy500#'
+    },
+    503: {
+      $ref: 'acceptPrivacy503#'
     }
   }
 }
@@ -53,8 +59,14 @@ const getRouteSchema = {
     400: {
       $ref: 'readPrivacy400#'
     },
+    401: {
+      $ref: 'readPrivacy401#'
+    },
     500: {
       $ref: 'readPrivacy500#'
+    },
+    503: {
+      $ref: 'readPrivacy503#'
     }
   }
 }

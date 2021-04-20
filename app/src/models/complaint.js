@@ -45,15 +45,19 @@ module.exports.complaint200 = {
   $ref: 'complaint#'
 }
 module.exports.complaint400 = genericErrors.generic400
+module.exports.complaint401 = genericErrors.generic401
 module.exports.complaint404 = genericErrors.generic404('Complaint not found')
 module.exports.complaint500 = genericErrors.generic500
+module.exports.complaint503 = genericErrors.generic503
 
 module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'complaint', ...this.complaint })
   fastifyInstance.addSchema({ $id: 'complaint200', ...this.complaint200 })
   fastifyInstance.addSchema({ $id: 'complaint400', ...this.complaint400 })
+  fastifyInstance.addSchema({ $id: 'complaint401', ...this.complaint401 })
   fastifyInstance.addSchema({ $id: 'complaint404', ...this.complaint404 })
   fastifyInstance.addSchema({ $id: 'complaint500', ...this.complaint500 })
+  fastifyInstance.addSchema({ $id: 'complaint503', ...this.complaint503 })
 }
 
 module.exports.infos = (data, extended) => {

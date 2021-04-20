@@ -28,15 +28,19 @@ module.exports.podpdr200 = {
 }
 
 module.exports.podpdr400 = genericErrors.generic400
+module.exports.podpdr401 = genericErrors.generic401
 module.exports.podpdr404 = genericErrors.generic404('Contract not found')
 module.exports.podpdr500 = genericErrors.generic500
+module.exports.podpdr503 = genericErrors.generic503
 
 module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'podpdr', ...this.podpdr })
   fastifyInstance.addSchema({ $id: 'podpdr200', ...this.podpdr200 })
   fastifyInstance.addSchema({ $id: 'podpdr400', ...this.podpdr400 })
+  fastifyInstance.addSchema({ $id: 'podpdr401', ...this.podpdr401 })
   fastifyInstance.addSchema({ $id: 'podpdr404', ...this.podpdr404 })
   fastifyInstance.addSchema({ $id: 'podpdr500', ...this.podpdr500 })
+  fastifyInstance.addSchema({ $id: 'podpdr503', ...this.podpdr503 })
 }
 
 module.exports.parseZohoResponse = (data) => {
