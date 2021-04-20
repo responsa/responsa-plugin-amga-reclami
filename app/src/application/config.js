@@ -25,8 +25,8 @@ module.exports = {
     complaintGetTarget: 'report/Report_Generale',
     complaintPostTarget: 'form/Nuova_Richiesta_Cliente',
     podpdrGetTarget: 'report/PODPDR_Report',
-    privacyGetTarget: '/report/Privacy_Report',
-    privacyPostTarget: '/form/Privacy'
+    privacyGetTarget: 'report/Privacy_Report',
+    privacyPostTarget: 'form/Privacy'
   },
   servers: [
     { url: 'server1 url', description: 'server1 description' },
