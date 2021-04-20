@@ -19,6 +19,7 @@ echo "sonar.exclusions=**/coverage/*,**/coverage/**/*" >> sonar-project.properti
 echo "sonar.tests=test" >> sonar-project.properties
 echo "sonar.javascript.lcov.reportPaths=coverage/lcov.info" >> sonar-project.properties
 echo "sonar.coverage.exclusions=**/coverage/*,**/coverage/**/*,**/*test*" >> sonar-project.properties
+echo "sonar.cpd.exclusions=**/responses.js" >> sonar-project.properties
 echo "sonar.test.inclusions=**/*test*" >> sonar-project.properties
 echo "sonar.testExecutionReportPaths=test-report-sonar.xml" >> sonar-project.properties
 
