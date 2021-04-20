@@ -11,6 +11,7 @@
     "test": "npm run lint && npm run jest",
     "lint": "standard ./src/ && standard ./test/ ",
     "jest": "jest --detectOpenHandles --watchAll",
+    "jest:coverage": "jest --coverage=true --coverageReporters=\"text-summary\"",
     "jest:ci": "jest --forceExit --ci --testResultsProcessor=jest-multiple-result-processors --coverage=true",
     "start": "node src/index.js | pino-applicationinsights --key 77033849-96c5-4331-9f8c-3c6400bcd843",
     "dev": "PORT=3100 node src/index.js",
