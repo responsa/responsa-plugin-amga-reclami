@@ -17,12 +17,12 @@ describe('Auth: x-secret', () => {
     await verify401(helper.doGet(sut, '/actions/complaint?id=0&extended=true', helper.requiredHeaders401))
   })
 
-  it('[GET] /actions/pdr fails with 401 without x-secret header', async () => {
+  it('[GET] /actions/contract/pdr fails with 401 without x-secret header', async () => {
     const sut = await helper.setupTestEnvironment()
     await verify401(helper.doGet(sut, '/actions/pdr?code=11825000002472', helper.requiredHeaders401))
   })
 
-  it('[GET] /actions/pod fails with 401 without x-secret header', async () => {
+  it('[GET] /actions/contract/pod fails with 401 without x-secret header', async () => {
     const sut = await helper.setupTestEnvironment()
     await verify401(helper.doGet(sut, '/actions/pod?code=IT820E00000247', helper.requiredHeaders401))
   })

@@ -10,7 +10,7 @@ const errorHandler = require('./errorHandler')
 const otp = require('../models/otp')
 const acceptPrivacy = require('../models/acceptPrivacy')
 const readPrivacy = require('../models/readPrivacy')
-const podpdr = require('../models/podpdr')
+const contract = require('../models/contract')
 const complaint = require('../models/complaint')
 
 const addSchemas = (fastifyInstance) => {
@@ -30,7 +30,7 @@ const addSchemas = (fastifyInstance) => {
   otp.addSchemas(fastifyInstance)
   acceptPrivacy.addSchemas(fastifyInstance)
   readPrivacy.addSchemas(fastifyInstance)
-  podpdr.addSchemas(fastifyInstance)
+  contract.addSchemas(fastifyInstance)
   complaint.addSchemas(fastifyInstance)
 }
 

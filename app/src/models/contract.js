@@ -43,6 +43,46 @@ module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'podpdr503', ...this.podpdr503 })
 }
 
+module.exports.buildRouteSchema = (codeType, codePattern) => {
+  return {
+    tags: [`CRM ${codeType} Service`],
+    summary: `Search for contracts by ${codeType} code`,
+    description: `Searches for the contract related to the incoming ${codeType} code and returns info on the associated address`,
+    querystring: {
+      type: 'object',
+      required: ['code'],
+      properties: {
+        code: {
+          type: 'string',
+          nullable: false,
+          pattern: codePattern,
+          description: `The ${codeType} code to search for contract info`
+        }
+      }
+    },
+    response: {
+      200: {
+        $ref: 'podpdr200#'
+      },
+      400: {
+        $ref: 'podpdr400#'
+      },
+      401: {
+        $ref: 'podpdr401#'
+      },
+      404: {
+        $ref: 'podpdr404#'
+      },
+      500: {
+        $ref: 'podpdr500#'
+      },
+      503: {
+        $ref: 'podpdr503#'
+      }
+    }
+  }
+}
+
 module.exports.parseZohoResponse = (data) => {
   if (data && data.length > 0) {
     const contract = data[0]

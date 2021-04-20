@@ -1,5 +1,5 @@
 require('jest-extended')
-const sut = require('../../src/models/podpdr').parseZohoResponse
+const sut = require('../../src/models/contract').parseZohoResponse
 
 describe('PODPDR', () => {
   it('PODPDR - correctly converts zoho response', () => {
