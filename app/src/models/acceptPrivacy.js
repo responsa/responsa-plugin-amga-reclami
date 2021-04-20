@@ -1,3 +1,5 @@
+const genericErrors = require('./genericErrors')
+
 module.exports.acceptPrivacy = {
   type: 'object',
   properties: {
@@ -10,17 +12,8 @@ module.exports.acceptPrivacy200 = {
   $ref: 'acceptPrivacy#'
 }
 
-module.exports.acceptPrivacy400 = {
-  type: 'object',
-  description: 'Bad request',
-  $ref: 'Error#'
-}
-
-module.exports.acceptPrivacy500 = {
-  type: 'object',
-  description: 'Internal error',
-  $ref: 'Error#'
-}
+module.exports.acceptPrivacy400 = genericErrors.generic400
+module.exports.acceptPrivacy500 = genericErrors.generic500
 
 module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'acceptPrivacy', ...this.acceptPrivacy })

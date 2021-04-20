@@ -1,3 +1,5 @@
+const genericErrors = require('./genericErrors')
+
 module.exports.otp = {
   type: 'object',
   properties: {
@@ -15,17 +17,8 @@ module.exports.otp200 = {
   $ref: 'otp#'
 }
 
-module.exports.otp400 = {
-  type: 'object',
-  description: 'Bad request',
-  $ref: 'Error#'
-}
-
-module.exports.otp500 = {
-  type: 'object',
-  description: 'Internal error',
-  $ref: 'Error#'
-}
+module.exports.otp400 = genericErrors.generic400
+module.exports.otp500 = genericErrors.generic500
 
 module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'otp', ...this.otp })

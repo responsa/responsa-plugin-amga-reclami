@@ -1,3 +1,5 @@
+const genericErrors = require('./genericErrors')
+
 module.exports.podpdr = {
   type: 'object',
   properties: {
@@ -25,23 +27,9 @@ module.exports.podpdr200 = {
   $ref: 'podpdr#'
 }
 
-module.exports.podpdr400 = {
-  type: 'object',
-  description: 'Bad request',
-  $ref: 'Error#'
-}
-
-module.exports.podpdr404 = {
-  type: 'object',
-  description: 'Contract not found',
-  $ref: 'Error#'
-}
-
-module.exports.podpdr500 = {
-  type: 'object',
-  description: 'Internal error',
-  $ref: 'Error#'
-}
+module.exports.podpdr400 = genericErrors.generic400
+module.exports.podpdr404 = genericErrors.generic404('Contract not found')
+module.exports.podpdr500 = genericErrors.generic500
 
 module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'podpdr', ...this.podpdr })
