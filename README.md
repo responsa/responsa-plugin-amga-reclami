@@ -7,240 +7,273 @@ Open VSCode settings.json and add these two lines:
 
 `"standard.autoFixOnSave": true`
 
-API - Complaint - GET - Reads complaint informations in basic or extended formats
+API 
+
+Compliant
+```
+GET /actions/complaint
+Reads complaint informations in basic or extended formats
+```
 
 Input:
-
 ```
-"parameters": [
-					{
-						"name": "id",
-						"in": "query",
-						"required": true,
-						"description": "Complaint number",
-						"schema": {
-							"type": "number",
-							"pattern": "^[0-9]+$",
-							"description": "Complaint number"
-						}
-					},
-					{
-						"name": "extended",
-						"in": "query",
-						"description": "Extended format required",
-						"schema": {
-							"type": "boolean",
-							"default": false,
-							"pattern": "^[true|false]$",
-							"description": "Extended format required"
-						}
-					}
-				]
-```
+id *required
+number
+(query)
+[Complaint number]
 
-Output:
-
-```
-"properties": {
-					"status": {
-						"type": "string",
-						"description": "Complaint Status",
-						"nullable": false
-					},
-					"department": {
-						"type": "string",
-						"description": "Complaint Department",
-						"nullable": true
-					},
-					"assignee": {
-						"type": "string",
-						"description": "Complaint Assignee",
-						"nullable": true
-					},
-					"email": {
-						"type": "string",
-						"description": "Mail address complaint was sent to",
-						"nullable": true
-					},
-					"subject": {
-						"type": "string",
-						"description": "Complaint mail subject",
-						"nullable": true
-					},
-					"content": {
-						"type": "string",
-						"description": "Complaint mail content",
-						"nullable": true
-					}
-				}
-```
-
-API - Otp - POST - Verification code generated successfully
-
-Input
-
-```
-"properties": {
-					"phone": {
-						"type": "string",
-						"nullable": false,
-						"pattern": "^^\\+\\d{7,15}$",
-						"description": "The telephone number preceeded by the international prefix on which to send SMS"
-					}
-				}
-```
-
-Output
-
-```
-"properties": {
-					"verificationCode": {
-						"type": "number",
-						"description": "Verification code",
-						"nullable": true
-					}
-				}
-```
-
-API - Pod - GET - Contract address info retrieved successfully
-
-Input
-
-```
-"parameters": [
-					{
-						"name": "code",
-						"in": "query",
-						"required": true,
-						"description": "The POD code to search for contract info",
-						"schema": {
-							"type": "string",
-							"nullable": false,
-							"pattern": "^IT\\d{3}E\\d{8}$",
-							"description": "The POD code to search for contract info"
-						}
-					}
-				]
-```
-
-Output
-
-```
-"properties": {
-					"streetName": {
-						"type": "string",
-						"description": "Street name",
-						"nullable": true
-					},
-					"streetNumber": {
-						"type": "string",
-						"description": "Street number",
-						"nullable": true
-					},
-					"city": {
-						"type": "string",
-						"description": "City",
-						"nullable": true
-					}
-				
-```
-
-API - Pdr - GET - Contract address info retrieved successfully
-
-Input
-```
-"parameters": [
-					{
-						"name": "code",
-						"in": "query",
-						"required": true,
-						"description": "The PDR code to search for contract info",
-						"schema": {
-							"type": "string",
-							"nullable": false,
-							"pattern": "^\\d{14}$",
-							"description": "The PDR code to search for contract info"
-						}
-					}
-				]
+extended *default value = false
+boolean
+(query)
+[Extended format required]
 ```
 
 Output
 ```
-"properties": {
-					"streetName": {
-						"type": "string",
-						"description": "Street name",
-						"nullable": true
-					},
-					"streetNumber": {
-						"type": "string",
-						"description": "Street number",
-						"nullable": true
-					},
-					"city": {
-						"type": "string",
-						"description": "City",
-						"nullable": true
-					}
-				
+{
+    description:	
+    Complaint infos successfully returned
+
+    status*	string
+    nullable: false
+    Complaint Status
+
+    department	string
+    nullable: true
+    Complaint Department
+
+    assignee	string
+    nullable: true
+    Complaint Assignee
+
+    email	string
+    nullable: true
+    Mail address complaint was sent to
+
+    subject	string
+    nullable: true
+    Complaint mail subject
+
+    content	string
+    nullable: true
+    Complaint mail content
+
+}
 ```
 
-API - Privacy - POST - Privacy acceptance generated successfully
-
-Input
-
+OTP Service
 ```
-"properties": {
-					"email": {
-						"type": "string",
-						"nullable": false,
-						"description": "User mail address",
-						"pattern": "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$"
-					},
-					"accepted": {
-						"type": "boolean",
-						"nullable": false,
-						"description": "Flag to indicate whether the user has accepted or not"
-					}
-				}
+POST /actions/otp
+Sends OTP code via SMS with default text and returns the OTP itself
 ```
 
-Output
-
+Input:
 ```
-"properties": {}
-```
+{
+    phone*	string
+    nullable: false
+    pattern: ^^\+\d{7,15}$
+    The telephone number preceeded by the international prefix on which to send SMS
 
-API - Privacy - GET - Privacy acceptance read successfully
+}
 
-Input
-
-```
-"properties": {
-					"parameters": [
-					{
-						"name": "email",
-						"in": "query",
-						"required": true,
-						"description": "The user's email address",
-						"schema": {
-							"type": "string",
-							"description": "The user's email address",
-							"pattern": "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$"
-						}
-					}
-				]
+(Request Body *required)
 ```
 
 Output
-
 ```
-"properties": {
-					"result": {
-						"type": "boolean",
-						"description": "Flag indicating the existence of privacy acceptance",
-						"nullable": false
-					}
-				}
+{
+    description:	
+    Verification code generated successfully
+
+    verificationCode	number
+    nullable: true
+    Verification code
+
+}
+```
+
+CRM PDR Service
+```
+GET /actions/pdr
+Searches for the contract related to the incoming PDR code and returns info on the associated address
+```
+
+Input:
+```
+code *required
+string
+(query)
+[The PDR code to search for contract info]
+```
+
+Output
+```
+{
+    description:	
+    Contract address info retrieved successfully
+
+    streetName	string
+    nullable: true
+    Street name
+
+    streetNumber	string
+    nullable: true
+    Street number
+
+    city	string
+    nullable: true
+    City
+
+}
+```
+
+CRM POD Service
+```
+GET /actions/pod
+Searches for the contract related to the incoming POD code and returns info on the associated address
+```
+
+Input:
+```
+code *required
+string
+(query)
+[The POD code to search for contract info]
+```
+
+Output
+```
+{
+    description:	
+    Contract address info retrieved successfully
+
+    streetName	string
+    nullable: true
+    Street name
+
+    streetNumber	string
+    nullable: true
+    Street number
+
+    city	string
+    nullable: true
+    City
+
+}
+```
+
+Privacy Acceptance
+```
+GET /actions/privacy
+Execute a get to aquire acceptance of the user's privacy
+```
+
+Input:
+```
+email *required
+string
+(query)
+[The user's email address]
+```
+
+Output
+```
+{
+    description:	
+    Privacy acceptance read successfully
+
+    result	boolean
+    nullable: false
+    Flag indicating the existence of privacy acceptance
+
+}
+```
+
+Read Privacy Acceptance
+```
+GET /actions/privacy
+Execute a get to aquire acceptance of the user's privacy
+```
+
+Input:
+```
+email *required
+string
+(query)
+[The user's email address]
+```
+
+Output
+```
+{
+    description:	
+    Privacy acceptance read successfully
+    
+    result	boolean
+    nullable: false
+    Flag indicating the existence of privacy acceptance
+
+}
+```
+
+Privacy Acceptance
+```
+POST /actions/privacy
+Execute a post to send acceptance of the user's privacy
+```
+
+Input:
+```
+{
+    email*	string
+    nullable: false
+    pattern: ^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+    User mail address
+
+    accepted*	boolean
+    nullable: false
+    Flag to indicate whether the user has accepted or not
+}
+(Request Body *required)
+```
+
+Output
+```
+{
+    description:	
+    Privacy acceptance read successfully
+
+    result	boolean
+    nullable: false
+    Flag indicating the existence of privacy acceptance
+
+}
+```
+
+Privacy Acceptance
+```
+GET /actions/privacy
+Execute a get to aquire acceptance of the user's privacy
+```
+
+Input:
+```
+email *required
+string
+(query)
+[The user's email address]
+```
+
+Output
+```
+{
+    description:	
+    Privacy acceptance read successfully
+    
+    result	boolean
+    nullable: false
+    Flag indicating the existence of privacy acceptance
+
+}
 ```
