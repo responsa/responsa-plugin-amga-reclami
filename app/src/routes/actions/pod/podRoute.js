@@ -1,9 +1,6 @@
 require('../../../models/podpdr')
 const zoho = require('../../../application/zoho/zoho')
 const podpdr = require('../../../models/podpdr')
-const createError = require('fastify-error')
-
-const ContractNotFoundError = createError('CONTRACT_NOT_FOUND', '%s', 404)
 
 const podRouteSchema = {
   tags: ['CRM POD Service'],
@@ -41,10 +38,6 @@ module.exports = async function (fastify) {
   fastify.get('/', { schema: podRouteSchema }, async (req, reply) => {
     const zohoRes = await zoho.podpdr.getByCode(req.query.code)
     const res = podpdr.parseZohoResponse(zohoRes)
-    if (res) {
-      reply.code(200).send(res)
-    } else {
-      throw new ContractNotFoundError(`No contract found with POD ${req.query.code}`)
-    }
+    reply.code(200).send(res)
   })
 }

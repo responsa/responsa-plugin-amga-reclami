@@ -104,12 +104,18 @@ const requiredHeaders = {
   'x-secret': config.secretValue
 }
 
+const requiredHeaders401 = {
+  'X-ConversationId': 4,
+  'X-ResponsaTS': Date.now()
+}
+
 module.exports = {
   doGet,
   doPost,
   setupTestEnvironment,
   checkResponses,
   requiredHeaders,
+  requiredHeaders401,
   checkTranslations,
   test400,
   checkQueryString
