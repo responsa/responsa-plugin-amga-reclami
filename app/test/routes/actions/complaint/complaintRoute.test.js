@@ -1,11 +1,13 @@
 const helper = require('../../../helper')
 const zoho = require('../../../../src/application/zoho/zoho')
 const responses = require('./responses')
+const writeResponses = require('./writeResponses')
 require('jest-extended')
 
 describe('Get Complaint schema and querystring validation', () => {
   it('Get Complaint - answers correctly', async () => {
     helper.checkResponses('/actions/complaint', responses)
+    helper.checkResponses('/actions/complaint', writeResponses, 'post')
   })
 
   it('Get Complaint - answers 400 without querystring', async () => {
@@ -56,5 +58,39 @@ describe('Get Complaint E2E tests', () => {
     )
 
     expect(response.statusCode).toEqual(404)
+  })
+})
+
+describe('Post Complaint tests', () => {
+  it('complaint - answers 200 with id and requestId', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const bodyObj = {
+      usage: 'domestic',
+      requestArea: 'gas',
+      code: '11825000002505',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393292225509',
+      isPrivateApplicant: 'true',
+      firstName: 'Mario',
+      lastName: 'Rossi',
+      fiscalCode: 'cblsrg79m08a662b',
+      businessName: '',
+      vatNumber: '',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      quotationCode: '12345',
+      isEnergyyProducer: 'false',
+      question: 'Domanda finale...'
+    }
+
+    const response = await helper.doPost(
+      sut,
+      'actions/complaint',
+      bodyObj,
+      helper.requiredHeaders
+    )
+    expect(response.statusCode).toEqual(200)
   })
 })

@@ -5,7 +5,8 @@ const config = require('../config')
 module.exports.complaints = {
   all: async () => await client.queryZoho(config.zoho.complaintGetTarget),
   query: async (conditions) => await client.queryZoho(config.zoho.complaintGetTarget, conditions),
-  byIdRichiesta: async (idRichiesta) => await client.getRecordByQuery(config.zoho.complaintGetTarget, [{ key: 'ID_Richiesta', value: idRichiesta }])
+  byIdRichiesta: async (idRichiesta) => await client.getRecordByQuery(config.zoho.complaintGetTarget, [{ key: 'ID_Richiesta', value: idRichiesta }]),
+  createNew: async (data) => await client.postData(config.zoho.complaintPostTarget, data)
 }
 
 module.exports.podpdr = {
