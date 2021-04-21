@@ -175,7 +175,7 @@ module.exports = async function (fastify) {
     const response = await zoho.complaints.createNew(writeComplaint.convertToComplaintBody(req.body))
     reply.code(200).send({
       id: response.ID,
-      requestId: response.data.ID_Richiesta
+      requestId: response.ID_Richiesta
     })
   })
 }
