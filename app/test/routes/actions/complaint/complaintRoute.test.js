@@ -6,8 +6,8 @@ require('jest-extended')
 
 describe('Get Complaint schema and querystring validation', () => {
   it('Get Complaint - answers correctly', async () => {
-    helper.checkResponses('/actions/complaint', responses)
-    helper.checkResponses('/actions/complaint', writeResponses, 'post')
+    await helper.checkResponses('/actions/complaint', responses)
+    await helper.checkResponses('/actions/complaint', writeResponses, 'post')
   })
 
   it('Get Complaint - answers 400 without querystring', async () => {

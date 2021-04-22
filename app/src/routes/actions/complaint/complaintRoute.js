@@ -6,6 +6,7 @@ const getRouteSchema = {
   tags: ['Complaint'],
   summary: 'Gets complaint infos',
   description: 'Reads complaint informations in basic or extended formats',
+  security: [{ ApiKeyAuth: [] }],
   querystring: {
     type: 'object',
     properties: {
@@ -49,6 +50,7 @@ const postRouteSchema = {
   tags: ['Complaint'],
   summary: 'Complaint issue',
   description: 'Execute a post to send a complaint issue',
+  security: [{ ApiKeyAuth: [] }],
   body: {
     type: 'object',
     properties: {

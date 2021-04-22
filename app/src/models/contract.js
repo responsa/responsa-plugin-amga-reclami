@@ -51,6 +51,7 @@ module.exports.buildRouteSchema = (codeType, codePattern) => {
     tags: [`CRM ${codeType} Service`],
     summary: `Search for contracts by ${codeType} code`,
     description: `Searches for the contract related to the incoming ${codeType} code and returns info on the associated address`,
+    security: [{ ApiKeyAuth: [] }],
     querystring: {
       type: 'object',
       required: ['code'],

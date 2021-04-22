@@ -3,7 +3,8 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Complaint infos successfully returned',
+        title: 'ComplaintStatusResponse',
+        description: 'The complaint data returned when requesting info on the status',
         properties: {
           status: {
             type: 'string',
@@ -42,7 +43,7 @@ module.exports.code200 = {
       }
     }
   },
-  description: 'Complaint infos successfully returned'
+  description: 'The complaint data returned when requesting info on the status'
 }
 
 module.exports.code400 = {

@@ -3,7 +3,8 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Privacy acceptance read successfully',
+        title: 'ReadPrivacyAcceptanceResponse',
+        description: 'The data returned when requesting if a given user has already accepted the privacy policy',
         properties: {
           result: {
             type: 'boolean',
@@ -14,7 +15,7 @@ module.exports.code200 = {
       }
     }
   },
-  description: 'Privacy acceptance read successfully'
+  description: 'The data returned when requesting if a given user has already accepted the privacy policy'
 }
 
 module.exports.code400 = {

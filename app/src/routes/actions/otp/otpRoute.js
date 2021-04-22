@@ -5,6 +5,7 @@ const routeSchema = {
   tags: ['OTP Service'],
   summary: 'Send OTP code via SMS',
   description: 'Sends OTP code via SMS with default text and returns the OTP itself',
+  security: [{ ApiKeyAuth: [] }],
   body: {
     type: 'object',
     required: ['phone'],

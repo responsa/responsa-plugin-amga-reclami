@@ -3,7 +3,8 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Complaint add issue generated successfully',
+        title: 'CreateComplaintResponse',
+        description: 'The data returned after the creation of a new complaint',
         properties: {
           id: {
             type: 'string',
@@ -19,7 +20,7 @@ module.exports.code200 = {
       }
     }
   },
-  description: 'Complaint add issue generated successfully'
+  description: 'The data returned after the creation of a new complaint'
 }
 
 module.exports.code400 = {
@@ -84,38 +85,6 @@ module.exports.code401 = {
     }
   },
   description: 'Unauthorized'
-}
-
-module.exports.code404 = {
-  content: {
-    'application/json': {
-      schema: {
-        type: 'object',
-        description: 'Complaint not found',
-        properties: {
-          statusCode: {
-            type: 'integer',
-            format: 'int32',
-            nullable: false
-          },
-          error: {
-            type: 'string',
-            nullable: false
-          },
-          message: {
-            type: 'string',
-            nullable: false
-          },
-          stackTrace: {
-            type: 'string',
-            nullable: true
-          }
-        },
-        additionalProperties: true
-      }
-    }
-  },
-  description: 'Complaint not found'
 }
 
 module.exports.code500 = {
