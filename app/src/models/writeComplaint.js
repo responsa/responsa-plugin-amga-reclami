@@ -94,38 +94,54 @@ module.exports.convertToComplaintBody = (row) => {
       break
   }
 
-  return {
-    data: {
-      Servizio: requestArea,
-      Nome_Richiedente: {
-        display_value: `${row.firstName} ${row.lastName}`,
-        last_name: row.lastName,
-        first_name: row.firstName
-      },
-      Telefono_Richiedente: row.phone,
-      Tipologia_Richiedente: row.isPrivateApplicant ? this.PRIVATE_APPLICANT : this.COMPANY_APPLICANT,
-      Ragione_Sociale_Richiedente: row.businessName,
-      Indirizzo_Fornitura: {
-        address_line_12: `${row.streetName}, ${row.streetNumber}`,
-        district_city2: row.city,
-        state_province2: row.province
-      },
-      Tipologia_Risposta: this.RESPONSE_TYPE,
-      Richiesta_Inserita_Cliente: this.CLIENT_REQUEST_INSERT,
-      Codice_PDR_POD: row.code,
-      Codice_Fiscale: row.fiscalCode,
-      Data_Richiesta: this.formatDate(currentDate),
-      Partita_Iva: row.vatNumber,
-      Tipo_Richiesta: this.REQUEST_TYPE,
-      Cliente_Produttore_Energia: row.isEnergyProducer ? this.IS_ENERGY_PRODUCER : this.IS_NOT_ENERGY_PRODUCER,
-      Stato: this.STATE,
-      Tipo_USO: useType,
-      Richiesta_Oggetto: this.REQUEST_SUBJECT,
-      Stato_Richiesta_Cliente: this.REQUEST_CLIENT_STATUS,
-      Assegnato_A: this.ASSIGNED_TO,
-      Richiesta_Testo: row.question,
-      Data_Risposta_Entro: this.formatDate(this.addDays(currentDate, this.elapsedDays))
+  const data = {
+    Stato: this.STATE,
+    Servizio: requestArea,
+    Telefono_Richiedente: row.phone,
+    Tipologia_Richiedente: row.isPrivateApplicant ? this.PRIVATE_APPLICANT : this.COMPANY_APPLICANT,
+    Indirizzo_Fornitura: {
+      address_line_12: `${row.streetName}, ${row.streetNumber}`,
+      district_city2: row.city,
+      state_province2: row.province
     },
+    Tipologia_Risposta: this.RESPONSE_TYPE,
+    Richiesta_Inserita_Cliente: this.CLIENT_REQUEST_INSERT,
+    Data_Richiesta: this.formatDate(currentDate),
+    Tipo_Richiesta: this.REQUEST_TYPE,
+    Tipo_USO: useType,
+    Richiesta_Oggetto: this.REQUEST_SUBJECT,
+    Stato_Richiesta_Cliente: this.REQUEST_CLIENT_STATUS,
+    Assegnato_A: this.ASSIGNED_TO,
+    Richiesta_Testo: row.question,
+    Data_Risposta_Entro: this.formatDate(this.addDays(currentDate, this.elapsedDays))
+  }
+
+  if (row.firstName || row.lastName) {
+    data.Nome_Richiedente = {
+      display_value: `${row.firstName} ${row.lastName}`,
+      last_name: row.lastName,
+      first_name: row.firstName
+    }
+  }
+
+  if (row.businessName) {
+    data.Ragione_Sociale_Richiedente = row.businessName
+  }
+
+  if (row.vatNumber) {
+    data.Partita_Iva = row.vatNumber
+  }
+
+  if (row.code) {
+    data.Codice_PDR_POD = row.code
+  }
+
+  if (row.isEnergyProducer === false || row.isEnergyProducer === true) {
+    data.Cliente_Produttore_Energia = row.isEnergyProducer ? this.IS_ENERGY_PRODUCER : this.IS_NOT_ENERGY_PRODUCER
+  }
+
+  return {
+    data: data,
     result: {
       fields: [
         'ID_Richiesta'
