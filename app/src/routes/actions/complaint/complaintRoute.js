@@ -64,7 +64,7 @@ const postRouteSchema = {
       },
       code: {
         type: 'string',
-        nullable: false,
+        nullable: true,
         description: 'POD or PDR code'
       },
       email: {
