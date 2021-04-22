@@ -53,6 +53,7 @@ const postRouteSchema = {
   security: [{ ApiKeyAuth: [] }],
   body: {
     type: 'object',
+    required: ['usage', 'requestArea', 'email', 'phone', 'isPrivateApplicant', 'streetName', 'streetNumber', 'city', 'province', 'question'],
     properties: {
       usage: {
         type: 'string',
@@ -82,7 +83,7 @@ const postRouteSchema = {
         pattern: '^^\\+\\d{7,15}$'
       },
       isPrivateApplicant: {
-        type: 'string',
+        type: 'boolean',
         nullable: false,
         description: 'Determines whether a natural or legal person'
       },
@@ -137,7 +138,7 @@ const postRouteSchema = {
         description: 'Quotation code'
       },
       isEnergyProducer: {
-        type: 'string',
+        type: 'boolean',
         nullable: false,
         description: 'Determines whether is an energy producer or not'
       },
@@ -145,6 +146,36 @@ const postRouteSchema = {
         type: 'string',
         nullable: false,
         description: 'Question to send to the bot'
+      }
+    },
+    if: {
+      properties: { isPrivateApplicant: { const: true }, requestArea: { const: 'gas' } }
+    },
+    then: {
+      required: ['firstName', 'lastName', 'fiscalCode']
+    },
+    else: {
+      if: {
+        properties: { isPrivateApplicant: { const: false }, requestArea: { const: 'gas' } }
+      },
+      then: {
+        required: ['businessName', 'vatNumber']
+      },
+      else: {
+        if: {
+          properties: { isPrivateApplicant: { const: true }, requestArea: { const: 'energy' } }
+        },
+        then: {
+          required: ['firstName', 'lastName', 'fiscalCode', 'isEnergyProducer']
+        },
+        else: {
+          if: {
+            properties: { isPrivateApplicant: { const: false }, requestArea: { const: 'energy' } }
+          },
+          then: {
+            required: ['businessName', 'vatNumber', 'isEnergyProducer']
+          }
+        }
       }
     }
   },

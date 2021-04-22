@@ -61,7 +61,353 @@ describe('Get Complaint E2E tests', () => {
   })
 })
 
-describe('Post Complaint tests', () => {
+const expect400 = async (body) => {
+  const sut = await helper.setupTestEnvironment()
+  const response = await helper.doPost(sut, 'actions/complaint', body, helper.requiredHeaders)
+  expect(response.statusCode).toEqual(400)
+}
+
+describe('Create complaint - 400 - basic fields', () => {
+  it('400 - fails without usage', async () =>
+    expect400({
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without requestArea', async () =>
+    expect400({
+      usage: 'domestic',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without email', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without phone', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without isPrivateApplicant', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without streetName', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without streetNumber', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without city', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      province: 'Emilia Romagna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without province', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      question: 'domanda..'
+    })
+  )
+
+  it('400 - fails without question', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna'
+    })
+  )
+})
+
+describe('Create complaint - 400 - conditional fields', () => {
+  it('400 - fails without firstName if isPrivateApplicant === true && requestArea === \'gas\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      lastName: 'cognome',
+      fiscalCode: 'RNDNDR90R11C573X'
+    })
+  )
+  it('400 - fails without lastName if isPrivateApplicant === true && requestArea === \'gas\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      firstName: 'nome',
+      fiscalCode: 'RNDNDR90R11C573X'
+    })
+  )
+  it('400 - fails without fiscalCode if isPrivateApplicant === true && requestArea === \'gas\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      firstName: 'nome',
+      lastName: 'cognome'
+    })
+  )
+  it('400 - fails without businessName if isPrivateApplicant === false && requestArea === \'gas\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: false,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      vatNumber: '01079320329'
+    })
+  )
+  it('400 - fails without vatNumber if isPrivateApplicant === false && requestArea === \'gas\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: false,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      businessName: 'nome azienda'
+    })
+  )
+
+  it('400 - fails without firstName if isPrivateApplicant === true && requestArea === \'energy\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      lastName: 'cognome',
+      fiscalCode: 'RNDNDR90R11C573X',
+      isEnergyProducer: true
+    })
+  )
+  it('400 - fails without lastName if isPrivateApplicant === true && requestArea === \'energy\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      firstName: 'nome',
+      fiscalCode: 'RNDNDR90R11C573X',
+      isEnergyProducer: true
+    })
+  )
+  it('400 - fails without fiscalCode if isPrivateApplicant === true && requestArea === \'energy\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      firstName: 'nome',
+      lastName: 'cognome',
+      isEnergyProducer: true
+    })
+  )
+  it('400 - fails without isEnergyProducer if isPrivateApplicant === true && requestArea === \'energy\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      firstName: 'nome',
+      lastName: 'cognome',
+      fiscalCode: 'RNDNDR90R11C573X'
+    })
+  )
+  it('400 - fails without businessName if isPrivateApplicant === false && requestArea === \'energy\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: false,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      vatNumber: '01079320329',
+      isEnergyProducer: true
+    })
+  )
+  it('400 - fails without vatNumber if isPrivateApplicant === false && requestArea === \'energy\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: false,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      businessName: 'nome azienda',
+      isEnergyProducer: true
+    })
+  )
+  it('400 - fails without isEnergyProducer if isPrivateApplicant === false && requestArea === \'energy\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393290000000',
+      isPrivateApplicant: false,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      businessName: 'nome azienda',
+      vatNumber: '01079320329'
+    })
+  )
+})
+
+describe('Create complaint - 200 - happy ending', () => {
   it('complaint - answers 200 with id and requestId', async () => {
     const sut = await helper.setupTestEnvironment()
     const bodyObj = {
@@ -70,7 +416,7 @@ describe('Post Complaint tests', () => {
       code: '11825000002505',
       email: 'sergio.iacobellis@gmail.com',
       phone: '+393292225509',
-      isPrivateApplicant: 'true',
+      isPrivateApplicant: true,
       firstName: 'Mario',
       lastName: 'Rossi',
       fiscalCode: 'cblsrg79m08a662b',
@@ -81,551 +427,16 @@ describe('Post Complaint tests', () => {
       city: 'Bologna',
       province: 'Emilia Romagna',
       quotationCode: '12345',
-      isEnergyyProducer: 'false',
+      isEnergyyProducer: false,
       question: 'Domanda finale...'
     }
 
-    const response = await helper.doPost(
-      sut,
-      'actions/complaint',
-      bodyObj,
-      helper.requiredHeaders
-    )
+    const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
+
     expect(response.statusCode).toEqual(200)
-  })
-
-  it('complaint - Error 400, gas scenario, phone missing', async () => {
-    const sut = await helper.setupTestEnvironment()
-    const bodyObj = {
-      requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com'
-      // phone: '+393292225509',
-    }
-    const response = await helper.doPost(
-      sut,
-      'actions/complaint',
-      bodyObj,
-      helper.requiredHeaders
-    )
-    expect(response.statusCode).toEqual(400)
-  })
-
-  it('complaint - Error 400, gas scenario, private applicant, bad validation', async () => {
-    // The following properties are required
-    // firstName
-    // lastName
-    // fiscalCode
-    // streetName
-    // streetNumber
-    // city
-    // province
-    // question
-    const sut = await helper.setupTestEnvironment()
-    const bodyObjs = [{
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      province: 'Emilia Romagna',
-      question: 'domanda..'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      question: 'domanda..'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna'
-    }]
-
-    bodyObjs.forEach(async body => {
-      const response = await helper.doPost(sut, 'actions/complaint', body, helper.requiredHeaders)
-      expect(response.statusCode).toEqual(400)
-    })
-  })
-  it('complaint - bad request, gas scenario, not private applicant', async () => {
-    // The following properties are required
-    // businessName
-    // vatNumber
-    // streetName
-    // streetNumber
-    // city
-    // province
-    // question
-    const sut = await helper.setupTestEnvironment()
-    const bodyObjs = [{
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda...'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda...'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda...'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda...'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      province: 'Emilia Romagna',
-      question: 'domanda...'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      question: 'domanda...'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'gas',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna'
-    }]
-
-    bodyObjs.forEach(async body => {
-      const response = await helper.doPost(sut, 'actions/complaint', body, helper.requiredHeaders)
-      expect(response.statusCode).toEqual(400)
-    })
-  })
-  it('complaint - Error 400, energy scenario, private applicant, bad validation', async () => {
-    // The following properties are required
-    // firstName
-    // lastName
-    // fiscalCode
-    // streetName
-    // streetNumber
-    // city
-    // province
-    // question
-    // isEnergyProducer
-    const sut = await helper.setupTestEnvironment()
-    const bodyObjs = [{
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'true',
-      firstName: 'Mario',
-      lastName: 'Rossi',
-      fiscalCode: 'cblsrg79m08a662b',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna'
-    }]
-
-    bodyObjs.forEach(async body => {
-      const response = await helper.doPost(sut, 'actions/complaint', body, helper.requiredHeaders)
-      expect(response.statusCode).toEqual(400)
-    })
-  })
-  it('complaint - Error 400, energy scenario, not private applicant, bad validation', async () => {
-    // The following properties are required
-    // businessName
-    // vatNumber
-    // streetName
-    // streetNumber
-    // city
-    // province
-    // question
-    // isEnergyProducer
-    const sut = await helper.setupTestEnvironment()
-    const bodyObjs = [{
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      province: 'Emilia Romagna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      question: 'domanda..',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      isEnergyProducer: 'true'
-    },
-    {
-      usage: 'domestic',
-      requestArea: 'energy',
-      code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
-      phone: '+393290000000',
-      isPrivateApplicant: 'false',
-      businessName: 'Rossi',
-      vatNumber: '01079320329',
-      streetName: 'via sample',
-      streetNumber: '1',
-      city: 'Bologna',
-      province: 'Emilia Romagna',
-      question: 'domanda..'
-    }]
-
-    bodyObjs.forEach(async body => {
-      const response = await helper.doPost(sut, 'actions/complaint', body, helper.requiredHeaders)
-      expect(response.statusCode).toEqual(400)
-    })
+    expect(response.body).toBeDefined()
+    const body = JSON.parse(response.body)
+    expect(body.id).toBeDefined()
+    expect(body.requestId).toBeDefined()
   })
 })
