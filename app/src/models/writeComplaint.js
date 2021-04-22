@@ -2,6 +2,9 @@ const genericErrors = require('./genericErrors')
 
 module.exports.writeComplaint = {
   type: 'object',
+  addToSwagger: true,
+  title: 'CreateComplaintResponse',
+  description: 'The data returned after the creation of a new complaint',
   properties: {
     requestId: {
       type: 'string',

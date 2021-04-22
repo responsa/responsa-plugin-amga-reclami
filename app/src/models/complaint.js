@@ -4,6 +4,9 @@ const DEFAULT_STATO_RICHIESTA_CLIENTE = 'SCONOSCIUTO'
 
 module.exports.complaint = {
   type: 'object',
+  addToSwagger: true,
+  title: 'ComplaintStatusResponse',
+  description: 'The complaint data returned when requesting info on the status',
   properties: {
     status: {
       type: 'string',

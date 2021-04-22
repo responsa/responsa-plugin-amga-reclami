@@ -2,6 +2,9 @@ const genericErrors = require('./genericErrors')
 
 module.exports.podpdr = {
   type: 'object',
+  addToSwagger: true,
+  title: 'PODPDRInfoResponse',
+  description: 'The data returned about the informations of a POD/PDR related contract',
   properties: {
     streetName: {
       type: 'string',

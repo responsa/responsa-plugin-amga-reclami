@@ -2,6 +2,9 @@ const genericErrors = require('./genericErrors')
 
 module.exports.otp = {
   type: 'object',
+  addToSwagger: true,
+  title: 'OTPResponse',
+  description: 'The data returned after requesting an OTP code to be sent to the phone number specified in the request',
   properties: {
     verificationCode: {
       type: 'number',

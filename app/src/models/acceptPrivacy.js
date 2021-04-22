@@ -2,6 +2,9 @@ const genericErrors = require('./genericErrors')
 
 module.exports.acceptPrivacy = {
   type: 'object',
+  addToSwagger: true,
+  title: 'AcceptPrivacyResponse',
+  description: 'The response returned when accepting the privacy policy',
   properties: {
   }
 }
