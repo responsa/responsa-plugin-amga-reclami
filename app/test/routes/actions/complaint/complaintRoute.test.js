@@ -439,4 +439,113 @@ describe('Create complaint - 200 - happy ending', () => {
     expect(body.id).toBeDefined()
     expect(body.requestId).toBeDefined()
   })
+  it('complaint - gas & isPrivateApplicant scenario - answers 200 with id and requestId', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const bodyObj = {
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393292225509',
+      isPrivateApplicant: true,
+      firstName: 'Mario',
+      lastName: 'Rossi',
+      fiscalCode: 'cblsrg79m08a662b',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      quotationCode: '12345',
+      question: 'Domanda finale...'
+    }
+
+    const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
+
+    expect(response.statusCode).toEqual(200)
+    expect(response.body).toBeDefined()
+    const body = JSON.parse(response.body)
+    expect(body.id).toBeDefined()
+    expect(body.requestId).toBeDefined()
+  })
+  it('complaint - gas & not isPrivateApplicantscenario - answers 200 with id and requestId', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const bodyObj = {
+      usage: 'domestic',
+      requestArea: 'gas',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393292225509',
+      isPrivateApplicant: false,
+      businessName: 'nome azienda',
+      vatNumber: '01079320329',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      quotationCode: '12345',
+      isEnergyyProducer: false,
+      question: 'Domanda finale...'
+    }
+
+    const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
+
+    expect(response.statusCode).toEqual(200)
+    expect(response.body).toBeDefined()
+    const body = JSON.parse(response.body)
+    expect(body.id).toBeDefined()
+    expect(body.requestId).toBeDefined()
+  })
+  it('complaint - energy & isPrivateApplicant scenario - answers 200 with id and requestId', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const bodyObj = {
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393292225509',
+      isPrivateApplicant: true,
+      firstName: 'Mario',
+      lastName: 'Rossi',
+      fiscalCode: 'cblsrg79m08a662b',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      quotationCode: '12345',
+      question: 'Domanda finale...',
+      isEnergyProducer: true
+    }
+
+    const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
+
+    expect(response.statusCode).toEqual(200)
+    expect(response.body).toBeDefined()
+    const body = JSON.parse(response.body)
+    expect(body.id).toBeDefined()
+    expect(body.requestId).toBeDefined()
+  })
+  it('complaint - energy & not isPrivateApplicant scenario - answers 200 with id and requestId', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const bodyObj = {
+      usage: 'domestic',
+      requestArea: 'energy',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393292225509',
+      isPrivateApplicant: false,
+      businessName: 'nome azienda',
+      vatNumber: '01079320329',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      quotationCode: '12345',
+      question: 'Domanda finale...',
+      isEnergyProducer: true
+    }
+
+    const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
+
+    expect(response.statusCode).toEqual(200)
+    expect(response.body).toBeDefined()
+    const body = JSON.parse(response.body)
+    expect(body.id).toBeDefined()
+    expect(body.requestId).toBeDefined()
+  })
 })
