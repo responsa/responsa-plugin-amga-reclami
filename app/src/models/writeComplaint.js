@@ -54,6 +54,7 @@ module.exports.STATE = 'DA VALIDARE'
 module.exports.REQUEST_SUBJECT = 'Richiesta informazioni da BOT'
 module.exports.ASSIGNED_TO = 'STC'
 module.exports.REQUEST_CLIENT_STATUS = 'PRESA IN CARICO'
+module.exports.QUOTATION_CODE = ' --- Numero preventivo: '
 
 module.exports.addDays = (date, days) => {
   const result = new Date(date)
@@ -114,6 +115,10 @@ module.exports.convertToComplaintBody = (row) => {
     Assegnato_A: this.ASSIGNED_TO,
     Richiesta_Testo: row.question,
     Data_Risposta_Entro: this.formatDate(this.addDays(currentDate, this.elapsedDays))
+  }
+
+  if (row.quotationCode) {
+    data.Richiesta_Testo += `${this.QUOTATION_CODE}${row.quotationCode}`
   }
 
   if (row.firstName || row.lastName) {
