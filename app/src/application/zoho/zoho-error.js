@@ -11,9 +11,7 @@ const printError = (response) => {
     }
 
     if (response.data.error) {
-      let error = JSON.stringify(response.data.error)
-      error = error.substring(1, error.length - 1)
-      return error
+      return JSON.stringify(response.data.error)
     }
   }
 

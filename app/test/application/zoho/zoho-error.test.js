@@ -56,7 +56,7 @@ describe('Zoho Error', () => {
     expect(actual).toBeDefined()
     expect(actual.statusCode).toEqual(400)
     expect(actual.code).toEqual('ZOHO_CREATOR_ERROR')
-    expect(actual.message).toEqual(`Zoho Creator Error -> ${responseWithError.data.error}`)
+    expect(actual.message).toEqual(`Zoho Creator Error -> "${responseWithError.data.error}"`)
   })
 
   it('creates a valid error without both data.message and data.description', () => {
