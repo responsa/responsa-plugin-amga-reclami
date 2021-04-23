@@ -1,13 +1,13 @@
-const config = require('./config')
+const config = require('./../config')
 const axios = require('axios')
 const otp = require('./otpGenerator')
-const msgBuilder = require('./smsMessageBuilder')
+const msgBuilder = require('./otpMessageBuilder')
 
-module.exports.sendSmsErrorMessage = 'Unable to send message'
+module.exports.sendOtpErrorMessage = 'Unable to send message'
 
 module.exports.sendSms = async (phone) => {
   const code = otp.generateOtp()
-  const msg = msgBuilder.buildSmsMessage(code)
+  const msg = msgBuilder.buildOtpMessage(code)
   const apiKey = config.awsSmsService.apiKey
   const fromField = config.awsSmsService.fromField
   const url = config.awsSmsService.gatewayUrl
