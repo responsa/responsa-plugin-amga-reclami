@@ -7,18 +7,18 @@ describe('OTP', () => {
     helper.checkResponses('/actions/otp', responses, 'post')
   })
 
-  it('OTP - answers 200 with correct body', async () => {
-    const sut = await helper.setupTestEnvironment()
+  // it('OTP - answers 200 with correct body', async () => {
+  //   const sut = await helper.setupTestEnvironment()
 
-    const response = await helper.doPost(
-      sut,
-      'actions/otp',
-      { phone: '+393930975687' },
-      helper.requiredHeaders
-    )
+  //   const response = await helper.doPost(
+  //     sut,
+  //     'actions/otp',
+  //     { phone: '+393930975687' },
+  //     helper.requiredHeaders
+  //   )
 
-    expect(response.statusCode).toEqual(200)
-  })
+  //   expect(response.statusCode).toEqual(200)
+  // })
 
   it('OTP - answers 400 with missing body', async () => {
     const sut = await helper.setupTestEnvironment()

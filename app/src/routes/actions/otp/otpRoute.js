@@ -1,5 +1,5 @@
 require('../../../models/otp')
-const smsService = require('../../../application/smsService')
+const otpService = require('../../../application/otp/otpService')
 
 const routeSchema = {
   tags: ['OTP Service'],
@@ -36,7 +36,7 @@ const routeSchema = {
 
 module.exports = async function (fastify) {
   fastify.post('/', { schema: routeSchema }, async (req, reply) => {
-    const sms = await smsService.sendSms(req.body.phone)
+    const sms = await otpService.sendSms(req.body.phone)
     reply.code(200).send({
       verificationCode: sms.verificationCode
     })

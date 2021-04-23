@@ -1,4 +1,4 @@
-const sut = require('../../src/application/otpGenerator')
+const sut = require('../../../src/application/otp/otpGenerator')
 
 describe('OTP Generator', () => {
   it('OTP Generator works correctly with random values', () => {
