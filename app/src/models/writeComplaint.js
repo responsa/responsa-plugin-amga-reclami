@@ -54,6 +54,7 @@ module.exports.STATE = 'DA VALIDARE'
 module.exports.REQUEST_SUBJECT = 'Richiesta informazioni da BOT'
 module.exports.ASSIGNED_TO = 'STC'
 module.exports.REQUEST_CLIENT_STATUS = 'PRESA IN CARICO'
+module.exports.RESPONSE_COMPLAINT_ID = 'ID_Richiesta'
 
 module.exports.addDays = (date, days) => {
   const result = new Date(date)
@@ -71,34 +72,43 @@ module.exports.formatDate = (date) => {
     date.getSeconds().toString().padStart(2, '0')}`
 }
 
+module.exports.mappers = {
+  usage: (value) => {
+    switch (value) {
+      case 'domestic':
+        return this.DOMESTIC_USAGE_TYPE
+      case 'not_domestic':
+        return this.NOT_DOMESTIC_USAGE_TYPE
+      default:
+        return null
+    }
+  },
+  requestArea: (value) => {
+    switch (value) {
+      case 'gas':
+        return this.GAS_AREA_TYPE
+      case 'energy':
+        return this.ENERGY_AREA_TYPE
+      default:
+        return null
+    }
+  },
+  isPrivateApplicant: (value) => {
+    return value ? this.PRIVATE_APPLICANT : this.COMPANY_APPLICANT
+  },
+  isEnergyProducer: (value) => {
+    return value ? this.IS_ENERGY_PRODUCER : this.IS_NOT_ENERGY_PRODUCER
+  }
+}
+
 module.exports.convertToComplaintBody = (row) => {
   const currentDate = new Date()
-  let useType = null
-  let requestArea = null
-
-  switch (row.usage) {
-    case 'domestic':
-      useType = this.DOMESTIC_USAGE_TYPE
-      break
-    case 'not_domestic':
-      useType = this.NOT_DOMESTIC_USAGE_TYPE
-      break
-  }
-
-  switch (row.requestArea) {
-    case 'gas':
-      requestArea = this.GAS_AREA_TYPE
-      break
-    case 'energy':
-      requestArea = this.ENERGY_AREA_TYPE
-      break
-  }
 
   const data = {
     Stato: this.STATE,
-    Servizio: requestArea,
+    Servizio: this.mappers.requestArea(row.requestArea),
     Telefono_Richiedente: row.phone,
-    Tipologia_Richiedente: row.isPrivateApplicant ? this.PRIVATE_APPLICANT : this.COMPANY_APPLICANT,
+    Tipologia_Richiedente: this.mappers.isPrivateApplicant(row.isPrivateApplicant),
     Indirizzo_Fornitura: {
       address_line_12: `${row.streetName}, ${row.streetNumber}`,
       district_city2: row.city,
@@ -108,7 +118,7 @@ module.exports.convertToComplaintBody = (row) => {
     Richiesta_Inserita_Cliente: this.CLIENT_REQUEST_INSERT,
     Data_Richiesta: this.formatDate(currentDate),
     Tipo_Richiesta: this.REQUEST_TYPE,
-    Tipo_USO: useType,
+    Tipo_USO: this.mappers.usage(row.usage),
     Richiesta_Oggetto: this.REQUEST_SUBJECT,
     Stato_Richiesta_Cliente: this.REQUEST_CLIENT_STATUS,
     Assegnato_A: this.ASSIGNED_TO,
@@ -141,14 +151,18 @@ module.exports.convertToComplaintBody = (row) => {
   }
 
   if (row.isEnergyProducer === false || row.isEnergyProducer === true) {
-    data.Cliente_Produttore_Energia = row.isEnergyProducer ? this.IS_ENERGY_PRODUCER : this.IS_NOT_ENERGY_PRODUCER
+    data.Cliente_Produttore_Energia = this.mappers.isEnergyProducer(row.isEnergyProducer)
+  }
+
+  if (row.quotationCode) {
+    data.Richiesta_Testo = `${data.Richiesta_Testo} --- Numero preventivo: ${row.quotationCode}`
   }
 
   return {
     data: data,
     result: {
       fields: [
-        'ID_Richiesta'
+        this.RESPONSE_COMPLAINT_ID
       ]
     }
   }
