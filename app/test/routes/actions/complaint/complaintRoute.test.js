@@ -407,6 +407,77 @@ describe('Create complaint - 400 - conditional fields', () => {
   )
 })
 
+describe('Create complaint - 400 - fields patterns', () => {
+  it('400 - fails with invalid email', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      code: '11825000002505',
+      email: 'sergio.iacobellis',
+      phone: '+393292225509',
+      isPrivateApplicant: true,
+      firstName: 'Mario',
+      lastName: 'Rossi',
+      fiscalCode: 'cblsrg79m08a662b',
+      businessName: '',
+      vatNumber: '',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      isEnergyyProducer: false,
+      quotationCode: '25123456',
+      question: 'Domanda finale...'
+    })
+  )
+
+  it('400 - fails with invalid phone', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      code: '11825000002505',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+395509abcd',
+      isPrivateApplicant: true,
+      firstName: 'Mario',
+      lastName: 'Rossi',
+      fiscalCode: 'cblsrg79m08a662b',
+      businessName: '',
+      vatNumber: '',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      isEnergyyProducer: false,
+      quotationCode: '25123456',
+      question: 'Domanda finale...'
+    })
+  )
+
+  it('400 - fails with invalid quotationCode', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      code: '11825000002505',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393292225509',
+      isPrivateApplicant: true,
+      firstName: 'Mario',
+      lastName: 'Rossi',
+      fiscalCode: 'cblsrg79m08a662b',
+      businessName: '',
+      vatNumber: '',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      isEnergyyProducer: false,
+      quotationCode: 'invalidcode',
+      question: 'Domanda finale...'
+    })
+  )
+})
+
 describe('Create complaint - 200 - happy ending', () => {
   it('complaint - answers 200 with id and requestId', async () => {
     const sut = await helper.setupTestEnvironment()
@@ -426,7 +497,7 @@ describe('Create complaint - 200 - happy ending', () => {
       streetNumber: '1',
       city: 'Bologna',
       province: 'Emilia Romagna',
-      quotationCode: '12345',
+      quotationCode: '25123456',
       isEnergyyProducer: false,
       question: 'Domanda finale...'
     }
@@ -454,7 +525,7 @@ describe('Create complaint - 200 - happy ending', () => {
       streetNumber: '1',
       city: 'Bologna',
       province: 'Emilia Romagna',
-      quotationCode: '12345',
+      quotationCode: '25123456',
       question: 'Domanda finale...'
     }
 
@@ -480,7 +551,7 @@ describe('Create complaint - 200 - happy ending', () => {
       streetNumber: '1',
       city: 'Bologna',
       province: 'Emilia Romagna',
-      quotationCode: '12345',
+      quotationCode: '25123456',
       isEnergyyProducer: false,
       question: 'Domanda finale...'
     }
@@ -508,7 +579,7 @@ describe('Create complaint - 200 - happy ending', () => {
       streetNumber: '1',
       city: 'Bologna',
       province: 'Emilia Romagna',
-      quotationCode: '12345',
+      quotationCode: '25123456',
       question: 'Domanda finale...',
       isEnergyProducer: true
     }
@@ -535,7 +606,7 @@ describe('Create complaint - 200 - happy ending', () => {
       streetNumber: '1',
       city: 'Bologna',
       province: 'Emilia Romagna',
-      quotationCode: '12345',
+      quotationCode: '25123456',
       question: 'Domanda finale...',
       isEnergyProducer: true
     }

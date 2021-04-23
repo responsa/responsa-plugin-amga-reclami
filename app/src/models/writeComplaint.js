@@ -124,6 +124,10 @@ module.exports.convertToComplaintBody = (row) => {
     }
   }
 
+  if (row.fiscalCode) {
+    data.Codice_Fiscale = row.fiscalCode
+  }
+
   if (row.businessName) {
     data.Ragione_Sociale_Richiedente = row.businessName
   }
