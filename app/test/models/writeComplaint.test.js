@@ -69,16 +69,16 @@ describe('Write complaint - Test obj mapping function', () => {
 
     testBasic(actual)
     testExtra(actual)
-    expect(actual.data.Richiesta_Testo).toEqual('Domanda finale... --- Numero preventivo: 12345')
+    expect(actual.data.Richiesta_Testo).toEqual(`Domanda finale...${sut.QUOTATION_CODE}12345`)
   })
 })
 
 it('Correctly format date input', () => {
-  const currentDate = new Date()
+  const currentDate = new Date(2021, 3, 23, 18, 0, 5)
   const actual = sut.formatDate(currentDate)
 
   expect(actual).not.toBeNull()
-  expect(actual).not.toEqual(currentDate)
+  expect(actual).toEqual('23-04-2021 18:00:05')
 })
 
 it('Correctly add days with date and days input', () => {

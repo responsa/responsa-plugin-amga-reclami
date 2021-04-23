@@ -55,6 +55,7 @@ module.exports.REQUEST_SUBJECT = 'Richiesta informazioni da BOT'
 module.exports.ASSIGNED_TO = 'STC'
 module.exports.REQUEST_CLIENT_STATUS = 'PRESA IN CARICO'
 module.exports.RESPONSE_COMPLAINT_ID = 'ID_Richiesta'
+module.exports.QUOTATION_CODE = ' --- Numero preventivo: '
 
 module.exports.addDays = (date, days) => {
   const result = new Date(date)
@@ -155,7 +156,7 @@ module.exports.convertToComplaintBody = (row) => {
   }
 
   if (row.quotationCode) {
-    data.Richiesta_Testo = `${data.Richiesta_Testo} --- Numero preventivo: ${row.quotationCode}`
+    data.Richiesta_Testo = `${data.Richiesta_Testo}${this.QUOTATION_CODE}${row.quotationCode}`
   }
 
   return {
