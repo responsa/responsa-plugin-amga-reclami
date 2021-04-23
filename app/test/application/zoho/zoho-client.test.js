@@ -49,8 +49,7 @@ describe('Zoho APIs', () => {
     it('correctly gets a record by query', async () => {
       const firstRecord = (await sut.getData(validTarget))[0]
       const conditions = [{ key: 'ID_Richiesta', value: +firstRecord.ID_Richiesta }]
-      const actual =
-        await sut.getRecordByQuery(validTarget, conditions)
+      const actual = await sut.getRecordByQuery(validTarget, conditions)
       expect(actual).not.toBeNull()
       expect(actual).toBeObject()
       expect(actual.ID_Richiesta).toBeDefined()

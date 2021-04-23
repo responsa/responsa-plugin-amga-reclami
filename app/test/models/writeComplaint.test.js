@@ -7,7 +7,7 @@ const inputWriteComplaint = {
   code: '11825000002505',
   email: 'sergio.iacobellis@gmail.com',
   phone: '+393292225509',
-  isPrivateApplicant: 'true',
+  isPrivateApplicant: true,
   firstName: 'Mario',
   lastName: 'Rossi',
   fiscalCode: 'cblsrg79m08a662b',
@@ -18,7 +18,7 @@ const inputWriteComplaint = {
   city: 'Bologna',
   province: 'Emilia Romagna',
   quotationCode: '12345',
-  isEnergyyProducer: 'false',
+  isEnergyProducer: false,
   question: 'Domanda finale...'
 }
 
