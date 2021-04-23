@@ -20,6 +20,12 @@ const responseWithBotmMessageAndDescription = {
   }
 }
 
+const responseWithError = {
+  data: {
+    error: 'my error'
+  }
+}
+
 describe('Zoho Error', () => {
   it('creates a valid error with only data.message', () => {
     const actual = sut(responseWithMessage, 400)
@@ -43,6 +49,14 @@ describe('Zoho Error', () => {
     expect(actual.statusCode).toEqual(404)
     expect(actual.code).toEqual('ZOHO_CREATOR_ERROR')
     expect(actual.message).toEqual(`Zoho Creator Error -> ${responseWithBotmMessageAndDescription.data.message}`)
+  })
+
+  it('creates a valid error with data.error', () => {
+    const actual = sut(responseWithError, 400)
+    expect(actual).toBeDefined()
+    expect(actual.statusCode).toEqual(400)
+    expect(actual.code).toEqual('ZOHO_CREATOR_ERROR')
+    expect(actual.message).toEqual(`Zoho Creator Error -> "${responseWithError.data.error}"`)
   })
 
   it('creates a valid error without both data.message and data.description', () => {
