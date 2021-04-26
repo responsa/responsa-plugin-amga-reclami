@@ -19,11 +19,11 @@ describe('SMS Service COnfiguration', () => {
 //   it('Send message with error - No phone number', async () => {
 //     await expect(sut.sendSms())
 //       .rejects
-//       .toThrow(sut.sendSmsErrorMessage)
+//       .toThrow(sut.sendOtpErrorMessage)
 //   })
 //   it('Send message with error - bad phone number', async () => {
 //     await expect(sut.sendSms('4564asdasda6546'))
 //       .rejects
-//       .toThrow(sut.sendSmsErrorMessage)
+//       .toThrow(sut.sendOtpErrorMessage)
 //   })
 // })

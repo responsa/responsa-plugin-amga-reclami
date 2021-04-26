@@ -29,6 +29,6 @@ module.exports.sendSms = async (phone) => {
   if (result) {
     return result
   } else {
-    throw Error(this.sendSmsErrorMessage)
+    throw Error(this.sendOtpErrorMessage)
   }
 }
