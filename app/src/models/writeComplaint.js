@@ -102,7 +102,7 @@ module.exports.mappers = {
   }
 }
 
-module.exports.convertToComplaintBody = (row) => {
+module.exports.toComplaintRequest = (row) => {
   const currentDate = new Date()
 
   const data = {

@@ -43,7 +43,7 @@ describe('Write complaint - Test mappers', () => {
 
 describe('Write complaint - Test obj mapping function', () => {
   it('Correctly maps basic complaint data', () => {
-    const actual = sut.convertToComplaintBody(sampleData.basic)
+    const actual = sut.toComplaintRequest(sampleData.basic)
 
     testBasic(actual)
     expect(actual.data.Richiesta_Testo).toEqual('Domanda finale...')
@@ -57,7 +57,7 @@ describe('Write complaint - Test obj mapping function', () => {
   })
 
   it('Correctly maps all complaint data without quotation code', () => {
-    const actual = sut.convertToComplaintBody(sampleData.allButQuotationCode)
+    const actual = sut.toComplaintRequest(sampleData.allButQuotationCode)
 
     testBasic(actual)
     testExtra(actual)
@@ -65,7 +65,7 @@ describe('Write complaint - Test obj mapping function', () => {
   })
 
   it('Correctly maps all complaint data with quotation code', () => {
-    const actual = sut.convertToComplaintBody(sampleData.all)
+    const actual = sut.toComplaintRequest(sampleData.all)
 
     testBasic(actual)
     testExtra(actual)

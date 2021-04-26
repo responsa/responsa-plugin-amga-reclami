@@ -476,6 +476,29 @@ describe('Create complaint - 400 - fields patterns', () => {
       question: 'Domanda finale...'
     })
   )
+
+  it('400 - fails with another invalid quotationCode', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'gas',
+      code: '11825000002505',
+      email: 'sergio.iacobellis@gmail.com',
+      phone: '+393292225509',
+      isPrivateApplicant: true,
+      firstName: 'Mario',
+      lastName: 'Rossi',
+      fiscalCode: 'cblsrg79m08a662b',
+      businessName: '',
+      vatNumber: '',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      isEnergyyProducer: false,
+      quotationCode: '25123456-',
+      question: 'Domanda finale...'
+    })
+  )
 })
 
 describe('Create complaint - 200 - happy ending', () => {

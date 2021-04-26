@@ -135,7 +135,7 @@ const postRouteSchema = {
       quotationCode: {
         type: 'string',
         nullable: false,
-        pattern: '^25\\d{6}',
+        pattern: '^25\\d{6}$',
         description: 'Quotation code'
       },
       isEnergyProducer: {
@@ -206,7 +206,7 @@ module.exports = async function (fastify) {
     reply.code(200).send({ ...response })
   })
   fastify.post('/', { schema: postRouteSchema }, async (req, reply) => {
-    const response = await zoho.complaints.createNew(writeComplaint.convertToComplaintBody(req.body))
+    const response = await zoho.complaints.createNew(writeComplaint.toComplaintRequest(req.body))
     reply.code(200).send({
       id: response.ID,
       requestId: response.ID_Richiesta
