@@ -43,4 +43,3 @@ module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'validateField500', ...this.validateField500 })
   fastifyInstance.addSchema({ $id: 'validateField503', ...this.validateField503 })
 }
-
