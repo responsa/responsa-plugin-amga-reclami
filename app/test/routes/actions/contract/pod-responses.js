@@ -3,7 +3,8 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Contract address info retrieved successfully',
+        title: 'PODPDRInfoResponse',
+        description: 'The data returned about the informations of a POD/PDR related contract',
         properties: {
           streetName: {
             type: 'string',
@@ -24,7 +25,7 @@ module.exports.code200 = {
       }
     }
   },
-  description: 'Contract address info retrieved successfully'
+  description: 'The data returned about the informations of a POD/PDR related contract'
 }
 
 module.exports.code400 = {

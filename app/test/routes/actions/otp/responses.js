@@ -3,7 +3,8 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Verification code generated successfully',
+        title: 'OTPResponse',
+        description: 'The data returned after requesting an OTP code to be sent to the phone number specified in the request',
         properties: {
           verificationCode: {
             type: 'number',
@@ -14,7 +15,7 @@ module.exports.code200 = {
       }
     }
   },
-  description: 'Verification code generated successfully'
+  description: 'The data returned after requesting an OTP code to be sent to the phone number specified in the request'
 }
 
 module.exports.code400 = {

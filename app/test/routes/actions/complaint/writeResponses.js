@@ -3,29 +3,24 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        title: 'PODPDRInfoResponse',
-        description: 'The data returned about the informations of a POD/PDR related contract',
+        title: 'CreateComplaintResponse',
+        description: 'The data returned after the creation of a new complaint',
         properties: {
-          streetName: {
+          id: {
             type: 'string',
-            description: 'Street name',
-            nullable: true
+            description: 'Record ID',
+            nullable: false
           },
-          streetNumber: {
+          requestId: {
             type: 'string',
-            description: 'Street number',
-            nullable: true
-          },
-          city: {
-            type: 'string',
-            description: 'City',
-            nullable: true
+            description: 'Request ID',
+            nullable: false
           }
         }
       }
     }
   },
-  description: 'The data returned about the informations of a POD/PDR related contract'
+  description: 'The data returned after the creation of a new complaint'
 }
 
 module.exports.code400 = {
@@ -90,38 +85,6 @@ module.exports.code401 = {
     }
   },
   description: 'Unauthorized'
-}
-
-module.exports.code404 = {
-  content: {
-    'application/json': {
-      schema: {
-        type: 'object',
-        description: 'Contract not found',
-        properties: {
-          statusCode: {
-            type: 'integer',
-            format: 'int32',
-            nullable: false
-          },
-          error: {
-            type: 'string',
-            nullable: false
-          },
-          message: {
-            type: 'string',
-            nullable: false
-          },
-          stackTrace: {
-            type: 'string',
-            nullable: true
-          }
-        },
-        additionalProperties: true
-      }
-    }
-  },
-  description: 'Contract not found'
 }
 
 module.exports.code500 = {

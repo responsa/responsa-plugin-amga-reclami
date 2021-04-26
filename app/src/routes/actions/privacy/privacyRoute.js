@@ -5,6 +5,7 @@ const postRouteSchema = {
   tags: ['Privacy Acceptance'],
   summary: 'Acceptance of the user\'s privacy',
   description: 'Execute a post to send acceptance of the user\'s privacy',
+  security: [{ ApiKeyAuth: [] }],
   body: {
     type: 'object',
     required: ['email', 'accepted'],
@@ -45,6 +46,7 @@ const getRouteSchema = {
   tags: ['Read Privacy Acceptance'],
   summary: 'Read acceptance of the user\'s privacy',
   description: 'Execute a get to aquire acceptance of the user\'s privacy',
+  security: [{ ApiKeyAuth: [] }],
   querystring: {
     type: 'object',
     required: ['email'],

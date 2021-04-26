@@ -3,29 +3,14 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        title: 'PODPDRInfoResponse',
-        description: 'The data returned about the informations of a POD/PDR related contract',
+        title: 'Fields Validator Response',
+        description: 'Validation response successfully',
         properties: {
-          streetName: {
-            type: 'string',
-            description: 'Street name',
-            nullable: true
-          },
-          streetNumber: {
-            type: 'string',
-            description: 'Street number',
-            nullable: true
-          },
-          city: {
-            type: 'string',
-            description: 'City',
-            nullable: true
-          }
         }
       }
     }
   },
-  description: 'The data returned about the informations of a POD/PDR related contract'
+  description: 'Validation response successfully'
 }
 
 module.exports.code400 = {
@@ -97,7 +82,7 @@ module.exports.code404 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Contract not found',
+        description: 'Field name not found',
         properties: {
           statusCode: {
             type: 'integer',
@@ -121,8 +106,9 @@ module.exports.code404 = {
       }
     }
   },
-  description: 'Contract not found'
+  description: 'Field name not found'
 }
+
 
 module.exports.code500 = {
   content: {
@@ -154,36 +140,4 @@ module.exports.code500 = {
     }
   },
   description: 'Internal error'
-}
-
-module.exports.code503 = {
-  content: {
-    'application/json': {
-      schema: {
-        type: 'object',
-        description: 'Zoho APIs temporary unavailable',
-        properties: {
-          statusCode: {
-            type: 'integer',
-            format: 'int32',
-            nullable: false
-          },
-          error: {
-            type: 'string',
-            nullable: false
-          },
-          message: {
-            type: 'string',
-            nullable: false
-          },
-          stackTrace: {
-            type: 'string',
-            nullable: true
-          }
-        },
-        additionalProperties: true
-      }
-    }
-  },
-  description: 'Zoho APIs temporary unavailable'
 }

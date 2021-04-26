@@ -3,13 +3,14 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        description: 'Privacy acceptance generated successfully',
+        title: 'AcceptPrivacyResponse',
+        description: 'The response returned when accepting the privacy policy',
         properties: {
         }
       }
     }
   },
-  description: 'Privacy acceptance generated successfully'
+  description: 'The response returned when accepting the privacy policy'
 }
 
 module.exports.code400 = {

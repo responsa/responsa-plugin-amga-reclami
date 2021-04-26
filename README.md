@@ -57,7 +57,109 @@ Output
     content	string
     nullable: true
     Complaint mail content
+}
+```
 
+Complaint
+```
+POST /actions/otp
+Execute a post to send a complaint issue
+```
+
+Input:
+```
+{
+    usage*	string
+    nullable: false
+    Domestic or not domestic
+
+    requestArea* string
+    nullable: false
+    Request area (GAS or Energy)
+
+    code string
+    nullable: true
+    POD or PDR code
+
+    email*	string
+    nullable: false
+    pattern: ^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+    User mail address
+
+    phone*	string
+    nullable: false
+    pattern: ^^\+\d{7,15}$
+    Phone number
+
+    isPrivateApplicant*	boolean
+    nullable: false
+    Determines whether a natural or legal person
+
+    firstName string
+    nullable: false
+    First name
+
+    lastName string
+    nullable: false
+    Last name
+
+    fiscalCode	string
+    nullable: false
+    Fiscal code
+
+    businessName string
+    nullable: false
+    Business name
+
+    vatNumber string
+    nullable: false
+    VAT number
+
+    streetName*	string
+    nullable: false
+    Street name
+
+    streetNumber* string
+    nullable: false
+    Street number
+
+    city* string
+    nullable: false
+    City name
+
+    province* string
+    nullable: false
+    Province name
+
+    quotationCode string
+    nullable: false
+    Quotation code
+
+    isEnergyProducer boolean
+    nullable: false
+    Determines whether is an energy producer or not
+
+    question* string
+    nullable: false
+    Question to send to the bot
+
+}
+(Request Body *required)
+```
+
+Output
+```
+{
+    description: 
+    The data returned after the creation of a new complaint
+    
+    requestId string
+    nullable: false
+    Request ID
+
+    id	string
+    nullable: false
+    Record ID
 }
 ```
 
@@ -86,10 +188,9 @@ Output
     description:	
     Verification code generated successfully
 
-    verificationCode	number
+    verificationCode number
     nullable: true
     Verification code
-
 }
 ```
 
@@ -124,7 +225,6 @@ Output
     city	string
     nullable: true
     City
-
 }
 ```
 
@@ -159,33 +259,31 @@ Output
     city	string
     nullable: true
     City
-
 }
 ```
 
 Privacy Acceptance
 ```
-GET /actions/privacy
-Execute a get to aquire acceptance of the user's privacy
+POST /actions/privacy
+Execute a post to send acceptance of the user's privacy
 ```
 
 Input:
 ```
-email *required
-string
-(query)
-[The user's email address]
+email*	string
+nullable: false
+pattern: ^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+User mail address
+
+accepted*	boolean
+nullable: false
+Flag to indicate whether the user has accepted or not
+
 ```
 
 Output
 ```
 {
-    description:	
-    Privacy acceptance read successfully
-
-    result	boolean
-    nullable: false
-    Flag indicating the existence of privacy acceptance
 
 }
 ```
@@ -213,7 +311,6 @@ Output
     result	boolean
     nullable: false
     Flag indicating the existence of privacy acceptance
-
 }
 ```
 
@@ -241,39 +338,33 @@ Input:
 Output
 ```
 {
-    description:	
-    Privacy acceptance read successfully
-
-    result	boolean
-    nullable: false
-    Flag indicating the existence of privacy acceptance
 
 }
 ```
 
-Privacy Acceptance
+Fields Validator Service
+
 ```
 GET /actions/privacy
-Execute a get to aquire acceptance of the user's privacy
+Validate a predeterminated field base on related regex
 ```
 
 Input:
 ```
-email *required
+fieldName *required
 string
 (query)
-[The user's email address]
+[The field name to validate]
+
+fieldValue *required
+string
+(query)
+[The field name to validate]
 ```
 
 Output
 ```
 {
-    description:	
-    Privacy acceptance read successfully
-    
-    result	boolean
-    nullable: false
-    Flag indicating the existence of privacy acceptance
 
 }
 ```

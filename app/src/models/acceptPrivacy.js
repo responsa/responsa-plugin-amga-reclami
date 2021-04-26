@@ -2,6 +2,9 @@ const genericErrors = require('./genericErrors')
 
 module.exports.acceptPrivacy = {
   type: 'object',
+  addToSwagger: true,
+  title: 'AcceptPrivacyResponse',
+  description: 'The response returned when accepting the privacy policy',
   properties: {
   }
 }
@@ -27,12 +30,13 @@ module.exports.addSchemas = (fastifyInstance) => {
 }
 
 module.exports.buildRequest = (email, accepted) => {
+  const currentDate = Date.now()
   return {
     data: {
       Cliente_email: email,
       Consenso: accepted ? 'SI' : 'NO',
-      added_Time: Date.now(),
-      modified_Time: Date.now()
+      added_Time: currentDate,
+      modified_Time: currentDate
     }
   }
 }

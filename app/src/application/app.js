@@ -12,6 +12,8 @@ const acceptPrivacy = require('../models/acceptPrivacy')
 const readPrivacy = require('../models/readPrivacy')
 const contract = require('../models/contract')
 const complaint = require('../models/complaint')
+const writeComplaint = require('../models/writeComplaint')
+const fieldsValidator = require('../models/fieldsValidator')
 
 const addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({
@@ -32,6 +34,8 @@ const addSchemas = (fastifyInstance) => {
   readPrivacy.addSchemas(fastifyInstance)
   contract.addSchemas(fastifyInstance)
   complaint.addSchemas(fastifyInstance)
+  writeComplaint.addSchemas(fastifyInstance)
+  fieldsValidator.addSchemas(fastifyInstance)
 }
 
 const createServer = (opts, customElastic) => {

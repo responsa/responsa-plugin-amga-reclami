@@ -9,6 +9,10 @@ const printError = (response) => {
     if (response.data.description) {
       return response.data.description
     }
+
+    if (response.data.error) {
+      return JSON.stringify(response.data.error)
+    }
   }
 
   return 'Generic error'
