@@ -4,7 +4,7 @@ const fieldsValidator = require('../../../models/fieldsValidator')
 const schema = {
   tags: ['Fields Validator Service'],
   summary: 'Validate a fields',
-  description: 'Validate a predeterminated fields base on related regex',
+  description: 'Validate a predeterminated field base on related regex',
   security: [{ ApiKeyAuth: [] }],
   querystring: {
     type: 'object',

@@ -341,3 +341,30 @@ Output
 
 }
 ```
+
+Fields Validator Service
+
+```
+GET /actions/privacy
+Validate a predeterminated field base on related regex
+```
+
+Input:
+```
+fieldName *required
+string
+(query)
+[The field name to validate]
+
+fieldValue *required
+string
+(query)
+[The field name to validate]
+```
+
+Output
+```
+{
+
+}
+```
