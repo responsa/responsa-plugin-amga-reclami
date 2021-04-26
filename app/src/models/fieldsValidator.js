@@ -1,7 +1,7 @@
 const genericErrors = require('./genericErrors')
 
 const fieldsMapper = {
-  quotationCode: '^25\\d{6}'
+  quotationCode: '^25\\d{6}$'
 }
 
 module.exports.validateField = {
@@ -18,7 +18,7 @@ module.exports.validate = (fieldName, fieldValue) => {
     return null
   } else {
     const result = fieldValue.match(fieldsMapper[fieldName])
-    return result !== null && result.length === 1 && result[0] === fieldValue
+    return result !== null
   }
 }
 
