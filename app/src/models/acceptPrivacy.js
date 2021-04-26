@@ -30,12 +30,13 @@ module.exports.addSchemas = (fastifyInstance) => {
 }
 
 module.exports.buildRequest = (email, accepted) => {
+  const currentDate = Date.now()
   return {
     data: {
       Cliente_email: email,
       Consenso: accepted ? 'SI' : 'NO',
-      added_Time: Date.now(),
-      modified_Time: Date.now()
+      added_Time: currentDate,
+      modified_Time: currentDate
     }
   }
 }
