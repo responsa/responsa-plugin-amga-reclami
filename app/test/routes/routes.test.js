@@ -17,6 +17,28 @@ describe('Auth: x-secret', () => {
     await verify401(helper.doGet(sut, '/actions/complaint?id=0&extended=true', helper.requiredHeaders401))
   })
 
+  it('[POST] /actions/complaint fails with 401 without x-secret header', async () => {
+    const sut = await helper.setupTestEnvironment()
+    await verify401(helper.doPost(sut, '/actions/complaint',
+      {
+        usage: 'domestic',
+        requestArea: 'gas',
+        email: 'mail@mail.it',
+        phone: '+393292225509',
+        isPrivateApplicant: true,
+        streetName: 'via euris',
+        streetNumber: '10',
+        city: 'Roma',
+        province: 'Lazio',
+        question: 'ask',
+        code: '11825000002505',
+        firstName: 'gio',
+        lastName: 'iaco',
+        fiscalCode: 'cblsrg79m08a662b'
+      },
+      helper.requiredHeaders401))
+  })
+
   it('[GET] /actions/contract/pdr fails with 401 without x-secret header', async () => {
     const sut = await helper.setupTestEnvironment()
     await verify401(helper.doGet(sut, '/actions/pdr?code=11825000002472', helper.requiredHeaders401))
@@ -35,5 +57,10 @@ describe('Auth: x-secret', () => {
   it('[POST] /actions/privacy fails with 401 without x-secret header', async () => {
     const sut = await helper.setupTestEnvironment()
     await verify401(helper.doPost(sut, '/actions/privacy', { email: 'mail@provider.com', accepted: true }, helper.requiredHeaders401))
+  })
+
+  it('[GET] /actions/fieldsValidator fails with 401 without x-secret header', async () => {
+    const sut = await helper.setupTestEnvironment()
+    await verify401(helper.doGet(sut, '/actions/fieldsValidator?fieldName=x&fieldValue=y', helper.requiredHeaders401))
   })
 })
