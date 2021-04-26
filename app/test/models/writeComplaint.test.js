@@ -73,24 +73,26 @@ describe('Write complaint - Test obj mapping function', () => {
   })
 })
 
-it('Correctly format date input', () => {
-  const currentDate = new Date(2021, 3, 23, 18, 0, 5)
-  const actual = sut.formatDate(currentDate)
+describe('Write complaint - date funcionts', () => {
+  it('Correctly format date input', () => {
+    const currentDate = new Date(2021, 3, 23, 18, 0, 5)
+    const actual = sut.formatDate(currentDate)
 
-  expect(actual).not.toBeNull()
-  expect(actual).toEqual('23-04-2021 18:00:05')
-})
+    expect(actual).not.toBeNull()
+    expect(actual).toEqual('23-04-2021 18:00:05')
+  })
 
-it('Correctly add days with date and days input', () => {
-  const initialDate = new Date()
-  const actual = sut.addDays(initialDate, 1)
+  it('Correctly add days with date and days input', () => {
+    const initialDate = new Date()
+    const actual = sut.addDays(initialDate, 1)
 
-  const diffTime = Math.abs(actual - initialDate)
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    const diffTime = Math.abs(actual - initialDate)
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
 
-  expect(actual).not.toBeNull()
-  expect(actual).not.toEqual(initialDate)
-  expect(diffDays).toEqual(1)
+    expect(actual).not.toBeNull()
+    expect(actual).not.toEqual(initialDate)
+    expect(diffDays).toEqual(1)
+  })
 })
 
 const testBasic = (actual) => {
