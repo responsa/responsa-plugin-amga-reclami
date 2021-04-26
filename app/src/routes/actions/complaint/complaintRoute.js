@@ -206,7 +206,7 @@ module.exports = async function (fastify) {
     reply.code(200).send({ ...response })
   })
   fastify.post('/', { schema: postRouteSchema }, async (req, reply) => {
-    const response = await zoho.complaints.createNew(writeComplaint.convertToComplaintBody(req.body))
+    const response = await zoho.complaints.createNew(writeComplaint.toComplaintRequest(req.body))
     reply.code(200).send({
       id: response.ID,
       requestId: response.ID_Richiesta
