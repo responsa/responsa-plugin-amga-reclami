@@ -1,6 +1,6 @@
 require('jest-extended')
 const helper = require('../../../helper')
-const responses = require('./responsens')
+const responses = require('./responses')
 
 describe('Fields validator', () => {
   it('Fields Validator - answers correctly', async () => {

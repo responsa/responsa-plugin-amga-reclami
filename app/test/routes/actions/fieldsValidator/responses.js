@@ -109,7 +109,6 @@ module.exports.code404 = {
   description: 'Field name not found'
 }
 
-
 module.exports.code500 = {
   content: {
     'application/json': {
