@@ -1,5 +1,5 @@
-require('../../../models/fieldsValidator')
-const fieldsValidator = require('../../../models/fieldsValidator')
+require('../../../models/validation')
+const validation = require('../../../models/validation')
 
 const schema = {
   tags: ['Fields Validator Service'],
@@ -16,33 +16,32 @@ const schema = {
   },
   response: {
     200: {
-      $ref: 'validateField200#'
+      $ref: 'validation200#'
     },
     400: {
-      $ref: 'validateField400#'
+      $ref: 'validation400#'
     },
     404: {
-      $ref: 'validateField404#'
+      $ref: 'validation404#'
     },
     401: {
-      $ref: 'validateField401#'
+      $ref: 'validation401#'
     },
     500: {
-      $ref: 'validateField500#'
+      $ref: 'validation500#'
     }
   }
 }
 
 module.exports = async function (fastify) {
   fastify.get('/', { schema: schema }, async (req, reply) => {
-    const isValidated = fieldsValidator.validate(req.query.fieldName, req.query.fieldValue)
+    const isValidated = validation.validate(req.query.fieldName, req.query.fieldValue)
 
     if (isValidated === null) {
       reply.code(404).send({
       })
     }
 
-    reply.code(isValidated ? 200 : 400).send({
-    })
+    reply.code(isValidated ? 200 : 400).send({})
   })
 }

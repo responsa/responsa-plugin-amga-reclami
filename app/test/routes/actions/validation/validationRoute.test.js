@@ -4,7 +4,7 @@ const responses = require('./responses')
 
 describe('Fields validator', () => {
   it('Fields Validator - answers correctly', async () => {
-    helper.checkResponses('/actions/fieldsValidator', responses, 'get')
+    helper.checkResponses('/actions/validation', responses, 'get')
   })
 
   it('Field Validator - quotationCode answers 200 with right validation', async () => {
@@ -12,7 +12,7 @@ describe('Fields validator', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/fieldsValidator?fieldName=quotationCode&fieldValue=25111111',
+      'actions/validation?fieldName=quotationCode&fieldValue=25111111',
       helper.requiredHeaders
     )
 
@@ -23,7 +23,7 @@ describe('Fields validator', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/fieldsValidator?fieldName=quotationCode&fieldValue=25111111-x',
+      'actions/validation?fieldName=quotationCode&fieldValue=25111111-x',
       helper.requiredHeaders
     )
 
@@ -35,7 +35,7 @@ describe('Fields validator', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/fieldsValidator?fieldName=inexisting&fieldValue=25111111',
+      'actions/validation?fieldName=inexisting&fieldValue=25111111',
       helper.requiredHeaders
     )
 

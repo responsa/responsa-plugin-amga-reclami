@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "npm run lint && npm run jest",
-    "lint": "standard ./src/ && standard ./test/ ",
+    "lint": "standard ./src/ && standard ./test/",
+    "lint:fix": "standard ./src/ --fix && standard ./test/ --fix",
     "jest": "jest --detectOpenHandles --watchAll",
     "jest:coverage": "jest --coverage=true --coverageReporters=\"text-summary\"",
     "jest:ci": "jest --forceExit --ci --testResultsProcessor=jest-multiple-result-processors --coverage=true",
