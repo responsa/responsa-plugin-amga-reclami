@@ -5,7 +5,7 @@ module.exports = {
   elasticUri: 'https://localhost:9200',
   elasticUser: 'newboss',
   elasticPassword: 'newboss',
-  elasticIndex: 'responsa-plugin-amga-reclami',
+  elasticIndex: 'some-index',
   awsSmsService: {
     gatewayUrl: process.env.OTP_GATEWAY_URL,
     apiKey: process.env.OTP_API_KEY,
