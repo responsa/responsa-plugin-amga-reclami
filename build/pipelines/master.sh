@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e # stops on first error
 
+/_/build/scripts/set-core-repository.sh
+
 /_/build/scripts/build-unit-test.sh
 
 /_/build/scripts/prepare-bundle.sh
