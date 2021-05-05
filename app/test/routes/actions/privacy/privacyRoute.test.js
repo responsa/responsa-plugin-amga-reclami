@@ -13,7 +13,7 @@ describe('Privacy Acceptance - POST', () => {
     const response = await helper.doPost(
       sut,
       'actions/privacy',
-      { email: 'mail@provider.com', accepted: true },
+      { email: 'euris@test.com', accepted: true },
       helper.requiredHeaders
     )
     expect(response.statusCode).toEqual(200)
@@ -54,7 +54,7 @@ describe('Privacy Acceptance - GET', () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doGet(
       sut,
-      'actions/privacy?email=sergio.79@libero.it',
+      'actions/privacy?email=euris@test.com',
       helper.requiredHeaders
     )
     expect(response.statusCode).toEqual(200)

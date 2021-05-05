@@ -511,8 +511,8 @@ describe('Create complaint - 200 - happy ending', () => {
       email: 'sergio.iacobellis@gmail.com',
       phone: '+393292225509',
       isPrivateApplicant: true,
-      firstName: 'Mario',
-      lastName: 'Rossi',
+      firstName: 'Test',
+      lastName: 'Euris',
       fiscalCode: 'cblsrg79m08a662b',
       businessName: '',
       vatNumber: '',
@@ -522,7 +522,7 @@ describe('Create complaint - 200 - happy ending', () => {
       province: 'Emilia Romagna',
       quotationCode: '25123456',
       isEnergyyProducer: false,
-      question: 'Domanda finale...'
+      question: 'Test Euris: questo è un test del Team degli sviluppatori software Euris'
     }
 
     const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
@@ -541,15 +541,15 @@ describe('Create complaint - 200 - happy ending', () => {
       email: 'sergio.iacobellis@gmail.com',
       phone: '+393292225509',
       isPrivateApplicant: true,
-      firstName: 'Mario',
-      lastName: 'Rossi',
+      firstName: 'Test',
+      lastName: 'Euris',
       fiscalCode: 'cblsrg79m08a662b',
       streetName: 'via nomeVia',
       streetNumber: '1',
       city: 'Bologna',
       province: 'Emilia Romagna',
       quotationCode: '25123456',
-      question: 'Domanda finale...'
+      question: 'Test Euris: questo è un test del Team degli sviluppatori software Euris'
     }
 
     const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
@@ -568,7 +568,7 @@ describe('Create complaint - 200 - happy ending', () => {
       email: 'sergio.iacobellis@gmail.com',
       phone: '+393292225509',
       isPrivateApplicant: false,
-      businessName: 'nome azienda',
+      businessName: 'Euris Test',
       vatNumber: '01079320329',
       streetName: 'via nomeVia',
       streetNumber: '1',
@@ -576,7 +576,7 @@ describe('Create complaint - 200 - happy ending', () => {
       province: 'Emilia Romagna',
       quotationCode: '25123456',
       isEnergyyProducer: false,
-      question: 'Domanda finale...'
+      question: 'Test Euris: questo è un test del Team degli sviluppatori software Euris'
     }
 
     const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
@@ -595,15 +595,15 @@ describe('Create complaint - 200 - happy ending', () => {
       email: 'sergio.iacobellis@gmail.com',
       phone: '+393292225509',
       isPrivateApplicant: true,
-      firstName: 'Mario',
-      lastName: 'Rossi',
+      firstName: 'Test',
+      lastName: 'Euris',
       fiscalCode: 'cblsrg79m08a662b',
       streetName: 'via nomeVia',
       streetNumber: '1',
       city: 'Bologna',
       province: 'Emilia Romagna',
       quotationCode: '25123456',
-      question: 'Domanda finale...',
+      question: 'Test Euris: questo è un test del Team degli sviluppatori software Euris',
       isEnergyProducer: true
     }
 
@@ -623,14 +623,14 @@ describe('Create complaint - 200 - happy ending', () => {
       email: 'sergio.iacobellis@gmail.com',
       phone: '+393292225509',
       isPrivateApplicant: false,
-      businessName: 'nome azienda',
+      businessName: 'Euris Test',
       vatNumber: '01079320329',
       streetName: 'via nomeVia',
       streetNumber: '1',
       city: 'Bologna',
       province: 'Emilia Romagna',
       quotationCode: '25123456',
-      question: 'Domanda finale...',
+      question: 'Test Euris: questo è un test del Team degli sviluppatori software Euris',
       isEnergyProducer: true
     }
 
