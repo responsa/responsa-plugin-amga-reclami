@@ -24,7 +24,7 @@ module.exports.code200 = {
           email: {
             type: 'string',
             description: 'Mail address complaint was sent to',
-            nullable: true
+            nullable: false
           },
           subject: {
             type: 'string',

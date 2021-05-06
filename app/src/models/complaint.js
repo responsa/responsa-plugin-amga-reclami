@@ -26,7 +26,7 @@ module.exports.complaint = {
     email: {
       type: 'string',
       description: 'Mail address complaint was sent to',
-      nullable: true
+      nullable: false
     },
     subject: {
       type: 'string',
@@ -66,6 +66,7 @@ module.exports.addSchemas = (fastifyInstance) => {
 module.exports.infos = (data, extended) => {
   const output = {}
   output.status = (!extended) ? (data.Stato_Richiesta_Cliente ?? DEFAULT_STATO_RICHIESTA_CLIENTE) : data.Stato
+  output.email = data.Email_Inserimento
 
   if (extended) {
     output.department = data.Assegnato_A
@@ -74,7 +75,6 @@ module.exports.infos = (data, extended) => {
 
   if (data.Stato !== 'CHIUSO') return output
 
-  output.email = data.Email_Inserimento
   output.subject = data.Risposta_Oggetto
   output.content = data.Risposta_Testo
 
