@@ -135,7 +135,7 @@ const postRouteSchema = {
       quotationCode: {
         type: 'string',
         nullable: true,
-        pattern: '^25\\d{6}$',
+        pattern: '^$|25\\d{6}$',
         description: 'Quotation code'
       },
       isEnergyProducer: {
