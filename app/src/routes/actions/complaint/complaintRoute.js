@@ -140,7 +140,7 @@ const postRouteSchema = {
       },
       isEnergyProducer: {
         type: 'boolean',
-        nullable: false,
+        nullable: true,
         description: 'Determines whether is an energy producer or not'
       },
       question: {
