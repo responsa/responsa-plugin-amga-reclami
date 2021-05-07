@@ -6,13 +6,15 @@ describe('PODPDR', () => {
     const zohoRes = [{
       Nome_della_strada: 'street name',
       Numero_civico: 'street number',
+      Nome_ISTAT_del_comune: 'city name',
       Nome_ISTAT_della_provincia: 'province name'
     }]
     const actual = sut(zohoRes)
     expect(actual).not.toBeNull()
     expect(actual.streetName).toEqual('street name')
     expect(actual.streetNumber).toEqual('street number')
-    expect(actual.city).toEqual('province name')
+    expect(actual.city).toEqual('city name')
+    expect(actual.province).toEqual('province name')
   })
 
   it('PODPDR - returns null if zoho response has empty data array', () => {

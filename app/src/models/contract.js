@@ -20,6 +20,11 @@ module.exports.podpdr = {
       type: 'string',
       description: 'City',
       nullable: true
+    },
+    province: {
+      type: 'string',
+      description: 'Province',
+      nullable: true
     }
   }
 }
@@ -94,7 +99,8 @@ module.exports.parseZohoResponse = (data) => {
       return {
         streetName: contract.Nome_della_strada,
         streetNumber: contract.Numero_civico,
-        city: contract.Nome_ISTAT_della_provincia
+        city: contract.Nome_ISTAT_del_comune,
+        province: contract.Nome_ISTAT_della_provincia
       }
     }
   }
