@@ -22,6 +22,7 @@ describe('POD', () => {
     expect(addrInfo.streetName).toEqual('VIA DEL REFOSCO')
     expect(addrInfo.streetNumber).toEqual('17')
     expect(addrInfo.city).toEqual('TRIESTE')
+    expect(addrInfo.province).toEqual('TRIESTE')
   })
 
   it('POD - answers 400 without code query param', async () => {
@@ -115,7 +116,8 @@ describe('PDR', () => {
     const addrInfo = JSON.parse(response.body)
     expect(addrInfo.streetName).toEqual('PIAZZA INSURREZIONE')
     expect(addrInfo.streetNumber).toEqual('10')
-    expect(addrInfo.city).toEqual('PADOVA')
+    expect(addrInfo.city).toEqual('CADONEGHE')
+    expect(addrInfo.province).toEqual('PADOVA')
   })
 
   it('PDR - answers 400 without code query param', async () => {
