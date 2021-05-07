@@ -59,7 +59,8 @@ const checkComplaintInfos = (outputComplaint, expectedComplaint) => {
 describe('Complaint - Info building', () => {
   it('builds open complaint infos in basic format', () => {
     const expected = {
-      status: openComplaint.Stato_Richiesta_Cliente
+      status: openComplaint.Stato_Richiesta_Cliente,
+      email: openComplaint.Email_Inserimento
     }
     const actual = sut.infos(openComplaint, false)
     checkComplaintInfos(actual, expected)
@@ -68,6 +69,7 @@ describe('Complaint - Info building', () => {
   it('builds open complaint infos in extended format', () => {
     const expected = {
       status: openComplaint.Stato,
+      email: openComplaint.Email_Inserimento,
       department: openComplaint.Assegnato_A,
       assignee: openComplaint.Assegnatario_ALTRO
     }
@@ -76,7 +78,8 @@ describe('Complaint - Info building', () => {
   })
   it('builds open stc complaint infos in basic format', () => {
     const expected = {
-      status: openStcComplaint.Stato_Richiesta_Cliente
+      status: openStcComplaint.Stato_Richiesta_Cliente,
+      email: openStcComplaint.Email_Inserimento
     }
     const actual = sut.infos(openStcComplaint, false)
     checkComplaintInfos(actual, expected)
@@ -85,6 +88,7 @@ describe('Complaint - Info building', () => {
   it('builds open stc complaint infos in extended format', () => {
     const expected = {
       status: openStcComplaint.Stato,
+      email: openStcComplaint.Email_Inserimento,
       department: openStcComplaint.Assegnato_A,
       assignee: openStcComplaint.Assegnatario_STC
     }
