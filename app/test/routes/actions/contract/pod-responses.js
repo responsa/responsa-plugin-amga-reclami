@@ -20,6 +20,11 @@ module.exports.code200 = {
             type: 'string',
             description: 'City',
             nullable: true
+          },
+          province: {
+            type: 'string',
+            description: 'Province',
+            nullable: true
           }
         }
       }
