@@ -110,6 +110,7 @@ module.exports.toComplaintRequest = (row) => {
     Servizio: this.mappers.requestArea(row.requestArea),
     Telefono_Richiedente: row.phone,
     Tipologia_Richiedente: this.mappers.isPrivateApplicant(row.isPrivateApplicant),
+    Email_Inserimento: row.email,
     Indirizzo_Fornitura: {
       address_line_12: `${row.streetName}, ${row.streetNumber}`,
       district_city2: row.city,
