@@ -139,7 +139,7 @@ const sampleData = {
   basic: {
     usage: 'domestic',
     requestArea: 'gas',
-    email: 'sergio.iacobellis@gmail.com',
+    email: 'euris@test.com',
     phone: '+393292225509',
     isPrivateApplicant: true,
     streetName: 'via nomeVia',
@@ -151,7 +151,7 @@ const sampleData = {
   allButQuotationCode: {
     usage: 'domestic',
     requestArea: 'gas',
-    email: 'sergio.iacobellis@gmail.com',
+    email: 'euris@test.com',
     phone: '+393292225509',
     firstName: 'nome',
     lastName: 'cognome',
@@ -169,7 +169,7 @@ const sampleData = {
   all: {
     usage: 'domestic',
     requestArea: 'gas',
-    email: 'sergio.iacobellis@gmail.com',
+    email: 'euris@test.com',
     phone: '+393292225509',
     firstName: 'nome',
     lastName: 'cognome',

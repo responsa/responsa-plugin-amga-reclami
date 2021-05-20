@@ -71,7 +71,7 @@ describe('Create complaint - 400 - basic fields', () => {
   it('400 - fails without usage', async () =>
     expect400({
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -85,7 +85,7 @@ describe('Create complaint - 400 - basic fields', () => {
   it('400 - fails without requestArea', async () =>
     expect400({
       usage: 'domestic',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -114,7 +114,7 @@ describe('Create complaint - 400 - basic fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       isPrivateApplicant: true,
       streetName: 'via sample',
       streetNumber: '1',
@@ -128,7 +128,7 @@ describe('Create complaint - 400 - basic fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       streetName: 'via sample',
       streetNumber: '1',
@@ -142,7 +142,7 @@ describe('Create complaint - 400 - basic fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetNumber: '1',
@@ -156,7 +156,7 @@ describe('Create complaint - 400 - basic fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -170,7 +170,7 @@ describe('Create complaint - 400 - basic fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -184,7 +184,7 @@ describe('Create complaint - 400 - basic fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -198,7 +198,7 @@ describe('Create complaint - 400 - basic fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -214,7 +214,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -230,7 +230,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -246,7 +246,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -262,7 +262,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: false,
       streetName: 'via sample',
@@ -277,7 +277,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: false,
       streetName: 'via sample',
@@ -293,7 +293,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -310,7 +310,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -327,7 +327,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -344,7 +344,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: true,
       streetName: 'via sample',
@@ -361,7 +361,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: false,
       streetName: 'via sample',
@@ -377,7 +377,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: false,
       streetName: 'via sample',
@@ -393,7 +393,7 @@ describe('Create complaint - 400 - conditional fields', () => {
     expect400({
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393290000000',
       isPrivateApplicant: false,
       streetName: 'via sample',
@@ -436,7 +436,7 @@ describe('Create complaint - 400 - fields patterns', () => {
       usage: 'domestic',
       requestArea: 'gas',
       code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+395509abcd',
       isPrivateApplicant: true,
       firstName: 'Mario',
@@ -459,7 +459,7 @@ describe('Create complaint - 400 - fields patterns', () => {
       usage: 'domestic',
       requestArea: 'gas',
       code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393292225509',
       isPrivateApplicant: true,
       firstName: 'Mario',
@@ -482,7 +482,7 @@ describe('Create complaint - 400 - fields patterns', () => {
       usage: 'domestic',
       requestArea: 'gas',
       code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393292225509',
       isPrivateApplicant: true,
       firstName: 'Mario',
@@ -508,7 +508,7 @@ describe('Create complaint - 200 - happy ending', () => {
       usage: 'domestic',
       requestArea: 'gas',
       code: '11825000002505',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393292225509',
       isPrivateApplicant: true,
       firstName: 'Test',
@@ -538,7 +538,7 @@ describe('Create complaint - 200 - happy ending', () => {
     const bodyObj = {
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393292225509',
       isPrivateApplicant: true,
       firstName: 'Test',
@@ -565,7 +565,7 @@ describe('Create complaint - 200 - happy ending', () => {
     const bodyObj = {
       usage: 'domestic',
       requestArea: 'gas',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393292225509',
       isPrivateApplicant: false,
       businessName: 'Euris Test',
@@ -592,7 +592,7 @@ describe('Create complaint - 200 - happy ending', () => {
     const bodyObj = {
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393292225509',
       isPrivateApplicant: true,
       firstName: 'Test',
@@ -620,7 +620,7 @@ describe('Create complaint - 200 - happy ending', () => {
     const bodyObj = {
       usage: 'domestic',
       requestArea: 'energy',
-      email: 'sergio.iacobellis@gmail.com',
+      email: 'euris@test.com',
       phone: '+393292225509',
       isPrivateApplicant: false,
       businessName: 'Euris Test',
