@@ -368,3 +368,67 @@ Output
 
 }
 ```
+
+
+Counter Self Reading
+```
+POST /actions/counterSelfReading
+Execute a post to send a counter self reading
+```
+
+Input:
+```
+requestArea*  string
+nullable: false
+Area of interest (gas, energy, water)
+
+counterType*  string
+nullable: false
+Type of counter (digital for energy only, electromechanical for all others)
+
+code*  string
+nullable: false
+Code of POD/PDR/WATER
+
+value1*  string
+nullable: false
+Counter value
+
+photo1  string
+nullable: true
+Photo of counter
+
+value2  string
+nullable: true
+Counter value
+
+photo2  string
+nullable: true
+Photo of counter
+
+value3  string
+nullable: true
+Counter value
+
+photo3  string
+nullable: true
+Photo of counter
+
+phone*	string
+nullable: false
+pattern: ^^\\+\\d{7,15}$
+User phone number
+
+email*	string
+nullable: false
+pattern: ^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$
+User mail address
+
+```
+
+Output
+```
+{
+   id
+}
+```
