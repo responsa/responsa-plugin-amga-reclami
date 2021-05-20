@@ -69,4 +69,15 @@ describe('Zoho APIs', () => {
         () => sut.getRecordByQuery(validTarget, conditions))
     })
   })
+
+  describe('Create Request builder', () => {
+    it('correctly create request with multi part', async () => {
+      const actual = await sut.createRequestBuilder('POST', 'URL', {}, true)
+      expect(actual).toBeDefined()
+      expect(actual).toBeObject()
+      expect(actual).not.toBeEmpty()
+      expect(actual.headers['Content-Type']).toBeDefined()
+      expect(actual.headers['Content-Type']).not.toBeNull()
+    })
+  })
 })

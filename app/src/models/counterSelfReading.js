@@ -1,9 +1,11 @@
 const genericErrors = require('./genericErrors')
 
 const STATE = 'DA VALIDARE'
-
-// const DIGITAL_COUNTER_TYPE = 'DIGITALE'
-// const ELECTROMECHANICAL_COUNTER_TYPE = 'ELETTROMECCANICO'
+const WATER_AREA = 'ACQUA'
+const ENERGY_AREA = 'ENERGIA'
+const GAS_AREA = 'GAS'
+const DIGITAL_COUNTER_TYPE = 'DIGITALE'
+const ELECTROMECHANICAL_COUNTER_TYPE = 'ELETTROMECCANICO'
 
 module.exports.postRouteSchema = {
   tags: ['Counter Self Reading'],
@@ -127,13 +129,36 @@ module.exports.addSchemas = (fastifyInstance) => {
 }
 
 module.exports.toSelfReadingRequest = (row) => {
+  let requestArea = null
+  switch (row.requestArea) {
+    case 'energy':
+      requestArea = ENERGY_AREA
+      break
+    case 'gas':
+      requestArea = GAS_AREA
+      break
+    case 'water':
+      requestArea = WATER_AREA
+      break
+  }
+
+  let counterType = null
+  switch (row.counterType) {
+    case 'digital':
+      counterType = DIGITAL_COUNTER_TYPE
+      break
+    case 'electromechanical':
+      counterType = ELECTROMECHANICAL_COUNTER_TYPE
+      break
+  }
+
   return {
     data: {
       Stato: STATE,
-      Tipologia_Utenza: row.requestArea,
+      Tipologia_Utenza: requestArea,
       Codice_Utenza: row.code,
       Cellulare: row.phone,
-      Tipologia_Contatore: row.counterType,
+      Tipologia_Contatore: counterType,
       Email: row.email,
       Valore_1: row.value1,
       Foto_autolettura_1: row.photo1,
@@ -162,40 +187,6 @@ module.exports.toZohoFieldName = (fieldName) => {
   }
   return result
 }
-
-// module.exports.createFile = async (fileUri) => {
-//   const fs = require('fs')
-//   const client = require('axios').default
-//   const imgFromUrl = await client.get(fileUri, { responseType: 'arraybuffer' })
-//   const fileName = 'C:/temp/file.jpg' // todo -> get unique filename on temp path
-//   fs.open(fileName, 'w', (err, fd) => {
-//     if (err) {
-//       throw new Error('Could not open file: ' + err)
-//     }
-//     fs.write(fd, imgFromUrl.data, 0, imgFromUrl.data.length, null, (err) => {
-//       if (err) throw new Error(`Error writing file: ' ${err}`)
-//       fs.close(fd, async () => {
-//         return fileName
-//       })
-//     })
-//   })
-// }
-
-// module.exports.deleteFile = (fileName) => {
-//   const fs = require('fs')
-//   if (fs.existsSync(fileName)) {
-//     const maxLoop = 10
-//     let currentLoop = 1
-//     while (currentLoop < maxLoop) {
-//       try {
-//         fs.unlinkSync(fileName)
-//         return
-//       } catch {
-//         currentLoop++
-//       }
-//     }
-//   }
-// }
 
 module.exports.getFileExtension = (fileName) => {
   const ext = require('path').extname(fileName || '').split('.')

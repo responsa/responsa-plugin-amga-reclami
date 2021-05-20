@@ -31,5 +31,10 @@ describe('App', () => {
     expect(config.awsSmsService.apiKey.length).toBeGreaterThan(0)
     expect(config.awsSmsService.fromField).toBeDefined()
     expect(config.awsSmsService.fromField.length).toBeGreaterThan(0)
+
+    expect(config.zoho.counterSelfReadingPostTarget).toBeDefined()
+    expect(config.zoho.counterSelfReadingPostTarget.length).toBeGreaterThan(0)
+    expect(config.zoho.counterSelfReadingUploadFileTarget).toBeDefined()
+    expect(config.zoho.counterSelfReadingUploadFileTarget.length).toBeGreaterThan(0)
   })
 })

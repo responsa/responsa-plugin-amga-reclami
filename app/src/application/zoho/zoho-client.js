@@ -8,12 +8,12 @@ const sendCreatorRequest = async (method, target, data, isMultiPart) => {
   let response = null
   let error = null
   try {
-    response = await axios.request(createRequestBuilder(method, target, data, isMultiPart))
+    response = await axios.request(this.createRequestBuilder(method, target, data, isMultiPart))
   } catch (err) {
     if (err.response && err.response.status === 401) {
       await zohoAuth.refreshAccessToken()
       try {
-        response = await axios.request(createRequestBuilder(method, target, data, isMultiPart))
+        response = await axios.request(this.createRequestBuilder(method, target, data, isMultiPart))
       } catch (errInner) {
         error = createZohoError(errInner.response, errInner.response.status)
       }
@@ -32,7 +32,7 @@ const sendCreatorRequest = async (method, target, data, isMultiPart) => {
   return response.data.data
 }
 
-const createRequestBuilder = (method, target, data, isMultiPart) => {
+module.exports.createRequestBuilder = (method, target, data, isMultiPart) => {
   const result = requestBuilder(method, target, data)
   if (isMultiPart) {
     result.headers['Content-Type'] = `multipart/form-data; boundary=${data._boundary}`
