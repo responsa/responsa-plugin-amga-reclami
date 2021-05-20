@@ -27,8 +27,8 @@ module.exports = {
     podpdrGetTarget: 'report/PODPDR_Report',
     privacyGetTarget: 'report/Privacy_Report',
     privacyPostTarget: 'form/Privacy',
-    counterSelfReadingPostTarget: 'form/AutoLetture',
-    counterSelfReadingUploadFileTarget: 'report/AutoLetture_Report'
+    selfReadingPostTarget: 'form/AutoLetture',
+    selfReadingUploadFileTarget: 'report/AutoLetture_Report'
   },
   servers: [
     { url: 'server1 url', description: 'server1 description' },

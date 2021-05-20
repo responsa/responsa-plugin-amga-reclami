@@ -8,7 +8,7 @@ const DIGITAL_COUNTER_TYPE = 'DIGITALE'
 const ELECTROMECHANICAL_COUNTER_TYPE = 'ELETTROMECCANICO'
 
 module.exports.postRouteSchema = {
-  tags: ['Counter Self Reading'],
+  tags: ['Self Reading'],
   summary: 'Declaration of gauge counter value',
   description: 'Execute a post to send a value of counter',
   security: [{ ApiKeyAuth: [] }],
@@ -77,27 +77,27 @@ module.exports.postRouteSchema = {
   },
   response: {
     200: {
-      $ref: 'counterSelfReading200#'
+      $ref: 'selfReading200#'
     },
     400: {
-      $ref: 'counterSelfReading400#'
+      $ref: 'selfReading400#'
     },
     401: {
-      $ref: 'counterSelfReading401#'
+      $ref: 'selfReading401#'
     },
     500: {
-      $ref: 'counterSelfReading500#'
+      $ref: 'selfReading500#'
     },
     503: {
-      $ref: 'counterSelfReading503#'
+      $ref: 'selfReading503#'
     }
   }
 }
 
-module.exports.counterSelfReading = {
+module.exports.selfReading = {
   type: 'object',
   addToSwagger: true,
-  title: 'CounterSelfReadingResponse',
+  title: 'SelfReadingResponse',
   description: 'The response returned when write counter value',
   properties: {
     id: {
@@ -108,24 +108,24 @@ module.exports.counterSelfReading = {
   }
 }
 
-module.exports.counterSelfReading200 = {
+module.exports.selfReading200 = {
   type: 'object',
-  description: 'Counter self reading generated successfully',
-  $ref: 'counterSelfReading#'
+  description: 'Self Reading generated successfully',
+  $ref: 'selfReading#'
 }
 
-module.exports.counterSelfReading400 = genericErrors.generic400
-module.exports.counterSelfReading401 = genericErrors.generic401
-module.exports.counterSelfReading500 = genericErrors.generic500
-module.exports.counterSelfReading503 = genericErrors.generic503
+module.exports.selfReading400 = genericErrors.generic400
+module.exports.selfReading401 = genericErrors.generic401
+module.exports.selfReading500 = genericErrors.generic500
+module.exports.selfReading503 = genericErrors.generic503
 
 module.exports.addSchemas = (fastifyInstance) => {
-  fastifyInstance.addSchema({ $id: 'counterSelfReading', ...this.counterSelfReading })
-  fastifyInstance.addSchema({ $id: 'counterSelfReading200', ...this.counterSelfReading200 })
-  fastifyInstance.addSchema({ $id: 'counterSelfReading400', ...this.counterSelfReading400 })
-  fastifyInstance.addSchema({ $id: 'counterSelfReading401', ...this.counterSelfReading401 })
-  fastifyInstance.addSchema({ $id: 'counterSelfReading500', ...this.counterSelfReading500 })
-  fastifyInstance.addSchema({ $id: 'counterSelfReading503', ...this.counterSelfReading503 })
+  fastifyInstance.addSchema({ $id: 'selfReading', ...this.selfReading })
+  fastifyInstance.addSchema({ $id: 'selfReading200', ...this.selfReading200 })
+  fastifyInstance.addSchema({ $id: 'selfReading400', ...this.selfReading400 })
+  fastifyInstance.addSchema({ $id: 'selfReading401', ...this.selfReading401 })
+  fastifyInstance.addSchema({ $id: 'selfReading500', ...this.selfReading500 })
+  fastifyInstance.addSchema({ $id: 'selfReading503', ...this.selfReading503 })
 }
 
 module.exports.toSelfReadingRequest = (row) => {
@@ -152,7 +152,7 @@ module.exports.toSelfReadingRequest = (row) => {
       break
   }
 
-  return {
+  const req = {
     data: {
       Stato: STATE,
       Tipologia_Utenza: requestArea,
@@ -160,14 +160,14 @@ module.exports.toSelfReadingRequest = (row) => {
       Cellulare: row.phone,
       Tipologia_Contatore: counterType,
       Email: row.email,
-      Valore_1: row.value1,
-      Foto_autolettura_1: row.photo1,
-      Valore_2: row.value2,
-      Foto_autolettura_2: row.photo2,
-      Valore_3: row.value3,
-      Foto_autolettura_3: row.photo3
+      Valore_1: row.value1
     }
   }
+
+  if (row.value2) req.data.Valore_2 = row.value2
+  if (row.value2) req.data.Valore_3 = row.value3
+
+  return req
 }
 
 module.exports.toZohoFieldName = (fieldName) => {

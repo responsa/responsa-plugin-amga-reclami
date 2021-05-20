@@ -3,7 +3,7 @@ module.exports.code200 = {
     'application/json': {
       schema: {
         type: 'object',
-        title: 'CounterSelfReadingResponse',
+        title: 'SelfReadingResponse',
         description: 'The response returned when write counter value',
         properties: {
           id: {

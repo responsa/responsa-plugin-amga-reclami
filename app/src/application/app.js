@@ -14,7 +14,7 @@ const contract = require('../models/contract')
 const complaint = require('../models/complaint')
 const writeComplaint = require('../models/writeComplaint')
 const validation = require('../models/validation')
-const counterSelfReading = require('../models/counterSelfReading')
+const selfReading = require('../models/selfReading')
 
 const addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({
@@ -37,7 +37,7 @@ const addSchemas = (fastifyInstance) => {
   complaint.addSchemas(fastifyInstance)
   writeComplaint.addSchemas(fastifyInstance)
   validation.addSchemas(fastifyInstance)
-  counterSelfReading.addSchemas(fastifyInstance)
+  selfReading.addSchemas(fastifyInstance)
 }
 
 const createServer = (opts, customElastic) => {

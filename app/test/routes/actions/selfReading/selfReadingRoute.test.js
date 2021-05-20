@@ -2,15 +2,15 @@ require('jest-extended')
 const helper = require('../../../helper')
 const responses = require('./responses')
 
-describe('Counter Self Reading - POST', () => {
-  it('Counter Self Reading  - answers correctly', async () => {
-    helper.checkResponses('/actions/counterSelfReading', responses, 'post')
+describe('Self Reading - POST', () => {
+  it('Self Reading  - answers correctly', async () => {
+    helper.checkResponses('/actions/selfReading', responses, 'post')
   })
-  it('Counter Self Reading  - Create row [GAS] with one image', async () => {
+  it('Self Reading  - Create row [GAS] with one image', async () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/counterSelfReading',
+      'actions/selfReading',
       {
         email: 'euris@test.com',
         requestArea: 'gas',
@@ -26,11 +26,11 @@ describe('Counter Self Reading - POST', () => {
     const body = JSON.parse(response.body)
     expect(body.id).toBeDefined()
   })
-  it('Counter Self Reading  - Create row [ENERGY] with three images', async () => {
+  it('Self Reading  - Create row [ENERGY] with three images', async () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
       sut,
-      'actions/counterSelfReading',
+      'actions/selfReading',
       {
         email: 'euris@test.com',
         requestArea: 'energy',

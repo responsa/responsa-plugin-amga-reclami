@@ -1,5 +1,5 @@
 require('jest-extended')
-const sut = require('../../src/models/counterSelfReading')
+const sut = require('../../src/models/selfReading')
 
 describe('SelfReading', () => {
   it('Self Reading Request', () => {
@@ -26,11 +26,6 @@ describe('SelfReading', () => {
     expect(actual.data.Tipologia_Contatore).toBeDefined()
     expect(actual.data.Email).toBeDefined()
     expect(actual.data.Valore_1).toBeDefined()
-    expect(actual.data.Foto_autolettura_1).toBeDefined()
-    expect(actual.data.Valore_2).toBeDefined()
-    expect(actual.data.Foto_autolettura_2).toBeDefined()
-    expect(actual.data.Valore_3).toBeDefined()
-    expect(actual.data.Foto_autolettura_3).toBeDefined()
   })
   it('Self Reading Request - Check for correct values', () => {
     const data = {
