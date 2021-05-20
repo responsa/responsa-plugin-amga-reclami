@@ -68,6 +68,6 @@
   "jest": {
     "testSequencer": "./test/testSequencer.js",
     "testEnvironment": "node",
-    "testTimeout": 15000
+    "testTimeout": 30000
   }
 }
