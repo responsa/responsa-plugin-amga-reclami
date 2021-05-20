@@ -20,5 +20,5 @@ module.exports.privacy = {
 
 module.exports.counterSelfReading = {
   create: async (data) => await client.postData(config.zoho.counterSelfReadingPostTarget, data),
-  update: async (id, field, data) => await client.postData(`${config.zoho.counterSelfReadingUploadFileTarget}/${id}/${field}/upload`, data)
+  update: async (id, field, data) => await client.postData(`${config.zoho.counterSelfReadingUploadFileTarget}/${id}/${field}/upload`, data, true)
 }

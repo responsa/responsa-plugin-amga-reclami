@@ -112,25 +112,6 @@ module.exports.counterSelfReading200 = {
   $ref: 'counterSelfReading#'
 }
 
-module.exports.toSelfReadingRequest = (row) => {
-  return {
-    data: {
-      Stato: STATE,
-      Tipologia_Utenza: row.requestArea,
-      Codice_Utenza: row.code,
-      Cellulare: row.phone,
-      Tipologia_Contatore: row.counterType,
-      Email: row.email,
-      valore_1: row.value1,
-      Foto_autolettura_1: row.photo1,
-      valore_2: row.value2,
-      Foto_autolettura_2: row.photo2,
-      valore_3: row.value3,
-      Foto_autolettura_3: row.photo3
-    }
-  }
-}
-
 module.exports.counterSelfReading400 = genericErrors.generic400
 module.exports.counterSelfReading401 = genericErrors.generic401
 module.exports.counterSelfReading500 = genericErrors.generic500
@@ -143,4 +124,80 @@ module.exports.addSchemas = (fastifyInstance) => {
   fastifyInstance.addSchema({ $id: 'counterSelfReading401', ...this.counterSelfReading401 })
   fastifyInstance.addSchema({ $id: 'counterSelfReading500', ...this.counterSelfReading500 })
   fastifyInstance.addSchema({ $id: 'counterSelfReading503', ...this.counterSelfReading503 })
+}
+
+module.exports.toSelfReadingRequest = (row) => {
+  return {
+    data: {
+      Stato: STATE,
+      Tipologia_Utenza: row.requestArea,
+      Codice_Utenza: row.code,
+      Cellulare: row.phone,
+      Tipologia_Contatore: row.counterType,
+      Email: row.email,
+      Valore_1: row.value1,
+      Foto_autolettura_1: row.photo1,
+      Valore_2: row.value2,
+      Foto_autolettura_2: row.photo2,
+      Valore_3: row.value3,
+      Foto_autolettura_3: row.photo3
+    }
+  }
+}
+
+module.exports.toZohoFieldName = (fieldName) => {
+  let result = null
+  switch (fieldName) {
+    case 'photo1':
+      result = 'Foto_autolettura_1'
+      break
+    case 'photo2':
+      result = 'Foto_autolettura_2'
+      break
+    case 'photo3':
+      result = 'Foto_autolettura_3'
+      break
+    default:
+      throw new Error('Field Name not found')
+  }
+  return result
+}
+
+// module.exports.createFile = async (fileUri) => {
+//   const fs = require('fs')
+//   const client = require('axios').default
+//   const imgFromUrl = await client.get(fileUri, { responseType: 'arraybuffer' })
+//   const fileName = 'C:/temp/file.jpg' // todo -> get unique filename on temp path
+//   fs.open(fileName, 'w', (err, fd) => {
+//     if (err) {
+//       throw new Error('Could not open file: ' + err)
+//     }
+//     fs.write(fd, imgFromUrl.data, 0, imgFromUrl.data.length, null, (err) => {
+//       if (err) throw new Error(`Error writing file: ' ${err}`)
+//       fs.close(fd, async () => {
+//         return fileName
+//       })
+//     })
+//   })
+// }
+
+// module.exports.deleteFile = (fileName) => {
+//   const fs = require('fs')
+//   if (fs.existsSync(fileName)) {
+//     const maxLoop = 10
+//     let currentLoop = 1
+//     while (currentLoop < maxLoop) {
+//       try {
+//         fs.unlinkSync(fileName)
+//         return
+//       } catch {
+//         currentLoop++
+//       }
+//     }
+//   }
+// }
+
+module.exports.getFileExtension = (fileName) => {
+  const ext = require('path').extname(fileName || '').split('.')
+  return ext[ext.length - 1]
 }
