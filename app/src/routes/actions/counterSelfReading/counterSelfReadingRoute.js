@@ -7,89 +7,35 @@
 
 // module.exports = async function (fastify) {
 //   fastify.post('/', { schema: counter.postRouteSchema }, async (req, reply) => {
-    // --- Works fine ---
-    // await zohoAuth.refreshAccessToken()
-    // try {
-    //   const FormData = require('form-data')
-    //   const body = new FormData()
-    //   body.append('file', fs.createReadStream('C:/temp/photo.jpg'), 'simpleFileName.jpg')
-    //   const client = require('axios').default
-    //   const request = requestBuilder('POST', `${config.zoho.counterSelfReadingUploadFileTarget}/47306000024323915/Foto_autolettura_1/upload`, body)
-    //   request.headers['Content-Type'] = `multipart/form-data; boundary=${body._boundary}`
-    //   request['Accept-Encoding'] = 'gzip, deflate'
-    //   const resxxx = await client.request(request)
-    //   console.log(resxxx)
-    // } catch (err) {
-    //   console.log(err)
-    // }
-    // --- ---
+// --- Works fine ---
+// await zohoAuth.refreshAccessToken()
+// try {
+//   const client = require('axios').default
+//   const imgFromUrl = await client.get('https://luce-gas.it/sites/default/files/images/matricola-contatore-gas1.jpg', { responseType: 'stream' })
 
-     // --- prova ok!!---
-    // await zohoAuth.refreshAccessToken()
-    // try {
-    //   const client = require('axios').default
-    //   const imgFromUrl = await client.get('https://luce-gas.it/sites/default/files/images/matricola-contatore-gas1.jpg', { responseType: 'stream' })
-      
-    //   const FormData = require('form-data')
-    //   const body = new FormData()
-    //   body.append('file', imgFromUrl.data, 'simpleFileName.jpg')
-      
-    //   const request = requestBuilder('POST', `${config.zoho.counterSelfReadingUploadFileTarget}/47306000024326587/Foto_autolettura_1/upload`, body)
-    //   request.headers['Content-Type'] = `multipart/form-data; boundary=${body._boundary}`
-    //   const resxxx = await client.request(request)
-    //   console.log(resxxx)
-    // } catch (err) {
-    //   console.log(err)
-    // }
-    //   })
-    // }
+//   const FormData = require('form-data')
+//   const body = new FormData()
+//   body.append('file', imgFromUrl.data, 'simpleFileName.jpg')
 
-    // --- ---
-
-//     // Write record
-//     // const response = await zoho.counterSelfReading.create(counter.toSelfReadingRequest(req.body))
-//     await zohoAuth.refreshAccessToken()
-//     try {
-//       const client = require('axios').default
-//       const imgFromUrl = await client.get('https://luce-gas.it/sites/default/files/images/matricola-contatore-gas1.jpg', { responseType: 'arraybuffer' })
-//       const path = 'C:/temp/file.jpg'
-//       fs.open(path, 'w', (err, fd) => {
-//         if (err) {
-//           throw new Error('could not open file: ' + err)
-//         }
-//         fs.write(fd, imgFromUrl.data, 0, imgFromUrl.data.length, null, (err) => {
-//           if (err) throw new Error('error writing file: ' + err)
-//           fs.close(fd, async () => {
-//             console.log('wrote the file successfully')
-//             const FormData = require('form-data')
-//             const body = new FormData()
-//             body.append('file', fs.createReadStream(path), 'simpleFileName.jpg')
-//             const request = requestBuilder('POST', `${config.zoho.counterSelfReadingUploadFileTarget}/47306000024323915/Foto_autolettura_1/upload`, body)
-//             request.headers['Content-Type'] = `multipart/form-data; boundary=${body._boundary}`
-//             // request['Accept-Encoding'] = 'gzip, deflate'
-//             const resxxx = await client.request(request)
-//             console.log(resxxx)
-//             reply.code(200).send({
-//               // id: response.ID
-//             })
-//           })
-//         })
-//       })
-//     } catch (err) {
-//       console.log(err)
-//     }
+//   const request = requestBuilder('POST', `${config.zoho.counterSelfReadingUploadFileTarget}/47306000024326587/Foto_autolettura_1/upload`, body)
+//   request.headers['Content-Type'] = `multipart/form-data; boundary=${body._boundary}`
+//   const resxxx = await client.request(request)
+//   console.log(resxxx)
+// } catch (err) {
+//   console.log(err)
+// }
 //   })
 // }
 
 const zoho = require('../../../application/zoho/zoho')
 const counter = require('../../../models/counterSelfReading')
-const zohoAuth = require('../../../application/zoho/zoho-auth')
+// const zohoAuth = require('../../../application/zoho/zoho-auth')
 
 module.exports = async function (fastify) {
   fastify.post('/', { schema: counter.postRouteSchema }, async (req, reply) => {
-    // // 47306000024326587
     // await zohoAuth.refreshAccessToken()
-    // await uploadPhoto('47306000024325755', photo1, counter.toZohoFieldName('photo1'))
+    // const p1 = req.body.photo1
+    // await uploadPhoto('47306000024325755', p1, counter.toZohoFieldName('photo1'))
     // return
 
     // Sanificate body as required by Zoho
@@ -100,8 +46,10 @@ module.exports = async function (fastify) {
     const photo3 = req.body.photo3
     delete req.body.photo3
 
-    // Force to refresh Toekn, otherwise it will fails
-    await zohoAuth.refreshAccessToken()
+    // Force to refresh Toekn, otherwise it will fails,
+    // but it's mandatory only for update scenario,
+    // not for insert new row and update scenario (that is the only real one)
+    // await zohoAuth.refreshAccessToken()
 
     // Create Record
     const response = await zoho.counterSelfReading.create(counter.toSelfReadingRequest(req.body))
