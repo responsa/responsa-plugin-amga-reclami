@@ -26,7 +26,9 @@ module.exports = {
     complaintPostTarget: 'form/Nuova_Richiesta_Cliente',
     podpdrGetTarget: 'report/PODPDR_Report',
     privacyGetTarget: 'report/Privacy_Report',
-    privacyPostTarget: 'form/Privacy'
+    privacyPostTarget: 'form/Privacy',
+    counterSelfReadingPostTarget: 'form/AutoLetture',
+    counterSelfReadingUploadFileTarget: 'report/AutoLetture_Report'
   },
   servers: [
     { url: 'server1 url', description: 'server1 description' },
