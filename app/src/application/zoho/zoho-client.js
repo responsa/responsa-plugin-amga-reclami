@@ -14,11 +14,7 @@ const sendCreatorRequest = async (method, target, data, isMultiPart, onTokenRefr
     if (err.response && err.response.status === 401) {
       await zohoAuth.refreshAccessToken()
       try {
-        if (onTokenRefresh) {
-          response = await onTokenRefresh()
-        } else {
-          response = await axios.request(requestBuilder(method, target, data, isMultiPart))
-        }
+        response = onTokenRefresh ? await onTokenRefresh() : await axios.request(requestBuilder(method, target, data, isMultiPart))
       } catch (errInner) {
         error = createZohoError(errInner.response, errInner.response.status)
       }
@@ -39,7 +35,7 @@ const sendCreatorRequest = async (method, target, data, isMultiPart, onTokenRefr
 
 const getData = async (target) => await sendCreatorRequest('GET', target, {})
 const postData = async (target, data) => await sendCreatorRequest('POST', target, data)
-const uploadImage = async (target, imageUrl) => await sendCreatorRequest('POST', target, await imageDataBuilder(imageUrl), true, async () => await axios.request(requestBuilder('POST', target, await imageDataBuilder(imageUrl), true)))
+const uploadImage = async (target, imageUrl) => await sendCreatorRequest('POST', target, await imageDataBuilder.buildMultiPart(imageUrl), true, async () => await axios.request(requestBuilder('POST', target, await imageDataBuilder.buildMultiPart(imageUrl), true)))
 
 const queryZoho = async (baseTarget, conditions) => await getData(targetPathBuilder(baseTarget, conditions))
 const getRecord = async (baseTarget, id) => await getData(`${baseTarget}/${id}`)
