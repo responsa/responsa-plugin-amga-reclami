@@ -3,17 +3,22 @@ const zohoAuth = require('./zoho-auth')
 const createZohoError = require('./zoho-error')
 const requestBuilder = require('./zoho-request-builder')
 const targetPathBuilder = require('./zoho-target-path-builder')
+const imageDataBuilder = require('./zoho-image-data-builder')
 
-const sendCreatorRequest = async (method, target, data, isMultiPart) => {
+const sendCreatorRequest = async (method, target, data, isMultiPart, onTokenRefresh) => {
   let response = null
   let error = null
   try {
-    response = await axios.request(this.createRequestBuilder(method, target, data, isMultiPart))
+    response = await axios.request(requestBuilder(method, target, data, isMultiPart))
   } catch (err) {
     if (err.response && err.response.status === 401) {
       await zohoAuth.refreshAccessToken()
       try {
-        response = await axios.request(this.createRequestBuilder(method, target, data, isMultiPart))
+        if (onTokenRefresh) {
+          response = await onTokenRefresh()
+        } else {
+          response = await axios.request(requestBuilder(method, target, data, isMultiPart))
+        }
       } catch (errInner) {
         error = createZohoError(errInner.response, errInner.response.status)
       }
@@ -32,16 +37,9 @@ const sendCreatorRequest = async (method, target, data, isMultiPart) => {
   return response.data.data
 }
 
-module.exports.createRequestBuilder = (method, target, data, isMultiPart) => {
-  const result = requestBuilder(method, target, data)
-  if (isMultiPart) {
-    result.headers['Content-Type'] = `multipart/form-data; boundary=${data._boundary}`
-  }
-  return result
-}
-
 const getData = async (target) => await sendCreatorRequest('GET', target, {})
-const postData = async (target, data, isMultiPart) => await sendCreatorRequest('POST', target, data, isMultiPart)
+const postData = async (target, data) => await sendCreatorRequest('POST', target, data)
+const uploadImage = async (target, imageUrl) => await sendCreatorRequest('POST', target, await imageDataBuilder(imageUrl), true, async () => await axios.request(requestBuilder('POST', target, await imageDataBuilder(imageUrl), true)))
 
 const queryZoho = async (baseTarget, conditions) => await getData(targetPathBuilder(baseTarget, conditions))
 const getRecord = async (baseTarget, id) => await getData(`${baseTarget}/${id}`)
@@ -55,6 +53,7 @@ const getRecordByQuery = async (baseTarget, conditions) => {
 
 module.exports.getData = getData
 module.exports.postData = postData
+module.exports.uploadImage = uploadImage
 module.exports.queryZoho = queryZoho
 module.exports.getRecord = getRecord
 module.exports.getRecordByQuery = getRecordByQuery

@@ -72,10 +72,4 @@ describe('SelfReading', () => {
     expect(t).toThrow(Error)
     expect(t).toThrow('Field Name not found')
   })
-  it('Check for retrieving file extension', () => {
-    const actual = sut.getFileExtension('a.b.c.txt')
-    expect(actual).not.toBeNull()
-    expect(actual).not.toBeNull()
-    expect(actual).toEqual('txt')
-  })
 })

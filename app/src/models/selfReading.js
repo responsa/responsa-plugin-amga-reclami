@@ -187,8 +187,3 @@ module.exports.toZohoFieldName = (fieldName) => {
   }
   return result
 }
-
-module.exports.getFileExtension = (fileName) => {
-  const ext = require('path').extname(fileName || '').split('.')
-  return ext[ext.length - 1]
-}

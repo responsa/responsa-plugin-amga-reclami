@@ -20,5 +20,5 @@ module.exports.privacy = {
 
 module.exports.selfReading = {
   create: async (data) => await client.postData(config.zoho.selfReadingPostTarget, data),
-  update: async (id, field, data) => await client.postData(`${config.zoho.selfReadingUploadFileTarget}/${id}/${field}/upload`, data, true)
+  uploadPhoto: async (id, field, imageUrl) => await client.uploadImage(`${config.zoho.selfReadingUploadFileTarget}/${id}/${field}/upload`, imageUrl)
 }

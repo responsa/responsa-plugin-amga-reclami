@@ -29,32 +29,25 @@
 
 const zoho = require('../../../application/zoho/zoho')
 const counter = require('../../../models/selfReading')
-// const zohoAuth = require('../../../application/zoho/zoho-auth')
 
 module.exports = async function (fastify) {
   fastify.post('/', { schema: counter.postRouteSchema }, async (req, reply) => {
-    // await zohoAuth.refreshAccessToken()
     // const p1 = req.body.photo1
     // await uploadPhoto('47306000024325755', p1, counter.toZohoFieldName('photo1'))
     // return
-
-    // Force to refresh Toekn, otherwise it will fails,
-    // but it's mandatory only for update scenario,
-    // not for insert new row and update scenario (that is the only real one)
-    // await zohoAuth.refreshAccessToken()
 
     // Create Record
     const response = await zoho.selfReading.create(counter.toSelfReadingRequest(req.body))
 
     // Update images
     if (req.body.photo1) {
-      await uploadPhoto(response.ID, req.body.photo1, counter.toZohoFieldName('photo1'))
+      await zoho.selfReading.uploadPhoto(response.ID, counter.toZohoFieldName('photo1'), req.body.photo1)
     }
     if (req.body.value2 && req.body.photo2) {
-      await uploadPhoto(response.ID, req.body.photo2, counter.toZohoFieldName('photo2'))
+      await zoho.selfReading.uploadPhoto(response.ID, counter.toZohoFieldName('photo2'), req.body.photo2)
     }
     if (req.body.value3 && req.body.photo3) {
-      await uploadPhoto(response.ID, req.body.photo3, counter.toZohoFieldName('photo3'))
+      await zoho.selfReading.uploadPhoto(response.ID, counter.toZohoFieldName('photo3'), req.body.photo3)
     }
 
     // Final result
@@ -62,14 +55,4 @@ module.exports = async function (fastify) {
       id: response.ID
     })
   })
-
-  const uploadPhoto = async (id, photoUrl, fieldName) => {
-    const client = require('axios').default
-    const imgFromUrl = await client.get(photoUrl, { responseType: 'stream' })
-
-    const FormData = require('form-data')
-    const body = new FormData()
-    body.append('file', imgFromUrl.data, `Foto.${counter.getFileExtension(photoUrl)}`)
-    await zoho.selfReading.update(id, fieldName, body)
-  }
 }
