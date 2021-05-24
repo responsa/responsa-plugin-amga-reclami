@@ -372,7 +372,7 @@ Output
 
 Counter Self Reading
 ```
-POST /actions/counterSelfReading
+POST /actions/selfReading
 Execute a post to send a counter self reading
 ```
 

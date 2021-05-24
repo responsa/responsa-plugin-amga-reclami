@@ -25,7 +25,7 @@ describe('Self Reading - POST', () => {
     expect(response.statusCode).toEqual(200)
     const body = JSON.parse(response.body)
     expect(body.id).toBeDefined()
-  }, 30000)
+  })
   it('Self Reading  - Create row [ENERGY] with three images', async () => {
     const sut = await helper.setupTestEnvironment()
     const response = await helper.doPost(
@@ -49,5 +49,5 @@ describe('Self Reading - POST', () => {
     expect(response.statusCode).toEqual(200)
     const body = JSON.parse(response.body)
     expect(body.id).toBeDefined()
-  }, 30000)
+  })
 })
