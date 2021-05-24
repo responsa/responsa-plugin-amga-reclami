@@ -71,6 +71,7 @@ exports.default = function (fastifyInstance, opts) {
     translationsKeys: customTranslationsKeys || null,
     servers: opts && opts.servers ? opts.servers : config.servers,
     appName: opts && opts.appName ? opts.appName : config.appName,
+    apiVersion: opts && opts.apiVersion ? opts.apiVersion : (config && config.apiVersion ? config.apiVersion : 'v1'),
     esIndex: opts && opts.esIndex ? opts.esIndex : config.elasticIndex
   }
 
