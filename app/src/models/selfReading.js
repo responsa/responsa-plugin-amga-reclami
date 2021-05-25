@@ -73,6 +73,12 @@ module.exports.postRouteSchema = {
         nullable: true,
         description: 'photo 3'
       }
+    },
+    if: {
+      properties: { requestArea: { const: 'energy' } }
+    },
+    then: {
+      required: ['value1', 'value2', 'value3']
     }
   },
   response: {
