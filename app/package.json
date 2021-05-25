@@ -29,6 +29,7 @@
     "fastify-cors": "^5.0.0",
     "fastify-error": "^0.2.0",
     "fastify-plugin": "^3.0.0",
+    "form-data": "^2.3.3",
     "node-fetch": "^2.6.1",
     "pino-applicationinsights": "^2.1.0",
     "responsa-plugin-core-js": "git+https://github.com/responsaeuris/responsa-plugin-core-js-dev.git#develop"
