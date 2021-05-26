@@ -75,7 +75,7 @@ module.exports.postRouteSchema = {
       }
     },
     if: {
-      properties: { requestArea: { const: 'energy' } }
+      properties: { requestArea: { const: 'energy' }, counterType: { const: 'digital' } }
     },
     then: {
       required: ['value1', 'value2', 'value3']

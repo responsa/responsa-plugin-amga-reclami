@@ -4,7 +4,7 @@ const fieldsMapper = {
   quotationCode: '^25\\d{6}$',
   energy: '^IT\\d{3}E\\d{8}$',
   gas: '^\\d{14}$',
-  water: '^\\d{10,14}$'
+  water: '^3\\d{9}$'
 }
 
 module.exports.validation = {
