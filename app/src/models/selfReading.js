@@ -19,8 +19,7 @@ module.exports.postRouteSchema = {
       email: {
         type: 'string',
         nullable: false,
-        description: 'User mail address',
-        pattern: '^\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$'
+        description: 'User mail address'
       },
       requestArea: {
         type: 'string',
@@ -30,8 +29,7 @@ module.exports.postRouteSchema = {
       phone: {
         type: 'string',
         nullable: false,
-        description: 'Phone number of user',
-        pattern: '^^\\+\\d{7,15}$'
+        description: 'Phone number of user'
       },
       counterType: {
         type: 'string',
