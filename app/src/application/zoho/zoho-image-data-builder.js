@@ -6,9 +6,13 @@ module.exports.getFileExtension = (fileName) => {
 }
 
 module.exports.buildMultiPart = async (imageUrl) => {
-  const imgFromUrl = await axios.get(imageUrl, { responseType: 'stream' })
-  const FormData = require('form-data')
-  const body = new FormData()
-  body.append('file', imgFromUrl.data, `Foto.${this.getFileExtension(imageUrl)}`)
-  return body
+  try {
+    const imgFromUrl = await axios.get(imageUrl, { responseType: 'stream' })
+    const FormData = require('form-data')
+    const body = new FormData()
+    body.append('file', imgFromUrl.data, `Foto.${this.getFileExtension(imageUrl)}`)
+    return body
+  } catch (err) {
+    return err
+  }
 }

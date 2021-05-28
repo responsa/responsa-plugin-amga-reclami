@@ -50,4 +50,41 @@ describe('Self Reading - POST', () => {
     const body = JSON.parse(response.body)
     expect(body.id).toBeDefined()
   })
+  it('Self Reading  - Create row [WATER] without image', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const response = await helper.doPost(
+      sut,
+      'actions/selfReading',
+      {
+        email: 'euris@test.com',
+        requestArea: 'water',
+        code: '3123456789',
+        phone: '+393290000000',
+        counterType: 'electromechanical',
+        value1: '100000'
+      },
+      helper.requiredHeaders
+    )
+    expect(response.statusCode).toEqual(200)
+    const body = JSON.parse(response.body)
+    expect(body.id).toBeDefined()
+  })
+  it('Self Reading  - 400 - Create row [GAS] with one unexisting image', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const response = await helper.doPost(
+      sut,
+      'actions/selfReading',
+      {
+        email: 'euris@test.com',
+        requestArea: 'gas',
+        code: '11825000004052',
+        phone: '+393290000000',
+        counterType: 'electromechanical',
+        value1: '100000',
+        photo1: 'abc'
+      },
+      helper.requiredHeaders
+    )
+    expect(response.statusCode).toEqual(400)
+  })
 })
