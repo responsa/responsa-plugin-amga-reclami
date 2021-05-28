@@ -10,11 +10,14 @@ module.exports = (error, request, reply) => {
     })
   }
 
-  const errorContent = error()
-
-  return reply.code(errorContent.statusCode).type('application/json').send({
-    statusCode: errorContent.statusCode,
-    error: errorContent.code,
-    message: errorContent.message
-  })
+  if (typeof error === 'function') {
+    const errorContent = error()
+    return reply.code(errorContent.statusCode).type('application/json').send({
+      statusCode: errorContent.statusCode,
+      error: errorContent.code,
+      message: errorContent.message
+    })
+  } else {
+    return reply.code(520).send(error)
+  }
 }

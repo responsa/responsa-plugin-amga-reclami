@@ -4,7 +4,7 @@ const counter = require('../../../models/selfReading')
 module.exports = async function (fastify) {
   fastify.post('/', { schema: counter.postRouteSchema }, async (req, reply) => {
     // const p1 = req.body.photo1
-    // await uploadPhoto('47306000024325755', p1, counter.toZohoFieldName('photo1'))
+    // await zoho.selfReading.uploadPhoto('47306000024325755', p1, counter.toZohoFieldName('photo1'))
     // return
 
     // Create Record
