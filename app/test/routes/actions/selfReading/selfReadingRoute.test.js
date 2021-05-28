@@ -14,7 +14,7 @@ describe('Self Reading - POST', () => {
       {
         email: 'euris@test.com',
         requestArea: 'gas',
-        code: '11825000002485',
+        code: '11825000004052',
         phone: '+393290000000',
         counterType: 'electromechanical',
         value1: '100000',
@@ -34,7 +34,7 @@ describe('Self Reading - POST', () => {
       {
         email: 'euris@test.com',
         requestArea: 'energy',
-        code: 'IT003E03008567',
+        code: 'IT003E03009532',
         phone: '+393290000000',
         counterType: 'digital',
         value1: '100001',
