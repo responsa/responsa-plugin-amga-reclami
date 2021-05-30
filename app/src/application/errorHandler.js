@@ -17,7 +17,17 @@ module.exports = (error, request, reply) => {
       error: errorContent.code,
       message: errorContent.message
     })
+  } else if (typeof error === 'string') {
+    return reply.code(520).type('application/json').send({
+      statusCode: 520,
+      error: error,
+      message: error
+    })
   } else {
-    return reply.code(520).send(error)
+    return reply.code(520).type('application/json').send({
+      statusCode: 520,
+      error: 'Unknown',
+      message: `Unknown error. Error type is ${typeof error}`
+    })
   }
 }
