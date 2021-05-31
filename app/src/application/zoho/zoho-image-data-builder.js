@@ -12,7 +12,7 @@ module.exports.buildMultiPart = async (imageUrl) => {
     const body = new FormData()
     body.append('file', imgFromUrl.data, `Foto.${this.getFileExtension(imageUrl)}`)
     return body
-  } catch (err) {
-    return err
+  } catch (error) {
+    return error
   }
 }
