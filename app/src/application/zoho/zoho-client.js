@@ -35,7 +35,7 @@ const sendCreatorRequest = async (method, target, data, isMultiPart, onTokenRefr
 
 const getData = async (target) => await sendCreatorRequest('GET', target, {})
 const postData = async (target, data) => await sendCreatorRequest('POST', target, data)
-const uploadImage = async (target, imageUrl) => await sendCreatorRequest('POST', target, await imageDataBuilder.buildMultiPart(imageUrl), true, async () => await axios.request(requestBuilder('POST', target, await imageDataBuilder.buildMultiPart(imageUrl), true)))
+const uploadImage = async (target, imageUrl) => await sendCreatorRequest('POST', target, await imageDataBuilder.buildMultiPart(imageUrl), true, async () => await axios.request(requestBuilder('POST', target, await imageDataBuilder.buildMultiPart(imageUrl))))
 
 const queryZoho = async (baseTarget, conditions) => await getData(targetPathBuilder(baseTarget, conditions))
 const getRecord = async (baseTarget, id) => await getData(`${baseTarget}/${id}`)
