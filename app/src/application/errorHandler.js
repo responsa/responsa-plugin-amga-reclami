@@ -8,9 +8,7 @@ module.exports = (error, request, reply) => {
       message: error.message,
       stackTrace: error.stack
     })
-  }
-
-  if (typeof error === 'function') {
+  } else if (typeof error === 'function') {
     const errorContent = error()
     return reply.code(errorContent.statusCode).type('application/json').send({
       statusCode: errorContent.statusCode,

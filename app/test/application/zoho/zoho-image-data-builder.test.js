@@ -16,10 +16,22 @@ describe('Image data builder', () => {
     expect(actual._streams).toBeArray()
     expect(actual._streams.length).toBeGreaterThan(0)
   })
-  it('Check for retrieving file extension', () => {
+  it('Check for retrieving file extension  - valid input', () => {
     const actual = sut.getFileExtension('a.b.c.png')
     expect(actual).toBeDefined()
     expect(actual.length).toBeGreaterThan(0)
     expect(actual).toEqual('png')
+  })
+  it('Check for retrieving file extension  - invalid input', () => {
+    const actual = sut.getFileExtension('png')
+    expect(actual).toBeDefined()
+    expect(actual.length).toEqual(0)
+    expect(actual).toEqual('')
+  })
+  it('Check for retrieving file extension  - invalid input', () => {
+    const actual = sut.getFileExtension()
+    expect(actual).toBeDefined()
+    expect(actual.length).toEqual(0)
+    expect(actual).toEqual('')
   })
 })

@@ -23,6 +23,17 @@ const openStcComplaint = {
   Email_Inserimento: 'riccardo.demarco@euris.it'
 }
 
+const openStcComplaintWithoutStatusClient = {
+  Risposta_Oggetto: '',
+  Assegnatario_STC: 'Assegnatario STC',
+  Assegnato_A: 'STC',
+  Stato: 'DA VALIDARE',
+  STC: true,
+  Assegnatario_ALTRO: 'Assegnatario ALTRO',
+  Risposta_Testo: '',
+  Email_Inserimento: 'riccardo.demarco@euris.it'
+}
+
 const closedComplaint = {
   Risposta_Oggetto: '',
   Assegnatario_STC: 'Assegnatario STC',
@@ -82,6 +93,15 @@ describe('Complaint - Info building', () => {
       email: openStcComplaint.Email_Inserimento
     }
     const actual = sut.infos(openStcComplaint, false)
+    checkComplaintInfos(actual, expected)
+  })
+
+  it('builds open stc complaint infos in basic format with default', () => {
+    const expected = {
+      status: 'SCONOSCIUTO',
+      email: openStcComplaint.Email_Inserimento
+    }
+    const actual = sut.infos(openStcComplaintWithoutStatusClient, false)
     checkComplaintInfos(actual, expected)
   })
 
