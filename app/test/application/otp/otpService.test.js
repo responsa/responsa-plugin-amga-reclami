@@ -1,5 +1,5 @@
 require('../../helper')
-const sut = require('../../src/application/otp/otpService')
+const sut = require('../../../src/application/otp/otpService')
 const config = require('../../../src/application/config')
 
 describe('SMS Service COnfiguration', () => {
