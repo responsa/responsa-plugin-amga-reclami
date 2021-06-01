@@ -21,4 +21,16 @@ describe('Zoho Authentication', () => {
     await expect(sut.refreshAccessToken()).rejects.toThrow('Zoho Creator Error -> Zoho replied with error message invalid_code')
     config.zoho.refreshToken = backup
   })
+
+  it('Zoho error', async () => {
+    const backup = config.zoho.clientSecret
+    config.zoho.clientSecret = 'wrong_secret'
+    try {
+      await sut.refreshAccessToken()
+    } catch (e) {
+      expect(e).not.toBeNull()
+      expect(e.code).toEqual('ZOHO_AUTHENTICATION_ERROR')
+    }
+    config.zoho.clientSecret = backup
+  })
 })
