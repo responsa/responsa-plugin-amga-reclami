@@ -11,7 +11,7 @@ describe('SMS Service COnfiguration', () => {
 })
 
 describe('SMS Service API', () => {
-  it('Send message properly', async () => {
+  it('Send message works properly', async () => {
     const actual = await sut.sendSms('+390000000000')
     expect(actual).not.toBe(null)
     expect(actual.verificationCode).not.toBe(null)
