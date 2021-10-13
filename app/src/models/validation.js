@@ -1,6 +1,7 @@
 const genericErrors = require('./genericErrors')
 
 const fieldsMapper = {
+  email: '^\\w+([-+.\']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$',
   quotationCode: '^25\\d{6}$',
   water: '^3\\d{9}$'
 }
