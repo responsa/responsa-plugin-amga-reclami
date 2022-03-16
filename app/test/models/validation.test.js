@@ -22,4 +22,24 @@ describe('Validation Works Properly', () => {
     expect(actual).not.toBeNull()
     expect(actual).toEqual(false)
   })
+  it('Validation - OK - number', () => {
+    const actual = sut.validate('number', '3123456789')
+    expect(actual).not.toBeNull()
+    expect(actual).toEqual(true)
+  })
+  it('Validation - KO - number with dot', () => {
+    const actual = sut.validate('number', '1234.5')
+    expect(actual).not.toBeNull()
+    expect(actual).toEqual(false)
+  })
+  it('Validation - KO - number with comma', () => {
+    const actual = sut.validate('number', '1234,5')
+    expect(actual).not.toBeNull()
+    expect(actual).toEqual(false)
+  })
+  it('Validation - KO - number with chars', () => {
+    const actual = sut.validate('number', 'chars 23123')
+    expect(actual).not.toBeNull()
+    expect(actual).toEqual(false)
+  })
 })
