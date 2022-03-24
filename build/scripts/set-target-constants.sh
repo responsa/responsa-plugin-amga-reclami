@@ -18,7 +18,7 @@ do_replace $target_file $find $replace_with
 
 echo "replacing elastic uri"
 target_file=/install/src/application/config.js
-find="elasticUri: 'https:\/\/localhost:9200',"
+find="elasticUri: 'Ciccio:',"
 replace_with="elasticUri: '$ELASTIC_URI',"
 
 do_replace $target_file $find $replace_with

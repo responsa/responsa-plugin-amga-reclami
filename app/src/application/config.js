@@ -3,7 +3,7 @@ module.exports = {
   apiVersion: 'v3',
   port: process.env.PORT || 8080,
   secretValue: 'SECRET',
-  elasticUri: 'https://localhost:9200',
+  elasticUri: 'Ciccio:',
   elasticUser: 'newboss',
   elasticPassword: 'newboss',
   elasticIndex: 'some-index',
