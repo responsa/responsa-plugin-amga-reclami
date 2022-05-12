@@ -34,7 +34,7 @@ describe('Zoho APIs', () => {
 
   describe('Get Record - Detail View', () => {
     it('correctly gets a record by id', async () => {
-      const existingId = '47306000019357175'
+      const existingId = '47306000027479574'
       const actual = await sut.getRecord(validTarget, existingId)
       expect(actual).toBeDefined()
       expect(actual).toBeObject()

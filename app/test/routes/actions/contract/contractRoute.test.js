@@ -13,14 +13,14 @@ describe('POD', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/contract/pod?code=IT003E03008583',
+      'actions/contract/pod?code=IT003E01014837',
       helper.requiredHeaders
     )
 
     expect(response.statusCode).toEqual(200)
     const addrInfo = JSON.parse(response.body)
-    expect(addrInfo.streetName).toEqual('VIA DEL REFOSCO')
-    expect(addrInfo.streetNumber).toEqual('17')
+    expect(addrInfo.streetName).toEqual('LARGO DELLA BARRIERA VECCHIA')
+    expect(addrInfo.streetNumber).toEqual('16')
     expect(addrInfo.city).toEqual('TRIESTE')
     expect(addrInfo.province).toEqual('TRIESTE')
   })
@@ -108,16 +108,16 @@ describe('PDR', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/contract/pdr?code=11825000002472',
+      'actions/contract/pdr?code=11825000004470',
       helper.requiredHeaders
     )
 
     expect(response.statusCode).toEqual(200)
     const addrInfo = JSON.parse(response.body)
-    expect(addrInfo.streetName).toEqual('PIAZZA INSURREZIONE')
-    expect(addrInfo.streetNumber).toEqual('10')
-    expect(addrInfo.city).toEqual('CADONEGHE')
-    expect(addrInfo.province).toEqual('PADOVA')
+    expect(addrInfo.streetName).toEqual('VIA DANIELE CERNAZAI')
+    expect(addrInfo.streetNumber).toEqual('23')
+    expect(addrInfo.city).toEqual('PREMARIACCO')
+    expect(addrInfo.province).toEqual('UDINE')
   })
 
   it('PDR - answers 400 without code query param', async () => {
