@@ -45,6 +45,7 @@ module.exports.DOMESTIC_USAGE_TYPE = 'DOMESTICO'
 module.exports.NOT_DOMESTIC_USAGE_TYPE = 'NON DOMESTICO'
 module.exports.GAS_AREA_TYPE = 'GAS'
 module.exports.ENERGY_AREA_TYPE = 'ENERGIA ELETTRICA'
+module.exports.WATER_AREA_TYPE = 'ACQUA'
 module.exports.RESPONSE_TYPE = 'PROTOCOLLO'
 module.exports.CLIENT_REQUEST_INSERT = 'SI CHAT'
 module.exports.REQUEST_TYPE = 'RICHIESTA INFORMAZIONI'
@@ -90,6 +91,8 @@ module.exports.mappers = {
         return this.GAS_AREA_TYPE
       case 'energy':
         return this.ENERGY_AREA_TYPE
+      case 'h2o':
+        return this.WATER_AREA_TYPE
       default:
         return null
     }

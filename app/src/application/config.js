@@ -25,7 +25,7 @@ module.exports = {
     project: 'test1-gestione-reclami',
     complaintGetTarget: 'report/Report_Generale',
     complaintPostTarget: 'form/Nuova_Richiesta_Cliente',
-    podpdrGetTarget: 'report/PODPDR_Report',
+    contractGetTarget: 'report/PODPDR_Report',
     privacyGetTarget: 'report/Privacy_Report',
     privacyPostTarget: 'form/Privacy',
     selfReadingPostTarget: 'form/AutoLetture',

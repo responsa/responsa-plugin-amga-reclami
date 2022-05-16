@@ -63,12 +63,12 @@ const postRouteSchema = {
       requestArea: {
         type: 'string',
         nullable: false,
-        description: 'Request area (GAS or Energy)'
+        description: 'Request area (GAS, H2O or Energy)'
       },
       code: {
         type: 'string',
         nullable: true,
-        description: 'POD or PDR code'
+        description: 'POD, PDR or H2O code'
       },
       email: {
         type: 'string',
@@ -150,14 +150,14 @@ const postRouteSchema = {
       }
     },
     if: {
-      properties: { isPrivateApplicant: { const: true }, requestArea: { const: 'gas' } }
+      properties: { isPrivateApplicant: { const: true }, requestArea: { oneOf: [{ const: 'gas' }, { const: 'h2o' }] } }
     },
     then: {
       required: ['firstName', 'lastName', 'fiscalCode']
     },
     else: {
       if: {
-        properties: { isPrivateApplicant: { const: false }, requestArea: { const: 'gas' } }
+        properties: { isPrivateApplicant: { const: false }, requestArea: { oneOf: [{ const: 'gas' }, { const: 'h2o' }] } }
       },
       then: {
         required: ['businessName', 'vatNumber']

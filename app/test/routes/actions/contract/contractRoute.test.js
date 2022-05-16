@@ -1,6 +1,7 @@
 const helper = require('../../../helper')
 const podResponses = require('./pod-responses')
 const pdrResponses = require('./pdr-responses')
+const h2oResponses = require('./h2o-responses')
 require('jest-extended')
 
 describe('POD', () => {
@@ -174,6 +175,89 @@ describe('PDR', () => {
     const response = await helper.doGet(
       sut,
       'actions/contract/pdr?code=11825000000000',
+      helper.requiredHeaders
+    )
+
+    expect(response.statusCode).toEqual(404)
+  })
+})
+
+describe('H20', () => {
+  it('H20 - answers correctly', async () => {
+    await helper.checkResponses('/actions/contract/h2o', h2oResponses)
+  })
+
+  it('H20 - answers 200 with correct querystring', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doGet(
+      sut,
+      'actions/contract/h2o?code=PDACP_223320000',
+      helper.requiredHeaders
+    )
+
+    expect(response.statusCode).toEqual(200)
+    const addrInfo = JSON.parse(response.body)
+    expect(addrInfo.streetName).toEqual('VIA G PIERLUIGI DA PALESTRINA')
+    expect(addrInfo.streetNumber).toEqual('4')
+    expect(addrInfo.city).toEqual('PADOVA')
+    expect(addrInfo.province).toEqual('')
+  })
+
+  it('H2O - answers 400 without code query param', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doGet(
+      sut,
+      'actions/contract/h2o',
+      helper.requiredHeaders
+    )
+
+    expect(response.statusCode).toEqual(400)
+  })
+
+  it('H20 - answers 400 with code query param set to null', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doGet(
+      sut,
+      'actions/contract/h2o?code=',
+      helper.requiredHeaders
+    )
+
+    expect(response.statusCode).toEqual(400)
+  })
+
+  it('H20 - answers 400 with invalid code query param', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doGet(
+      sut,
+      'actions/contract/h2o?code=IT1234123412341234',
+      helper.requiredHeaders
+    )
+
+    expect(response.statusCode).toEqual(400)
+  })
+
+  it('H20 - answers 400 with bool code query param', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doGet(
+      sut,
+      'actions/contract/h2o?code=true',
+      helper.requiredHeaders
+    )
+
+    expect(response.statusCode).toEqual(400)
+  })
+
+  it('H20 - answers 404 with not existing H20 code', async () => {
+    const sut = await helper.setupTestEnvironment()
+
+    const response = await helper.doGet(
+      sut,
+      'actions/contract/h2o?code=PDACP_223321111',
       helper.requiredHeaders
     )
 
