@@ -192,7 +192,7 @@ describe('H20', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/contract/h2o?code=PDACP_223320000',
+      'actions/contract/h2o?code=3011712834',
       helper.requiredHeaders
     )
 
@@ -257,7 +257,7 @@ describe('H20', () => {
 
     const response = await helper.doGet(
       sut,
-      'actions/contract/h2o?code=PDACP_223321111',
+      'actions/contract/h2o?code=3011714434',
       helper.requiredHeaders
     )
 
