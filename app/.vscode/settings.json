@@ -1,0 +1,11 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "thunder-client.saveToWorkspace": true,
+  "thunder-client.showActivityFromCollection": true,
+  "thunder-client.workspaceRelativePath": "postman",
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": { "*": "${basename}.spec.ts" }
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "_id": "1e1aae86-acee-408c-b620-279055068e7a",
+    "name": "AMGA - Zoho Creator API - Debug",
+    "default": true,
+    "sortNum": 10000,
+    "created": "2022-06-14T09:52:47.306Z",
+    "modified": "2022-06-14T09:52:47.310Z",
+    "data": [
+      {
+        "name": "client_id",
+        "value": "1000.M02XF5E6HS7H0MXF16DDGIXV482J0Y"
+      },
+      {
+        "name": "client_secret",
+        "value": "1883918792a5f73bf9a06f6bc61034eb08e4052be5"
+      },
+      {
+        "name": "client_code",
+        "value": "1000.b1c11fc8281939b82f694289d1b28e03.ddf4b93a943c81e4cfeba8358c600033"
+      },
+      {
+        "name": "refresh_token",
+        "value": "1000.0e84356588566b05fa591d274af2de33.ed9d57888bef73308e777279ab6893af"
+      },
+      {
+        "name": "access_token",
+        "value": "1000.1836049659fa29f74c5864ca575dc008.38419dc82b7fde7a6678698555d6315c"
+      },
+      {
+        "name": "plugin_endpoint",
+        "value": "http://localhost:8080"
+      },
+      {
+        "name": "account",
+        "value": "acegasapsamga"
+      },
+      {
+        "name": "project",
+        "value": "test1-gestione-reclami"
+      }
+    ]
+  },
+  {
+    "_id": "064b6605-da5e-46be-8152-e30d14751362",
+    "name": "AMGA - Zoho Creator API - Dev",
+    "default": false,
+    "sortNum": 20000,
+    "created": "2022-06-14T09:52:47.347Z",
+    "modified": "2022-06-14T09:52:47.348Z",
+    "data": [
+      {
+        "name": "client_id",
+        "value": "1000.M02XF5E6HS7H0MXF16DDGIXV482J0Y"
+      },
+      {
+        "name": "client_secret",
+        "value": "1883918792a5f73bf9a06f6bc61034eb08e4052be5"
+      },
+      {
+        "name": "client_code",
+        "value": "1000.b1c11fc8281939b82f694289d1b28e03.ddf4b93a943c81e4cfeba8358c600033"
+      },
+      {
+        "name": "refresh_token",
+        "value": "1000.0e84356588566b05fa591d274af2de33.ed9d57888bef73308e777279ab6893af"
+      },
+      {
+        "name": "access_token",
+        "value": "1000.1836049659fa29f74c5864ca575dc008.38419dc82b7fde7a6678698555d6315c"
+      },
+      {
+        "name": "plugin_endpoint",
+        "value": "http://responsa-plugin-amga-reclami-dev.eu-west-1.elasticbeanstalk.com"
+      },
+      {
+        "name": "account",
+        "value": "acegasapsamga"
+      },
+      {
+        "name": "project",
+        "value": "test1-gestione-reclami"
+      }
+    ]
+  }
+]

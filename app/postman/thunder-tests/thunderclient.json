@@ -1,0 +1,789 @@
+[
+  {
+    "_id": "b7d3f7b7-6c59-493e-bcd5-08bd5857fa8d",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/otp",
+    "url": "{{plugin_endpoint}}/actions/otp",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-06-14T09:52:29.515Z",
+    "modified": "2022-06-14T09:52:29.515Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"phone\": \"+393930975687\"\n}"
+    }
+  },
+  {
+    "_id": "8aaff6e8-b104-4571-b4c2-d300d7c10e92",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/privacy",
+    "url": "{{plugin_endpoint}}/actions/privacy",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-06-14T09:52:29.516Z",
+    "modified": "2022-06-14T09:52:29.516Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{ \n    \"email\": \"mail@provider.com\", \n    \"accepted\": true \n}"
+    }
+  },
+  {
+    "_id": "40502b5a-7f37-4e77-9802-f9f068978d5a",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/complaint (gas & isPrivateApplicant)",
+    "url": "{{plugin_endpoint}}/actions/complaint",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2022-06-14T09:52:29.517Z",
+    "modified": "2022-06-14T09:52:29.517Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n      \"usage\": \"domestic\",\n      \"requestArea\": \"gas\",\n      \"email\": \"andrea.rinaldi@euris.it\",\n      \"phone\": \"+393292225509\",\n      \"isPrivateApplicant\": true,\n      \"isEnergyProducer\": \"\",\n      \"firstName\": \"Mario\",\n      \"lastName\": \"Rossi\",\n      \"fiscalCode\": \"cblsrg79m08a662b\",\n      \"streetName\": \"via nomeVia\",\n      \"streetNumber\": \"1\",\n      \"city\": \"Bologna\",\n      \"province\": \"Emilia Romagna\",\n      \"quotationCode\": \"25123456\",\n      \"question\": \"Domanda finale...\"\n    }"
+    }
+  },
+  {
+    "_id": "4b16411c-30a0-4f06-a592-5bdb7f52fb95",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/complaint (water & isPrivateApplicant)",
+    "url": "{{plugin_endpoint}}/actions/complaint",
+    "method": "POST",
+    "sortNum": 40000,
+    "created": "2022-06-14T09:52:29.518Z",
+    "modified": "2022-06-14T09:52:29.518Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n      \"usage\": \"domestic\",\n      \"requestArea\": \"gas\",\n      \"email\": \"andrea.rinaldi@euris.it\",\n      \"phone\": \"+393292225509\",\n      \"isPrivateApplicant\": true,\n      \"isEnergyProducer\": \"\",\n      \"firstName\": \"Mario\",\n      \"lastName\": \"Rossi\",\n      \"fiscalCode\": \"cblsrg79m08a662b\",\n      \"streetName\": \"via nomeVia\",\n      \"streetNumber\": \"1\",\n      \"city\": \"Bologna\",\n      \"province\": \"Emilia Romagna\",\n      \"quotationCode\": \"25123456\",\n      \"question\": \"Domanda finale...\"\n    }"
+    }
+  },
+  {
+    "_id": "ae7b384b-ef12-4fdc-a549-f6805d014823",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/complaint (energy & isPrivateApplicant)",
+    "url": "{{plugin_endpoint}}/actions/complaint",
+    "method": "POST",
+    "sortNum": 50000,
+    "created": "2022-06-14T09:52:29.519Z",
+    "modified": "2022-06-14T09:52:29.519Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n      \"usage\": \"domestic\",\n      \"requestArea\": \"energy\",\n      \"email\": \"andrea.rinaldi@euris.it\",\n      \"phone\": \"+393292225509\",\n      \"isPrivateApplicant\": true,\n      \"isEnergyProducer\": \"\",\n      \"firstName\": \"Mario\",\n      \"lastName\": \"Rossi\",\n      \"fiscalCode\": \"cblsrg79m08a662b\",\n      \"streetName\": \"via nomeVia\",\n      \"streetNumber\": \"1\",\n      \"city\": \"Bologna\",\n      \"province\": \"Emilia Romagna\",\n      \"quotationCode\": \"25123456\",\n      \"question\": \"Domanda finale...\"\n    }"
+    }
+  },
+  {
+    "_id": "3e83ae9a-243b-4244-8bb3-f428d4baebb3",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/complaint ( gas & not isPrivateApplicant)",
+    "url": "{{plugin_endpoint}}/actions/complaint",
+    "method": "POST",
+    "sortNum": 60000,
+    "created": "2022-06-14T09:52:29.520Z",
+    "modified": "2022-06-14T09:52:29.520Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n      \"usage\": \"domestic\",\n      \"requestArea\": \"gas\",\n      \"email\": \"andrea.rinaldi@euris.it\",\n      \"phone\": \"+393292225509\",\n      \"isPrivateApplicant\": false,\n      \"businessName\": \"nome azienda\",\n      \"vatNumber\": \"01079320329\",\n      \"streetName\": \"via nomeVia\",\n      \"streetNumber\": \"1\",\n      \"city\": \"Bologna\",\n      \"province\": \"Emilia Romagna\",\n      \"quotationCode\": \"25123456\",\n      \"isEnergyProducer\": false,\n      \"question\": \"Domanda finale...\"\n    }"
+    }
+  },
+  {
+    "_id": "46ab0e49-5ef2-4a98-896f-70dc2e0f70d4",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/complaint ( energy & not isPrivateApplicant)",
+    "url": "{{plugin_endpoint}}/actions/complaint",
+    "method": "POST",
+    "sortNum": 70000,
+    "created": "2022-06-14T09:52:29.521Z",
+    "modified": "2022-06-14T09:52:29.521Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n      \"usage\": \"domestic\",\n      \"requestArea\": \"energy\",\n      \"email\": \"andrea.rinaldi@euris.it\",\n      \"phone\": \"+393292225509\",\n      \"isPrivateApplicant\": false,\n      \"businessName\": \"nome azienda\",\n      \"vatNumber\": \"01079320329\",\n      \"streetName\": \"via nomeVia\",\n      \"streetNumber\": \"1\",\n      \"city\": \"Bologna\",\n      \"province\": \"Emilia Romagna\",\n      \"quotationCode\": \"25123456\",\n      \"isEnergyProducer\": true,\n      \"question\": \"Domanda finale...\"\n    }"
+    }
+  },
+  {
+    "_id": "fed9f6e2-5f60-4446-9002-01cf444ed92c",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/contract/pod",
+    "url": "{{plugin_endpoint}}/actions/contract/pod?code=IT003E03008583",
+    "method": "GET",
+    "sortNum": 80000,
+    "created": "2022-06-14T09:52:29.522Z",
+    "modified": "2022-06-14T09:52:29.522Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "params": [
+      {
+        "name": "code",
+        "value": "IT003E03008583"
+      }
+    ]
+  },
+  {
+    "_id": "9f7d5e03-a780-493d-9012-d258a86e3866",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/contract/pdr",
+    "url": "{{plugin_endpoint}}/actions/contract/pdr?code=11825000002472",
+    "method": "GET",
+    "sortNum": 90000,
+    "created": "2022-06-14T09:52:29.523Z",
+    "modified": "2022-06-14T09:52:29.523Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "params": [
+      {
+        "name": "code",
+        "value": "11825000002472"
+      }
+    ]
+  },
+  {
+    "_id": "3f028ab4-80c3-406c-8b6d-87c34b5e06fe",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/ticket",
+    "url": "{{plugin_endpoint}}/actions/ticket?id=0&extended=true",
+    "method": "GET",
+    "sortNum": 100000,
+    "created": "2022-06-14T09:52:29.524Z",
+    "modified": "2022-06-14T09:52:29.524Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "params": [
+      {
+        "name": "id",
+        "value": "0"
+      },
+      {
+        "name": "extended",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "a4f8d8a0-8206-47e8-a0e9-55a24bd49903",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/validation",
+    "url": "{{plugin_endpoint}}/actions/validation?fieldName=quotationCode&fieldValue=25111111",
+    "method": "GET",
+    "sortNum": 110000,
+    "created": "2022-06-14T09:52:29.526Z",
+    "modified": "2022-06-14T09:52:29.526Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "params": [
+      {
+        "name": "fieldName",
+        "value": "quotationCode"
+      },
+      {
+        "name": "fieldValue",
+        "value": "25111111"
+      }
+    ]
+  },
+  {
+    "_id": "3c388ab4-ddeb-4c9e-91de-ecff03804fe6",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/privacy",
+    "url": "{{plugin_endpoint}}/actions/privacy?email=mail@provider.com",
+    "method": "GET",
+    "sortNum": 120000,
+    "created": "2022-06-14T09:52:29.527Z",
+    "modified": "2022-06-14T09:52:29.527Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "params": [
+      {
+        "name": "email",
+        "value": "mail@provider.com"
+      }
+    ]
+  },
+  {
+    "_id": "58c2718f-2beb-4619-8a01-a673ed293148",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/complaint",
+    "url": "{{plugin_endpoint}}/actions/complaint?id=800&extended=true",
+    "method": "GET",
+    "sortNum": 130000,
+    "created": "2022-06-14T09:52:29.528Z",
+    "modified": "2022-06-14T09:52:29.528Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "params": [
+      {
+        "name": "id",
+        "value": "800"
+      },
+      {
+        "name": "extended",
+        "value": "true"
+      }
+    ]
+  },
+  {
+    "_id": "818612da-f1ca-471e-be4f-e7a72c279c01",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "Self reading",
+    "url": "{{plugin_endpoint}}/actions/selfReading",
+    "method": "POST",
+    "sortNum": 140000,
+    "created": "2022-06-14T09:52:29.529Z",
+    "modified": "2022-06-14T09:52:29.529Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "3"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "12312312321"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"requestArea\": \"gas\",\n    \"code\": \"IT003E03008543\",\n    \"phone\": \"+393290000000\",\n    \"counterType\": \"electromechanical\",\n    \"email\": \"euris@test.it\",\n    \"value1\": \"301010\",\n    \"photo1\": \"https://luce-gas.it/sites/default/files/images/matricola-contatore-gas1.jpg\"\n}"
+    }
+  },
+  {
+    "_id": "59970521-5b07-4d9d-b789-751461e36af3",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "e9023794-d964-4a3b-8a04-cc449d8e9b2d",
+    "name": "Get Records - Nuova Richiesta Cliente",
+    "url": "",
+    "method": "GET",
+    "sortNum": 150000,
+    "created": "2022-06-14T09:52:29.530Z",
+    "modified": "2022-06-14T09:52:29.530Z",
+    "headers": []
+  },
+  {
+    "_id": "67ed5783-24cf-4e83-953c-090f9f102a2d",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "830a8422-eece-4083-a3a7-b8868b056dd1",
+    "name": "Auth",
+    "url": "https://accounts.zoho.eu/oauth/v2/token?grant_type=authorization_code&client_id={{client_id}}&client_secret={{client_secret}}&code={{client_code}}",
+    "method": "POST",
+    "sortNum": 160000,
+    "created": "2022-06-14T09:52:29.531Z",
+    "modified": "2022-06-14T09:52:29.531Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "grant_type",
+        "value": "authorization_code"
+      },
+      {
+        "name": "client_id",
+        "value": "{{client_id}}"
+      },
+      {
+        "name": "client_secret",
+        "value": "{{client_secret}}"
+      },
+      {
+        "name": "code",
+        "value": "{{client_code}}"
+      }
+    ]
+  },
+  {
+    "_id": "03f49557-23e5-480e-bcc9-b13a69fc843b",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "830a8422-eece-4083-a3a7-b8868b056dd1",
+    "name": "Refresh Auth",
+    "url": "https://accounts.zoho.eu/oauth/v2/token?refresh_token={{refresh_token}}&client_id={{client_id}}&client_secret={{client_secret}}&grant_type=refresh_token",
+    "method": "POST",
+    "sortNum": 170000,
+    "created": "2022-06-14T09:52:29.532Z",
+    "modified": "2022-06-14T09:52:29.532Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "refresh_token",
+        "value": "{{refresh_token}}"
+      },
+      {
+        "name": "client_id",
+        "value": "{{client_id}}"
+      },
+      {
+        "name": "client_secret",
+        "value": "{{client_secret}}"
+      },
+      {
+        "name": "grant_type",
+        "value": "refresh_token"
+      }
+    ]
+  },
+  {
+    "_id": "48bf0d3e-1af5-4e26-91e7-a43ad6a09371",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "7ac92176-2307-447d-99d2-8f37419ad568",
+    "name": "Get Accettazione Privacy",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/Privacy_Report?criteria=(Cliente_email==\"sergio.79@libero.it\")",
+    "method": "GET",
+    "sortNum": 180000,
+    "created": "2022-06-14T09:52:29.533Z",
+    "modified": "2022-06-14T09:52:29.533Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "params": [
+      {
+        "name": "criteria",
+        "value": "(Cliente_email==\"sergio.79@libero.it\")"
+      }
+    ]
+  },
+  {
+    "_id": "569b6a27-e172-4d90-8457-39a2bbc07d17",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "7ac92176-2307-447d-99d2-8f37419ad568",
+    "name": "Post Accettazione Privacy",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/form/Privacy",
+    "method": "POST",
+    "sortNum": 190000,
+    "created": "2022-06-14T09:52:29.534Z",
+    "modified": "2022-06-14T09:52:29.534Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"data\": \r\n    {\r\n      \"Cliente_email\": \"sergio.79@libero.it\",\r\n      \"Consenso\": \"SI\",\r\n      \"added_Time\": \"13-04-2021 10:16:21\",\r\n      \"modified_Time\": \"13-04-2021 10:16:21\"\r\n    }\r\n,\r\n  \"result\": {\r\n    \"fields\": [\r\n      \"Cliente_email\"\r\n    ],\r\n    \"message\": true,\r\n    \"tasks\": true\r\n  }\r\n}"
+    }
+  },
+  {
+    "_id": "82d2f612-50df-4612-ae02-ee3343262ec9",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "65b85f47-d2ef-42d3-a464-521cde3126a2",
+    "name": "Get Records - Quick View - PODPDR by PODPDR",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/PODPDR_Report?criteria=(PODPDR==\"IT003E03008583\")",
+    "method": "GET",
+    "sortNum": 200000,
+    "created": "2022-06-14T09:52:29.535Z",
+    "modified": "2022-06-14T09:52:29.535Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "params": [
+      {
+        "name": "criteria",
+        "value": "(PODPDR==\"IT003E03008583\")"
+      }
+    ]
+  },
+  {
+    "_id": "cd40f2d8-f98f-435a-a057-6125c59a7f3d",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "65b85f47-d2ef-42d3-a464-521cde3126a2",
+    "name": "Get Records - Detail View - PODPDR",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/PODPDR_Report/47306000019139151",
+    "method": "GET",
+    "sortNum": 210000,
+    "created": "2022-06-14T09:52:29.536Z",
+    "modified": "2022-06-14T09:52:29.536Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ]
+  },
+  {
+    "_id": "4eb6a0a3-3c58-4e04-a761-59fdd5da168f",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "b01b5e7b-0997-4655-8d2b-06ce20c98de9",
+    "name": "Get Records - Quick View - Nuova Richiesta Cliente by ID_Richiesta",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/Report_Generale?criteria=(ID_Richiesta==47)",
+    "method": "GET",
+    "sortNum": 220000,
+    "created": "2022-06-14T09:52:29.537Z",
+    "modified": "2022-06-14T09:52:29.537Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "params": [
+      {
+        "name": "criteria",
+        "value": "(ID_Richiesta==47)"
+      }
+    ]
+  },
+  {
+    "_id": "f2077376-9308-4847-ada2-ed2c125936de",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "b01b5e7b-0997-4655-8d2b-06ce20c98de9",
+    "name": "Get Records - Detail View - Nuova Richiesta Cliente",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/Report_Generale/47306000024086133",
+    "method": "GET",
+    "sortNum": 230000,
+    "created": "2022-06-14T09:52:29.538Z",
+    "modified": "2022-06-14T09:52:29.538Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ]
+  },
+  {
+    "_id": "51a9555c-32d1-4362-8760-53cf4f56d693",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "b01b5e7b-0997-4655-8d2b-06ce20c98de9",
+    "name": "Post - Nuova Richiesta Cliente",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/form/Nuova_Richiesta_Cliente",
+    "method": "POST",
+    "sortNum": 240000,
+    "created": "2022-06-14T09:52:29.539Z",
+    "modified": "2022-06-14T09:52:29.539Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n    \"data\": {\r\n        \"Tensione\": \"\",\r\n        \"Servizio\": \"GAS\",\r\n        \"ID_Richiesta\": \"45\",\r\n        \"Nome_Richiedente\": {\r\n            \"display_value\": \"gio iaco\",\r\n            \"prefix\": \"\",\r\n            \"last_name\": \"iaco\",\r\n            \"suffix\": \"\",\r\n            \"first_name\": \"gio\"\r\n        },\r\n        \"Email_Inserimento\": \"andrea.rinaldi@euris.it\",\r\n        \"Telefono_Richiedente\": \"+393290000000\",\r\n        \"Tipologia_Richiedente\": \"PERSONA FISICA\",\r\n        \"Tipo_Richiesta_STC\": \"\",\r\n        \"Ragione_Sociale_Richiedente\": \"\",\r\n        \"Indirizzo_Fornitura\": {\r\n            \"address_line_12\": \"Via Liguria 17\",\r\n            \"district_city2\": \"Ravenna\",\r\n            \"state_province2\": \"Emilia Romagna\",\r\n            \"status\": \"add\",\r\n            \"latitude\": \"44.4166621\",\r\n            \"longitude\": \"12.1835828\"\r\n        },\r\n        \"Tipologia_Risposta\": \"PROTOCOLLO\",\r\n        \"Richiesta_Inserita_Cliente\": \"SI CHAT\",\r\n        \"Codice_PDR_POD\": \"11825000002505\",\r\n        \"Data_Protocollo_OUT\": \"\",\r\n        \"Assegnatario_STC\": \"\",\r\n        \"Regione_Competenza\": \"\",\r\n        \"ID\": \"47306000024080061\",\r\n        \"Giorni_Impiegati\": \"\",\r\n        \"Codice_Fiscale\": \"cblsrg79m08a662b\",\r\n        \"Data_Protocollo_IN\": \"\",\r\n        \"Protocollo_OUT\": \"\",\r\n        \"Data_Richiesta\": \"13-04-2021 14:55:33\",\r\n        \"Partita_Iva\": \"\",\r\n        \"Protocollo_IN\": \"\",\r\n        \"Classe_Contatore\": \"\",\r\n        \"Classe_Richiesta_ARERA\": \"\",\r\n        \"Classificazione_Richiesta\": \"\",\r\n        \"Tipo_Richiesta\": \"RICHIESTA INFORMAZIONI\",\r\n        \"SottoClassi_Richiesta\": \"\",\r\n        \"Cliente_Produttore_Energia\": \"NO\",\r\n        \"Stato\": \"DA VALIDARE\",\r\n        \"Tipo_USO\": \"DOMESTICO\",\r\n        \"Richiesta_Oggetto\": \"Richiesta informazioni da BOT\",\r\n        \"Stato_Richiesta_Cliente\": \"PRESA IN CARICO\",\r\n        \"Assegnato_A\": \"STC\",\r\n        \"Richiesta_Testo\": \"Domanda..\",\r\n        \"Data_Risposta_Entro\": \"13-05-2021 10:31:47\"\r\n    },\r\n    \"result\": {\r\n        \"fields\": [\r\n            \"ID_Richiesta\"\r\n        ],\r\n        \"message\": true,\r\n        \"tasks\": true\r\n    }\r\n}"
+    }
+  },
+  {
+    "_id": "9e1a426e-8f1b-4d2d-9647-5bc498087cc2",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3d1c708a-ad4d-47d9-a47e-1d5dd0d58921",
+    "name": "Upload foto",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/AutoLetture/47306000024324779/Foto_autolettura_1/upload",
+    "method": "POST",
+    "sortNum": 250000,
+    "created": "2022-06-14T09:52:29.540Z",
+    "modified": "2022-06-14T09:52:29.540Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "body": {
+      "form": [],
+      "files": [
+        {
+          "name": "file",
+          "value": "/Users/andrearinaldi/Documents/fototessera.png"
+        }
+      ],
+      "type": "formdata"
+    }
+  },
+  {
+    "_id": "924771d8-b80b-420d-9a76-5b9dc8c7b375",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3d1c708a-ad4d-47d9-a47e-1d5dd0d58921",
+    "name": "Send Autolettura",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/form/AutoLetture",
+    "method": "POST",
+    "sortNum": 260000,
+    "created": "2022-06-14T09:52:29.541Z",
+    "modified": "2022-06-14T09:52:29.541Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"data\": {\n    \"Codice_Utenza\": \"IT003E03008543\",\n    \"Email\": \"andrea.rinaldi@euris.it\",\n    \"Cellulare\": \"+393930975687\",\n    \"Valore_1\": \"123123\",\n    \"Tipologia_Contatore\": \"ELETTROMECCANICO\",\n    \"Stato\": \"DA VALIDARE\",\n    \"Tipologia_Utenza\": \"GAS\"\n}\n}"
+    }
+  },
+  {
+    "_id": "485a525c-ea41-4c8b-9bc9-3893bd75b35e",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "94ba040c-317e-452e-851b-0974a3f40ddf",
+    "name": "Scrivi nuova autolettura",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/form/Autoletture",
+    "method": "POST",
+    "sortNum": 270000,
+    "created": "2022-06-14T09:52:29.542Z",
+    "modified": "2022-06-14T09:52:29.542Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"data\": {\n        \"podpdr\": \"IT003E03008543\",\n        \"phone_number\": \"3930975687\",\n        \"value\": \"111\",\n        \"status\": \"OPEN\",\n        \"forniture\": \"ACQUA\"\n    }\n}"
+    }
+  },
+  {
+    "_id": "c9a3100f-50ed-4a35-abd3-5125f8d873fc",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "94ba040c-317e-452e-851b-0974a3f40ddf",
+    "name": "Upload foto Copy",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/AutoLetture/47306000024324779/Foto_autolettura_1/upload",
+    "method": "POST",
+    "sortNum": 280000,
+    "created": "2022-06-14T09:52:29.543Z",
+    "modified": "2022-06-14T09:52:29.543Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "body": {
+      "form": [],
+      "files": [
+        {
+          "name": "file",
+          "value": "/Users/andrearinaldi/Documents/fototessera.png"
+        }
+      ],
+      "type": "formdata"
+    }
+  },
+  {
+    "_id": "b01f168a-7336-4323-bd98-150bda14df84",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "94ba040c-317e-452e-851b-0974a3f40ddf",
+    "name": "Leggi autolettura",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/Autoletture_Report?criteria=(phone_number==\"3930975687\")",
+    "method": "GET",
+    "sortNum": 290000,
+    "created": "2022-06-14T09:52:29.544Z",
+    "modified": "2022-06-14T09:52:29.544Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "params": [
+      {
+        "name": "criteria",
+        "value": "(phone_number==\"3930975687\")"
+      }
+    ]
+  },
+  {
+    "_id": "9d7fc540-9088-4ac3-b7ca-7aadd267b51a",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "8cb38c73-0f03-49ec-9614-6784086b5da4",
+    "name": "sms",
+    "url": "{{aws_endpoint}}",
+    "method": "POST",
+    "sortNum": 300000,
+    "created": "2022-06-14T09:52:29.545Z",
+    "modified": "2022-06-14T09:52:29.545Z",
+    "headers": [
+      {
+        "name": "x-api-key",
+        "value": "{{aws_api_key}}"
+      }
+    ],
+    "body": {
+      "type": "json",
+      "raw": "{ \r\n    \"from\": \"ZWare\", \r\n    \"to\": \"+393290000000\", \r\n    \"message\": \"Messaggio di prova.\" \r\n}"
+    }
+  }
+]
