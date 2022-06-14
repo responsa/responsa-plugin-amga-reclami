@@ -207,11 +207,11 @@
     "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
     "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
     "name": "/contract/pod",
-    "url": "{{plugin_endpoint}}/actions/contract/pod?code=IT003E03008583",
+    "url": "{{plugin_endpoint}}/actions/contract/pod?code=IT003E01014837",
     "method": "GET",
     "sortNum": 80000,
     "created": "2022-06-14T09:52:29.522Z",
-    "modified": "2022-06-14T09:52:29.522Z",
+    "modified": "2022-06-14T10:05:29.471Z",
     "headers": [
       {
         "name": "x-secret",
@@ -229,20 +229,22 @@
     "params": [
       {
         "name": "code",
-        "value": "IT003E03008583"
+        "value": "IT003E01014837",
+        "isPath": false
       }
-    ]
+    ],
+    "tests": []
   },
   {
     "_id": "9f7d5e03-a780-493d-9012-d258a86e3866",
     "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
     "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
     "name": "/contract/pdr",
-    "url": "{{plugin_endpoint}}/actions/contract/pdr?code=11825000002472",
+    "url": "{{plugin_endpoint}}/actions/contract/pdr?code=11825000004470",
     "method": "GET",
     "sortNum": 90000,
     "created": "2022-06-14T09:52:29.523Z",
-    "modified": "2022-06-14T09:52:29.523Z",
+    "modified": "2022-06-14T10:05:09.469Z",
     "headers": [
       {
         "name": "x-secret",
@@ -260,9 +262,11 @@
     "params": [
       {
         "name": "code",
-        "value": "11825000002472"
+        "value": "11825000004470",
+        "isPath": false
       }
-    ]
+    ],
+    "tests": []
   },
   {
     "_id": "3f028ab4-80c3-406c-8b6d-87c34b5e06fe",
@@ -480,26 +484,31 @@
     "method": "POST",
     "sortNum": 170000,
     "created": "2022-06-14T09:52:29.532Z",
-    "modified": "2022-06-14T09:52:29.532Z",
+    "modified": "2022-06-14T09:59:09.987Z",
     "headers": [],
     "params": [
       {
         "name": "refresh_token",
-        "value": "{{refresh_token}}"
+        "value": "{{refresh_token}}",
+        "isPath": false
       },
       {
         "name": "client_id",
-        "value": "{{client_id}}"
+        "value": "{{client_id}}",
+        "isPath": false
       },
       {
         "name": "client_secret",
-        "value": "{{client_secret}}"
+        "value": "{{client_secret}}",
+        "isPath": false
       },
       {
         "name": "grant_type",
-        "value": "refresh_token"
+        "value": "refresh_token",
+        "isPath": false
       }
-    ]
+    ],
+    "tests": []
   },
   {
     "_id": "48bf0d3e-1af5-4e26-91e7-a43ad6a09371",
@@ -785,5 +794,63 @@
       "type": "json",
       "raw": "{ \r\n    \"from\": \"ZWare\", \r\n    \"to\": \"+393290000000\", \r\n    \"message\": \"Messaggio di prova.\" \r\n}"
     }
+  },
+  {
+    "_id": "890cd708-1707-493b-bc5c-70f9d7a31253",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+    "name": "/contract/h2o",
+    "url": "{{plugin_endpoint}}/actions/contract/h2o?code=3011712834",
+    "method": "GET",
+    "sortNum": 95000,
+    "created": "2022-06-14T09:55:52.822Z",
+    "modified": "2022-06-14T09:56:18.872Z",
+    "headers": [
+      {
+        "name": "x-secret",
+        "value": "SECRET"
+      },
+      {
+        "name": "X-ConversationId",
+        "value": "1"
+      },
+      {
+        "name": "X-ResponsaTS",
+        "value": "1234123412341234"
+      }
+    ],
+    "params": [
+      {
+        "name": "code",
+        "value": "3011712834",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "08c5299c-27a2-4196-965f-331773812b4f",
+    "colId": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "containerId": "65b85f47-d2ef-42d3-a464-521cde3126a2",
+    "name": "Get Records - Quick View - PODPDR by Codice_contratto",
+    "url": "https://creator.zoho.eu/api/v2/{{account}}/{{project}}/report/PODPDR_Report?criteria=(Codice_cliente==\"3011712834\")",
+    "method": "GET",
+    "sortNum": 205000,
+    "created": "2022-06-14T09:59:31.716Z",
+    "modified": "2022-06-14T10:03:26.305Z",
+    "headers": [
+      {
+        "name": "Authorization",
+        "value": "Zoho-oauthtoken {{access_token}}"
+      }
+    ],
+    "params": [
+      {
+        "name": "criteria",
+        "value": "(Codice_cliente==\"3011712834\")",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]

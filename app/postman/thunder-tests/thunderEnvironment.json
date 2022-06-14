@@ -5,15 +5,15 @@
     "default": true,
     "sortNum": 10000,
     "created": "2022-06-14T09:52:47.306Z",
-    "modified": "2022-06-14T09:52:47.310Z",
+    "modified": "2022-06-14T10:02:22.794Z",
     "data": [
       {
         "name": "client_id",
-        "value": "1000.M02XF5E6HS7H0MXF16DDGIXV482J0Y"
+        "value": "1000.0N0N9KGHZ2DJ4ID5Y8PCCBSW6JQM7B"
       },
       {
         "name": "client_secret",
-        "value": "1883918792a5f73bf9a06f6bc61034eb08e4052be5"
+        "value": "bd801f6e3fdbb314b4c6677fa16b0aa3c9f9e85c47"
       },
       {
         "name": "client_code",
@@ -21,15 +21,15 @@
       },
       {
         "name": "refresh_token",
-        "value": "1000.0e84356588566b05fa591d274af2de33.ed9d57888bef73308e777279ab6893af"
+        "value": "1000.c73295bc3ce0f5e788e127752f54456d.910c531f07beb49d1a79b04767c3dad2"
       },
       {
         "name": "access_token",
-        "value": "1000.1836049659fa29f74c5864ca575dc008.38419dc82b7fde7a6678698555d6315c"
+        "value": "1000.a5d445af7402a8d0496a30de207c5520.67ec1ba80431c928381205fe90ffdaf9"
       },
       {
         "name": "plugin_endpoint",
-        "value": "http://localhost:8080"
+        "value": "http://localhost:3100"
       },
       {
         "name": "account",
