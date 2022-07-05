@@ -1,6 +1,6 @@
 module.exports = {
   appName: 'Responsa Plugin for Amga Reclami',
-  apiVersion: 'v3',
+  apiVersion: 'v4',
   port: process.env.PORT || 8080,
   secretValue: 'SECRET',
   elasticUri: 'Ciccio:',
