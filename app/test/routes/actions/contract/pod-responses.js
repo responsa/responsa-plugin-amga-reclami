@@ -4,7 +4,7 @@ module.exports.code200 = {
       schema: {
         type: 'object',
         title: 'PODPDRInfoResponse',
-        description: 'The data returned about the informations of a POD/PDR related contract',
+        description: 'The data returned about the informations of a POD/PDR/H2O related contract',
         properties: {
           streetName: {
             type: 'string',
@@ -30,7 +30,7 @@ module.exports.code200 = {
       }
     }
   },
-  description: 'The data returned about the informations of a POD/PDR related contract'
+  description: 'The data returned about the informations of a POD/PDR/H2O related contract'
 }
 
 module.exports.code400 = {

@@ -9,8 +9,8 @@ module.exports.complaints = {
   createNew: async (data) => await client.postData(config.zoho.complaintPostTarget, data)
 }
 
-module.exports.podpdr = {
-  getByCode: async (code) => await client.queryZoho(config.zoho.podpdrGetTarget, [{ key: 'PODPDR', value: code }])
+module.exports.contract = {
+  getByCode: async (codeKey, code) => await client.queryZoho(config.zoho.contractGetTarget, [{ key: codeKey, value: code }])
 }
 
 module.exports.privacy = {

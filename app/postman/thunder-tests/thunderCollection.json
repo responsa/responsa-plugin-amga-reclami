@@ -1,0 +1,73 @@
+[
+  {
+    "_id": "3eae01db-e22d-4c00-b8f7-3450dbc12357",
+    "colName": "Acegas Amga Reclami",
+    "created": "2022-06-14T09:52:29.512Z",
+    "sortNum": 10000,
+    "folders": [
+      {
+        "_id": "3cd81db0-ba6b-4256-9dbe-eced99859589",
+        "name": "Plugin",
+        "containerId": "",
+        "created": "2022-06-14T09:52:29.514Z",
+        "sortNum": 10000
+      },
+      {
+        "_id": "e9023794-d964-4a3b-8a04-cc449d8e9b2d",
+        "name": "Zoho API - v1",
+        "containerId": "",
+        "created": "2022-06-14T09:52:29.515Z",
+        "sortNum": 20000
+      },
+      {
+        "_id": "94ba040c-317e-452e-851b-0974a3f40ddf",
+        "name": "Zoho API - v2",
+        "containerId": "",
+        "created": "2022-06-14T09:52:29.516Z",
+        "sortNum": 30000
+      },
+      {
+        "_id": "830a8422-eece-4083-a3a7-b8868b056dd1",
+        "name": "Auth",
+        "containerId": "94ba040c-317e-452e-851b-0974a3f40ddf",
+        "created": "2022-06-14T09:52:29.517Z",
+        "sortNum": 40000
+      },
+      {
+        "_id": "7ac92176-2307-447d-99d2-8f37419ad568",
+        "name": "Privacy",
+        "containerId": "94ba040c-317e-452e-851b-0974a3f40ddf",
+        "created": "2022-06-14T09:52:29.518Z",
+        "sortNum": 50000
+      },
+      {
+        "_id": "65b85f47-d2ef-42d3-a464-521cde3126a2",
+        "name": "PODPDR",
+        "containerId": "94ba040c-317e-452e-851b-0974a3f40ddf",
+        "created": "2022-06-14T09:52:29.519Z",
+        "sortNum": 60000
+      },
+      {
+        "_id": "b01b5e7b-0997-4655-8d2b-06ce20c98de9",
+        "name": "Nuova Richiesta Cliente",
+        "containerId": "94ba040c-317e-452e-851b-0974a3f40ddf",
+        "created": "2022-06-14T09:52:29.520Z",
+        "sortNum": 70000
+      },
+      {
+        "_id": "3d1c708a-ad4d-47d9-a47e-1d5dd0d58921",
+        "name": "Autolettura",
+        "containerId": "94ba040c-317e-452e-851b-0974a3f40ddf",
+        "created": "2022-06-14T09:52:29.521Z",
+        "sortNum": 80000
+      },
+      {
+        "_id": "8cb38c73-0f03-49ec-9614-6784086b5da4",
+        "name": "AWS Send SMS",
+        "containerId": "",
+        "created": "2022-06-14T09:52:29.522Z",
+        "sortNum": 90000
+      }
+    ]
+  }
+]

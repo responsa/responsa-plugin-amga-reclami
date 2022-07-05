@@ -49,6 +49,11 @@ describe('Auth: x-secret', () => {
     await verify401(helper.doGet(sut, '/actions/pod?code=IT820E00000247', helper.requiredHeaders401))
   })
 
+  it('[GET] /actions/contract/h2o fails with 401 without x-secret header', async () => {
+    const sut = await helper.setupTestEnvironment()
+    await verify401(helper.doGet(sut, '/actions/h2o?code=PDACP_223320000', helper.requiredHeaders401))
+  })
+
   it('[GET] /actions/privacy fails with 401 without x-secret header', async () => {
     const sut = await helper.setupTestEnvironment()
     await verify401(helper.doGet(sut, '/actions/privacy?email=sergio.79@libero.it', helper.requiredHeaders401))

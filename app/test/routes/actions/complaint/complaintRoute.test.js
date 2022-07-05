@@ -226,6 +226,22 @@ describe('Create complaint - 400 - conditional fields', () => {
       fiscalCode: 'RNDNDR90R11C573X'
     })
   )
+  it('400 - fails without firstName if isPrivateApplicant === true && requestArea === \'h2o\'', async () =>
+    expect400({
+      usage: 'domestic',
+      requestArea: 'h2o',
+      email: 'euris@test.com',
+      phone: '+393290000000',
+      isPrivateApplicant: true,
+      streetName: 'via sample',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      question: 'domanda..',
+      lastName: 'cognome',
+      fiscalCode: 'RNDNDR90R11C573X'
+    })
+  )
   it('400 - fails without lastName if isPrivateApplicant === true && requestArea === \'gas\'', async () =>
     expect400({
       usage: 'domestic',
@@ -565,6 +581,62 @@ describe('Create complaint - 200 - happy ending', () => {
     const bodyObj = {
       usage: 'domestic',
       requestArea: 'gas',
+      email: 'euris@test.com',
+      phone: '+393292225509',
+      isPrivateApplicant: false,
+      businessName: 'Euris Test',
+      vatNumber: '01079320329',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      quotationCode: '25123456',
+      isEnergyyProducer: false,
+      question: 'Test Euris: questo è un test del Team degli sviluppatori software Euris'
+    }
+
+    const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
+
+    expect(response.statusCode).toEqual(200)
+    expect(response.body).toBeDefined()
+    const body = JSON.parse(response.body)
+    expect(body.id).toBeDefined()
+    expect(body.requestId).toBeDefined()
+  })
+
+  it('complaint - h2o & isPrivateApplicant scenario - answers 200 with id and requestId', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const bodyObj = {
+      usage: 'domestic',
+      requestArea: 'h2o',
+      email: 'euris@test.com',
+      phone: '+393292225509',
+      isPrivateApplicant: true,
+      firstName: 'Test',
+      lastName: 'Euris',
+      fiscalCode: 'cblsrg79m08a662b',
+      streetName: 'via nomeVia',
+      streetNumber: '1',
+      city: 'Bologna',
+      province: 'Emilia Romagna',
+      quotationCode: '25123456',
+      question: 'Test Euris: questo è un test del Team degli sviluppatori software Euris'
+    }
+
+    const response = await helper.doPost(sut, 'actions/complaint', bodyObj, helper.requiredHeaders)
+
+    console.log(response.body)
+    expect(response.statusCode).toEqual(200)
+    expect(response.body).toBeDefined()
+    const body = JSON.parse(response.body)
+    expect(body.id).toBeDefined()
+    expect(body.requestId).toBeDefined()
+  })
+  it('complaint - h2o & not isPrivateApplicantscenario - answers 200 with id and requestId', async () => {
+    const sut = await helper.setupTestEnvironment()
+    const bodyObj = {
+      usage: 'domestic',
+      requestArea: 'h2o',
       email: 'euris@test.com',
       phone: '+393292225509',
       isPrivateApplicant: false,

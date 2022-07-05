@@ -1,6 +1,6 @@
 # Specify filepatterns you want git to ignore.
-.vscode
 node_modules
 coverage
 *.env
 test/access_token.txt
+postman/thunder-tests/thunderActivity.json
